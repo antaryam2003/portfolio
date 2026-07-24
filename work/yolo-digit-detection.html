@@ -23,8 +23,7 @@
   (function () {
     try {
       var saved = localStorage.getItem("am-theme");
-      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      document.documentElement.setAttribute("data-theme", saved || (prefersDark ? "dark" : "light"));
+      document.documentElement.setAttribute("data-theme", saved || "light");
     } catch (e) {
       document.documentElement.setAttribute("data-theme", "light");
     }
@@ -300,7 +299,7 @@
       <p>&copy; <span data-year>2026</span> Antarya Mondal &middot; Built from scratch, no template.</p>
       <ul class="footer-links">
         <li><a href="mailto:mondalantarya2@gmail.com">Email</a></li>
-        <li><a href="https://linkedin.com/in/antarya" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/in/antarya-mondal-53a14a301/" target="_blank" rel="noopener">LinkedIn</a></li>
         <li><a href="https://github.com/antaryam2003" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="../assets/Antarya-Mondal-Resume.pdf" target="_blank" rel="noopener">Résumé</a></li>
         <li><a href="../index.html">Home</a></li>

@@ -84,8 +84,6 @@ worth more than a polished one you can't.
 ## Other things you may want to change
 
 - **Location.** The contact card says "India · open to relocating". Make it specific if you'd rather.
-- **Availability pill.** The green "Open to APM & Product Analyst roles" pill in the hero — remove
-  the whole `<p class="pill pill-live">` element once you've signed somewhere.
 - **Colours.** All of them are CSS custom properties at the top of `assets/css/style.css`, under
   `:root` (light) and `:root[data-theme="dark"]`. Change `--accent` and the whole site follows.
 - **The gradient.** `--bg-top`, `--bg-mid`, `--bg-bottom` — currently light blue to light green.
@@ -127,7 +125,8 @@ résumé than a `github.io` subpath. To point one here:
 - **Accessible.** Semantic landmarks, skip link, visible focus rings, `alt` text, ARIA on the
   interactive controls, and `prefers-reduced-motion` honoured throughout.
 - **Responsive** from 320px up, with a two-column layout above 820px.
-- **Dark mode** follows the system preference and remembers your choice in `localStorage`.
+- **Light by default.** Dark mode is opt-in via the toggle in the nav, and the choice is
+  remembered in `localStorage`.
 - **Prints cleanly** — the nav, background and CTAs drop out, so `Ctrl+P` produces a usable
   leave-behind.
 

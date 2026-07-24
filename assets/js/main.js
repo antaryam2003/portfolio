@@ -157,26 +157,6 @@
   }
 
   /* ---------------------------------------------------------
-     Copy email to clipboard
-     --------------------------------------------------------- */
-  document.querySelectorAll("[data-copy]").forEach(function (el) {
-    el.addEventListener("click", function (e) {
-      var value = el.getAttribute("data-copy");
-      if (!navigator.clipboard) return; // let the mailto: link do its job
-      e.preventDefault();
-      navigator.clipboard.writeText(value).then(function () {
-        var label = el.querySelector("[data-copy-label]");
-        if (!label) return;
-        var original = label.textContent;
-        label.textContent = "Copied to clipboard";
-        setTimeout(function () {
-          label.textContent = original;
-        }, 1800);
-      });
-    });
-  });
-
-  /* ---------------------------------------------------------
      Footer year
      --------------------------------------------------------- */
   var year = document.querySelector("[data-year]");
