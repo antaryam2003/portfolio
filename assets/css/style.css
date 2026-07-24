@@ -662,9 +662,14 @@ section { position: relative; }
   height: 100%;
   object-fit: cover;
   object-position: center 22%;
+  /* The source is near-square, so `cover` alone crops nothing and the face
+     reads small. Zoom about the face rather than the centre of the frame.
+     Lower the scale to show more of the background. */
+  transform: scale(1.3);
+  transform-origin: center 24%;
   transition: transform 0.7s var(--ease);
 }
-.photo-card:hover .photo-frame img { transform: scale(1.04); }
+.photo-card:hover .photo-frame img { transform: scale(1.36); }
 
 .photo-monogram {
   font-family: var(--font-serif);
