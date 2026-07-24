@@ -1,5 +1,7 @@
 # Antarya Mondal — Portfolio
 
+**Live: https://antaryam2003.github.io/portfolio**
+
 A hand-built static portfolio site targeting Associate Product Manager and Product Analyst roles.
 No framework, no build step, no dependencies. Open `index.html` and it works.
 
@@ -92,28 +94,28 @@ worth more than a polished one you can't.
 
 ## Deploying
 
-### GitHub Pages (free, gives you `antarya.github.io`)
+Already set up. This repo publishes to GitHub Pages from `main` / root, so **any push to `main`
+goes live within about a minute**:
 
 ```bash
-git init
-git add .
-git commit -m "Portfolio"
-git branch -M main
-git remote add origin https://github.com/<your-username>/<your-username>.github.io.git
-git push -u origin main
+git add -A
+git commit -m "Update case study metrics"
+git push
 ```
 
-Then in the repo: **Settings → Pages → Source: `main` branch, `/ (root)`**. Live in about a minute.
-
-### Netlify (easiest — drag and drop)
-
-Go to [app.netlify.com/drop](https://app.netlify.com/drop) and drag this whole folder onto the page.
-You get a URL immediately, and you can add a custom domain later.
+No build step runs — GitHub serves the files exactly as they are in the repo.
 
 ### A custom domain
 
-`antaryamondal.com` or similar costs roughly ₹800–1,200/year. On a résumé it reads noticeably
-better than a `.github.io` subdomain, and both hosts above support it for free.
+`antaryamondal.com` or similar costs roughly ₹800–1,200/year, and reads noticeably better on a
+résumé than a `github.io` subpath. To point one here:
+
+1. Buy the domain, then add a `CNAME` file to this repo containing just the domain name.
+2. At your registrar, add a `CNAME` record for `www` → `antaryam2003.github.io`, and four `A`
+   records for the apex pointing at `185.199.108.153`, `185.199.109.153`, `185.199.110.153`,
+   `185.199.111.153`.
+3. In **Settings → Pages**, enter the domain and tick **Enforce HTTPS** once the certificate
+   is issued.
 
 ---
 
