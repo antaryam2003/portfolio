@@ -1239,6 +1239,107 @@ section { position: relative; }
   line-height: 1.5;
 }
 
+/* Journey model — the four-phase conceptual diagram */
+.journey {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.journey-col {
+  position: relative;
+  padding: 20px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--hairline);
+  background: var(--surface-sunk);
+}
+
+/* Connecting chevron between phases */
+.journey-col:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -9px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+  transform: translateY(-50%) rotate(45deg);
+  opacity: 0.55;
+  z-index: 1;
+}
+
+.journey-col h3 {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.journey-col ul {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  font-size: 0.83rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.journey-col ul li { padding-left: 0; }
+.journey-col ul li::before { content: none; }
+
+/* Requirements */
+.req-journey + .req-journey { margin-top: 26px; }
+
+.req-journey > h3 {
+  font-size: 0.95rem;
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--hairline);
+  letter-spacing: -0.018em;
+}
+
+.req-list {
+  list-style: none;
+  display: grid;
+  gap: 11px;
+  margin: 0;
+}
+.req-list li {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  padding-left: 0;
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.req-list li::before { content: none; }
+
+.prio {
+  display: inline-grid;
+  place-items: center;
+  height: 20px;
+  border-radius: 6px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-top: 0.2em;
+}
+.prio.p0 { background: var(--accent); color: var(--accent-ink); }
+.prio.p1 { background: var(--accent-soft); color: var(--accent); }
+.prio.p2 {
+  background: var(--surface-sunk);
+  border: 1px solid var(--hairline-strong);
+  color: var(--ink-3);
+}
+
 /* Sidebar */
 .cs-aside { position: sticky; top: 100px; display: grid; gap: 18px; }
 
@@ -1408,7 +1509,14 @@ section { position: relative; }
   .toc { display: none; }
 }
 
+@media (max-width: 760px) {
+  .journey { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .journey-col:nth-child(2)::after { content: none; }
+}
+
 @media (max-width: 620px) {
+  .journey { grid-template-columns: minmax(0, 1fr); }
+  .journey-col::after { content: none !important; }
   .hero-stats { grid-template-columns: minmax(0, 1fr); gap: 18px; }
   .intro-col { grid-template-columns: minmax(0, 1fr); }
   .stat-row { grid-template-columns: minmax(0, 1fr); }

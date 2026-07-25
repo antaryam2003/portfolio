@@ -59,10 +59,13 @@ add yours:
 
 | Page | What to add |
 |---|---|
-| `work/finlatics-market-research.html` | Sample size of the market tests, TAM/SAM figures you're free to share, how many recommendations were adopted, any lift you measured |
+| `work/pronto-trust-reliability.html` | Nothing required — this one carries its own artefact (the linked PRD). If you ever get real Pronto data, the sizing question in "Open questions" is where it goes |
 | `work/buknu-masala-odop.html` | Who you presented to and how it landed; embed packaging mockups or brand boards if you have them |
-| `work/blockbloom-dapp.html` | Link the deployed contract or GitHub repo if it's public |
-| `work/yolo-digit-detection.html` | Accuracy / mAP, frames per second, dataset size |
+| `work/finlatics-market-research.html` | Sample size of the market tests, TAM/SAM figures you're free to share, how many recommendations were adopted, any lift you measured |
+
+Two further case studies exist as files but are **not linked from anywhere on the site** —
+`work/blockbloom-dapp.html` and `work/yolo-digit-detection.html`. They were removed from the
+homepage grid. Delete them, or re-add cards to `index.html` to bring them back.
 
 Search for `▸` in the `work/` files to jump straight to them.
 
