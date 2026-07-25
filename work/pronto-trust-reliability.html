@@ -88,10 +88,6 @@
       </p>
 
       <div class="cs-actions">
-        <a class="btn btn-primary" href="../assets/Pronto-Trust-Reliability-PRD.pdf" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7.5 10.5 12 15l4.5-4.5M4.5 19.5h15"/></svg>
-          Read the full PRD
-        </a>
         <a class="btn btn-ghost" href="https://www.withpronto.com/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-8.5 8.5M18 14v5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 4 19V8a1.5 1.5 0 0 1 1.5-1.5H10"/></svg>
           See the live product
@@ -167,36 +163,105 @@
           and what&rsquo;s reliably, verifiably delivered</strong>, and it fails at five specific,
           recurring moments. Each one damages the brand in a different way:
         </p>
-        <ul>
-          <li>
-            <strong>The clock stops being believable.</strong> Arrival times of 40&ndash;50 minutes have
-            been reported against a 15-minute promise. Once the quoted ETA isn&rsquo;t something you can
-            plan around, the product has stopped removing the exact pain it was sold to remove.
-          </li>
-          <li>
-            <strong>The visit is a black box.</strong> Without live visibility, customers go back to
-            hoping it gets done right &mdash; and end up supervising the work themselves, re-introducing
-            the effort they paid to eliminate. Reviewers report directing Pros task by task, and finding
-            work marked done that wasn&rsquo;t.
-          </li>
-          <li>
-            <strong>Recovery costs more than the failure.</strong> When a booking breaks, the real cost
-            isn&rsquo;t the failed visit &mdash; it&rsquo;s the chase. A customer who spends 40 minutes
-            recovering ₹200 has learned that Pronto&rsquo;s failures are expensive to fix.
-            <strong>That lesson outlives the refund.</strong>
-          </li>
-          <li>
-            <strong>&ldquo;Pronto&rdquo; doesn&rsquo;t mean one thing.</strong> Reliability varies sharply
-            by city, and complaints cluster in newer ones. The brand becomes a lottery based on where you
-            live, and the national average conceals the cities that are failing.
-          </li>
-          <li>
-            <strong>Worker safety is structurally unsolved.</strong> Pros &mdash; mostly women, spending
-            hours alone inside strangers&rsquo; homes &mdash; are protected by an SOS button and
-            self-defence training. Both only help <em>after</em> something has already started going
-            wrong.
-          </li>
-        </ul>
+        <div class="table-scroll">
+          <table class="data-table">
+            <caption class="sr-only">The five moments where trust breaks, and what each one costs</caption>
+            <thead>
+              <tr>
+                <th scope="col">The moment</th>
+                <th scope="col">What happens</th>
+                <th scope="col">What it costs the brand</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>The clock stops being believable</strong></td>
+                <td>Arrivals of 40&ndash;50 minutes reported against a 15-minute promise.</td>
+                <td>The ETA stops being something you can plan around &mdash; the exact pain Pronto exists to remove.</td>
+              </tr>
+              <tr>
+                <td><strong>The visit is a black box</strong></td>
+                <td>No live visibility unless you pay for the Verified tier. Reviewers report directing Pros task by task, and work marked done that wasn&rsquo;t.</td>
+                <td>The customer supervises the work themselves &mdash; re-introducing the effort they paid to eliminate.</td>
+              </tr>
+              <tr>
+                <td><strong>Recovery costs more than the failure</strong></td>
+                <td>Refunds processed inconsistently, with no visible status once requested.</td>
+                <td>Losing 40 minutes to recover ₹200 teaches that failures are expensive to fix. <strong>That lesson outlives the refund.</strong></td>
+              </tr>
+              <tr>
+                <td><strong>&ldquo;Pronto&rdquo; doesn&rsquo;t mean one thing</strong></td>
+                <td>Reliability varies sharply by city; complaints cluster in newer ones.</td>
+                <td>The brand becomes a lottery based on where you live, and the national average hides the failing cities.</td>
+              </tr>
+              <tr>
+                <td><strong>Worker safety is structurally unsolved</strong></td>
+                <td>Pros are protected by an SOS button and self-defence training.</td>
+                <td>Both only help <em>after</em> something has already started going wrong &mdash; the category&rsquo;s central unresolved risk.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <figure>
+          <p class="fig-title">The gap between the promise and the report</p>
+          <p class="fig-sub">Arrival time, minutes</p>
+          <div class="bars">
+            <div class="bar-row">
+              <span class="bar-label">Promised on the product page</span>
+              <span class="bar-track">
+                <span class="bar-fill" style="width:30%"></span>
+                <span class="bar-value">15 min</span>
+              </span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Reported in public reviews</span>
+              <span class="bar-track">
+                <span class="bar-fill is-serious" style="width:100%"></span>
+                <span class="bar-value">40&ndash;50 min</span>
+              </span>
+            </div>
+          </div>
+          <figcaption>
+            The promise is the product. When the worst case runs more than three times the quoted
+            figure, &ldquo;in minutes&rdquo; stops being a plan and becomes a hope.
+            Source: Pronto&rsquo;s product page and public app-store reviews, July 2026.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <p class="fig-title">You can book at 3 AM. You cannot get help at 3 AM.</p>
+          <p class="fig-sub">Daily coverage, 24-hour clock</p>
+          <div class="timeline">
+            <div class="tl-row">
+              <span class="tl-label">Bookings accepted</span>
+              <div>
+                <div class="tl-track">
+                  <span class="tl-fill" style="left:0;right:0"></span>
+                </div>
+              </div>
+            </div>
+            <div class="tl-row">
+              <span class="tl-label">Live support staffed</span>
+              <div>
+                <div class="tl-track">
+                  <span class="tl-fill is-gap" style="left:0;width:29.2%"></span>
+                  <span class="tl-fill" style="left:29.2%;width:62.5%"></span>
+                  <span class="tl-fill is-gap" style="left:91.7%;right:0"></span>
+                </div>
+                <div class="tl-axis">
+                  <span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption>
+            Booking is sold as 24/7; live support runs roughly 07:00&ndash;22:00. The hatched bands are
+            the <strong>nine hours each day</strong> in which a customer can start a booking and has no
+            live channel if it fails. This is the single clearest promise-versus-delivery gap on the
+            platform, and it is a scheduling decision rather than a technical one.
+          </figcaption>
+        </figure>
       </section>
 
       <section class="cs-block" data-reveal>
@@ -220,6 +285,54 @@
           an operations budget line &mdash; into a product requirement with a measurable target, and it
           made the support-contact rate per booking the honest scoreboard for whether any of this worked.
         </p>
+
+        <figure>
+          <p class="fig-title">Every recurring ticket is an unwritten requirement</p>
+          <p class="fig-sub">Reading public complaints as a product backlog</p>
+          <div class="table-scroll">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th scope="col">The customer contacts support to&hellip;</th>
+                  <th scope="col">&hellip;because the product has no&hellip;</th>
+                  <th scope="col">Requirement that removes the contact</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Cancel a booking they just placed</td>
+                  <td>Working in-app cancel path inside the grace window</td>
+                  <td><span class="prio p1">P1</span> Self-serve cancel showing the exact refund before confirming</td>
+                </tr>
+                <tr>
+                  <td>Ask whether a refund was approved</td>
+                  <td>Visible refund status</td>
+                  <td><span class="prio p0">P0</span> Refund status and expected completion, visible any time</td>
+                </tr>
+                <tr>
+                  <td>Report that nobody turned up</td>
+                  <td>Structured issue reporting on the booking</td>
+                  <td><span class="prio p0">P0</span> Structured reports, auto-resolved against visit data</td>
+                </tr>
+                <tr>
+                  <td>Find out how long the queue is</td>
+                  <td>Any signal that the request is still open</td>
+                  <td><span class="prio p1">P1</span> Visible request state while waiting</td>
+                </tr>
+                <tr>
+                  <td>Re-explain everything to a second agent</td>
+                  <td>Context carried across a handoff</td>
+                  <td><span class="prio p0">P0</span> Second agent sees the full prior conversation</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>
+            None of the left-hand column is a support failure. Each is a job the product refused to let
+            someone do, which then arrived as a ticket. Adding agents makes that queue faster; it does
+            not make it smaller.
+          </figcaption>
+        </figure>
       </section>
 
       <section class="cs-block" data-reveal>
@@ -260,6 +373,54 @@
             carries no consent burden is worth more than the richest one that does.
           </p>
         </div>
+
+        <figure>
+          <p class="fig-title">Nobody in the category has solved this</p>
+          <p class="fig-sub">Publicly stated positions, July 2026</p>
+          <div class="table-scroll">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th scope="col">&nbsp;</th>
+                  <th scope="col">Pronto</th>
+                  <th scope="col">Snabbit</th>
+                  <th scope="col">Urban Company</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Position</strong></td>
+                  <td>Speed-first, 15-minute arrival</td>
+                  <td>On-demand, direct competitor</td>
+                  <td>Larger, broader categories</td>
+                </tr>
+                <tr>
+                  <td><strong>Worker safety tooling</strong></td>
+                  <td>In-app SOS, self-defence training</td>
+                  <td>In-app SOS</td>
+                  <td>Not differentiated publicly</td>
+                </tr>
+                <tr>
+                  <td><strong>Consistency controls</strong></td>
+                  <td>Paid Verified tier only</td>
+                  <td>Not differentiated publicly</td>
+                  <td>Preferred professional, service-time tracking</td>
+                </tr>
+                <tr>
+                  <td><strong>Stance on in-home recording</strong></td>
+                  <td>Ran an opt-in pilot; drew public backlash, May 2026</td>
+                  <td>Studied and rejected the technology</td>
+                  <td>Publicly denies the practice</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>
+            All three lean on a reactive SOS button as their safety answer. That&rsquo;s what makes
+            proactive check-ins a differentiator rather than table stakes &mdash; this is a category-wide
+            gap, not a Pronto-specific deficiency.
+          </figcaption>
+        </figure>
       </section>
 
       <section class="cs-block" data-reveal>
@@ -330,13 +491,110 @@
       <section class="cs-block" data-reveal>
         <h2 id="requirements">The requirements</h2>
         <p>
-          Thirty-one requirements across six journeys plus cross-cutting telemetry. Every one is written
+          Thirty-two requirements across six journeys plus cross-cutting telemetry. Every one is written
           so it can be verified as done or not done, without prescribing design or implementation.
           <span class="prio p0">P0</span> means required to call this shipped;
           <span class="prio p1">P1</span> means important for a genuinely trustworthy experience;
-          <span class="prio p2">P2</span> is a valuable follow-on. Selected requirements below &mdash;
-          the full set is in the PRD.
+          <span class="prio p2">P2</span> is a valuable follow-on.
         </p>
+
+        <figure>
+          <p class="fig-title">Where the weight sits</p>
+          <p class="fig-sub">32 requirements by journey and priority</p>
+          <div class="legend">
+            <span><i style="background:var(--p0)"></i> P0 &mdash; required to ship</span>
+            <span><i style="background:var(--p1)"></i> P1 &mdash; genuinely trustworthy</span>
+            <span><i style="background:var(--p2)"></i> P2 &mdash; follow-on</span>
+          </div>
+          <div class="stack">
+            <div class="stack-row">
+              <span class="stack-label">A &mdash; Booking &amp; waiting</span>
+              <div class="stack-bar">
+                <span class="stack-seg s0" style="grid-column:span 2" title="Journey A: 2 × P0">2</span>
+                <span class="stack-seg s1" style="grid-column:span 3" title="Journey A: 3 × P1">3</span>
+              </div>
+              <span class="stack-total">5</span>
+            </div>
+            <div class="stack-row">
+              <span class="stack-label">B &mdash; During the visit</span>
+              <div class="stack-bar">
+                <span class="stack-seg s0" style="grid-column:span 3" title="Journey B: 3 × P0">3</span>
+                <span class="stack-seg s1" style="grid-column:span 2" title="Journey B: 2 × P1">2</span>
+              </div>
+              <span class="stack-total">5</span>
+            </div>
+            <div class="stack-row">
+              <span class="stack-label">C &mdash; Self-serve recovery</span>
+              <div class="stack-bar">
+                <span class="stack-seg s0" style="grid-column:span 4" title="Journey C: 4 × P0">4</span>
+                <span class="stack-seg s1" style="grid-column:span 1" title="Journey C: 1 × P1">1</span>
+              </div>
+              <span class="stack-total">5</span>
+            </div>
+            <div class="stack-row">
+              <span class="stack-label">D &mdash; Reaching a human</span>
+              <div class="stack-bar">
+                <span class="stack-seg s0" style="grid-column:span 4" title="Journey D: 4 × P0">4</span>
+                <span class="stack-seg s1" style="grid-column:span 2" title="Journey D: 2 × P1">2</span>
+              </div>
+              <span class="stack-total">6</span>
+            </div>
+            <div class="stack-row">
+              <span class="stack-label">E &mdash; Coming back</span>
+              <div class="stack-bar">
+                <span class="stack-seg s0" style="grid-column:span 1" title="Journey E: 1 × P0">1</span>
+                <span class="stack-seg s1" style="grid-column:span 2" title="Journey E: 2 × P1">2</span>
+                <span class="stack-seg s2" style="grid-column:span 1" title="Journey E: 1 × P2">1</span>
+              </div>
+              <span class="stack-total">4</span>
+            </div>
+            <div class="stack-row">
+              <span class="stack-label">F &mdash; Local operations</span>
+              <div class="stack-bar">
+                <span class="stack-seg s0" style="grid-column:span 1" title="Journey F: 1 × P0">1</span>
+                <span class="stack-seg s1" style="grid-column:span 1" title="Journey F: 1 × P1">1</span>
+                <span class="stack-seg s2" style="grid-column:span 1" title="Journey F: 1 × P2">1</span>
+              </div>
+              <span class="stack-total">3</span>
+            </div>
+            <div class="stack-row">
+              <span class="stack-label">Telemetry (cross-cutting)</span>
+              <div class="stack-bar">
+                <span class="stack-seg s0" style="grid-column:span 3" title="Telemetry: 3 × P0">3</span>
+                <span class="stack-seg s1" style="grid-column:span 1" title="Telemetry: 1 × P1">1</span>
+              </div>
+              <span class="stack-total">4</span>
+            </div>
+          </div>
+
+          <details class="table-view">
+            <summary>View as table</summary>
+            <table class="data-table">
+              <thead>
+                <tr><th scope="col">Journey</th><th scope="col" class="num">P0</th><th scope="col" class="num">P1</th><th scope="col" class="num">P2</th><th scope="col" class="num">Total</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>A &mdash; Booking &amp; waiting</td><td class="num">2</td><td class="num">3</td><td class="num">0</td><td class="num">5</td></tr>
+                <tr><td>B &mdash; During the visit</td><td class="num">3</td><td class="num">2</td><td class="num">0</td><td class="num">5</td></tr>
+                <tr><td>C &mdash; Self-serve recovery</td><td class="num">4</td><td class="num">1</td><td class="num">0</td><td class="num">5</td></tr>
+                <tr><td>D &mdash; Reaching a human</td><td class="num">4</td><td class="num">2</td><td class="num">0</td><td class="num">6</td></tr>
+                <tr><td>E &mdash; Coming back</td><td class="num">1</td><td class="num">2</td><td class="num">1</td><td class="num">4</td></tr>
+                <tr><td>F &mdash; Local operations</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">3</td></tr>
+                <tr><td>Telemetry</td><td class="num">3</td><td class="num">1</td><td class="num">0</td><td class="num">4</td></tr>
+                <tr><td><strong>Total</strong></td><td class="num"><strong>18</strong></td><td class="num"><strong>12</strong></td><td class="num"><strong>2</strong></td><td class="num"><strong>32</strong></td></tr>
+              </tbody>
+            </table>
+          </details>
+
+          <figcaption>
+            Journeys C and D &mdash; the two recovery journeys &mdash; hold 8 of the 18 P0s between them.
+            That weighting is the argument itself: <strong>recovery is where trust is actually won or
+            lost</strong>, so it carries the largest share of what must ship. Journeys E and F hold both
+            P2s, because repeat quality and ops tooling can follow once the failure path is fixed.
+          </figcaption>
+        </figure>
+
+        <p>Selected requirements below; the full set sits in the source document.</p>
 
         <div class="req-journey">
           <h3>Journey A &mdash; Booking and waiting for a Pro</h3>
@@ -395,23 +653,42 @@
           Three outcomes, each chosen because it&rsquo;s hard to game and maps directly to one of the
           value props:
         </p>
-        <ul>
-          <li>
-            <strong>Fewer bookings need a human at all.</strong> Support-contact rate per booking falls,
-            because cancellations, reschedules, refund status and issue reports are all resolvable in-app.
-          </li>
-          <li>
-            <strong>Failures stop being expensive to recover from.</strong> Median time from
-            &ldquo;something went wrong&rdquo; to &ldquo;resolved or refunded&rdquo; drops sharply, and no
-            customer sits on an unanswered channel during an active booking.
-          </li>
-          <li>
-            <strong>Trust-related churn falls.</strong> The repeat-booking rate among customers whose
-            first booking failed rises toward the rate of customers whose first booking went well. This is
-            the one I&rsquo;d actually defend the work on &mdash; it measures whether recovery genuinely
-            saves a customer, rather than whether the queue moved faster.
-          </li>
-        </ul>
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th scope="col">Outcome</th>
+                <th scope="col">Metric</th>
+                <th scope="col">Direction</th>
+                <th scope="col">Why this one</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Fewer bookings need a human at all</strong></td>
+                <td>Support-contact rate per booking</td>
+                <td class="num" style="color:var(--good);font-weight:600">↓ down</td>
+                <td>Directly tests the reframe. If contacts don&rsquo;t fall, the product gaps weren&rsquo;t the cause.</td>
+              </tr>
+              <tr>
+                <td><strong>Failures stop being expensive</strong></td>
+                <td>Median time from failure to resolved or refunded</td>
+                <td class="num" style="color:var(--good);font-weight:600">↓ down</td>
+                <td>The cost of a bad booking is the chase, not the money. This measures the chase.</td>
+              </tr>
+              <tr>
+                <td><strong>Trust-related churn falls</strong></td>
+                <td>Repeat-booking rate, failed first booking vs successful first booking</td>
+                <td class="num" style="color:var(--good);font-weight:600">↑ converge</td>
+                <td>The one I&rsquo;d defend the work on. It asks whether recovery actually saves a customer &mdash; not whether the queue moved faster.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top:18px">
+          The third is deliberately the hardest to move and the hardest to fake. A support team can cut
+          handle time without a single customer coming back.
+        </p>
       </section>
 
       <section class="cs-block" data-reveal>
@@ -437,13 +714,44 @@
           These are in the document because pretending to know them would have been the least honest
           thing I could do:
         </p>
-        <ul>
-          <li><strong>What share of support contacts are cancellations, refund checks and no-shows?</strong> This determines how much load Journey C actually removes, and therefore how the work should be sized. It&rsquo;s the first number I&rsquo;d ask for.</li>
-          <li><strong>Why are local ops reassigning Pros manually today?</strong> If auto-assignment is insufficient, that&rsquo;s an algorithm problem. If it&rsquo;s habit and trust, that&rsquo;s a change-management problem. The fix differs sharply.</li>
-          <li><strong>Does auto-compensation for late arrival create a gameable incentive?</strong> And what&rsquo;s the abuse threshold?</li>
-          <li><strong>Who owns substantiation for misconduct reports, and what evidence triggers a suspension?</strong> A firm consequence needs a defensible process behind it.</li>
-          <li><strong>Is timestamped photo proof legally equivalent to video under the same in-home consent rules?</strong> The lightweight trust signal only works if it clears the same bar.</li>
-        </ul>
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th scope="col">Question</th>
+                <th scope="col">What it changes</th>
+                <th scope="col">Blocks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>What share of support contacts are cancellations, refund checks and no-shows?</strong></td>
+                <td>How much load Journey C actually removes &mdash; and therefore how this work is sized. The first number I&rsquo;d ask for.</td>
+                <td class="num">Sizing</td>
+              </tr>
+              <tr>
+                <td><strong>Why are local ops reassigning Pros manually today?</strong></td>
+                <td>If auto-assignment is insufficient it&rsquo;s an algorithm problem. If it&rsquo;s habit and trust it&rsquo;s a change-management problem. The fix differs sharply.</td>
+                <td class="num">Journey F</td>
+              </tr>
+              <tr>
+                <td><strong>Does auto-compensation for late arrival create a gameable incentive?</strong></td>
+                <td>Whether the automatic payout needs an abuse threshold, and where it sits.</td>
+                <td class="num">Journey A</td>
+              </tr>
+              <tr>
+                <td><strong>Who owns substantiation for misconduct reports?</strong></td>
+                <td>What evidence standard triggers a suspension. A firm consequence needs a defensible process behind it.</td>
+                <td class="num">Journey C</td>
+              </tr>
+              <tr>
+                <td><strong>Is timestamped photo proof legally equivalent to video?</strong></td>
+                <td>Whether the lightweight trust signal clears the same in-home consent bar that governs Verified.</td>
+                <td class="num">Journey E</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <section class="cs-block" data-reveal>

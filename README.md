@@ -59,13 +59,24 @@ add yours:
 
 | Page | What to add |
 |---|---|
-| `work/pronto-trust-reliability.html` | Nothing required — this one carries its own artefact (the linked PRD). If you ever get real Pronto data, the sizing question in "Open questions" is where it goes |
+| `work/pronto-trust-reliability.html` | Nothing required — this one carries its own charts and tables. If you ever get real Pronto data, the sizing question in "Open questions" is where it goes |
 | `work/buknu-masala-odop.html` | Who you presented to and how it landed; embed packaging mockups or brand boards if you have them |
 | `work/finlatics-market-research.html` | Sample size of the market tests, TAM/SAM figures you're free to share, how many recommendations were adopted, any lift you measured |
 
 Two further case studies exist as files but are **not linked from anywhere on the site** —
 `work/blockbloom-dapp.html` and `work/yolo-digit-detection.html`. They were removed from the
 homepage grid. Delete them, or re-add cards to `index.html` to bring them back.
+
+`assets/Pronto-Trust-Reliability-PRD.pdf` is likewise unlinked — the download button was
+removed from the case study. Delete it if you don't want it reachable by direct URL.
+
+### Chart colours
+
+The charts on the Pronto page use a palette validated with the dataviz colour checker: a
+single-hue ordinal teal ramp for P0/P1/P2 (monotone lightness, light end clears the surface
+at ≥2:1) plus reserved status colours. The tokens live at the top of the "Figures, charts and
+tables" section in `style.css`, with separate light and dark steps. If you change them,
+re-check contrast rather than eyeballing.
 
 Search for `▸` in the `work/` files to jump straight to them.
 
