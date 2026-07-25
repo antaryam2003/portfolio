@@ -1282,7 +1282,9 @@ section { position: relative; }
 /* Prev / next */
 .cs-nav {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* auto-fit so a single remaining case study fills the row instead of
+     sitting in a half-width column */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: clamp(14px, 2vw, 22px);
   padding-bottom: clamp(20px, 4vw, 40px);
 }
