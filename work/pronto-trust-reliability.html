@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pronto: making "house help in minutes" true every time — Antarya Mondal</title>
-<meta name="description" content="A trust &amp; reliability PRD for Pronto, India's 15-minute house-help platform: diagnosing where trust breaks, reframing support contacts as product gaps, and specifying self-serve recovery and proactive worker safety.">
+<meta name="description" content="A trust &amp; reliability PRD for Pronto, India's 15-minute house-help platform: diagnosing where trust breaks, reframing support contacts as product gaps, and sequencing self-serve recovery and proactive worker safety into shippable releases.">
 <meta name="theme-color" content="#e9f3ff" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#08131f" media="(prefers-color-scheme: dark)">
 
@@ -132,10 +132,9 @@
         </p>
         <p>
           It has worked. The company reports <strong>500,000+ homes served</strong> and
-          <strong>10,000+ Pros</strong> across <strong>11 cities</strong>, and has raised roughly
-          <strong>$13M</strong> &mdash; a $2M seed from Bain Capital Ventures, then an $11M Series A
-          co-led by General Catalyst and Glade Brook Capital. It competes with Snabbit and the far
-          larger Urban Company.
+          <strong>10,000+ Pros</strong> across <strong>11 cities</strong>. It competes with Snabbit and
+          the far larger Urban Company &mdash; and, as the two figures below show, it has raised capital
+          at a pace that outstrips almost everything else in the category.
         </p>
 
         <div class="stat-row">
@@ -152,6 +151,69 @@
             <span>User journeys specified, from booking to local ops</span>
           </div>
         </div>
+
+        <figure>
+          <p class="fig-title">The money is betting on speed, at an unusual pace</p>
+          <p class="fig-sub">Disclosed funding, May 2025 &ndash; May 2026</p>
+          <div class="mtimeline-wrap">
+            <div class="mtimeline">
+              <div class="mtimeline-item">
+                <span class="mtimeline-dot s2" aria-hidden="true"></span>
+                <span class="mtimeline-value">$2M</span>
+                <span class="mtimeline-label">Seed &middot; May 2025<span>Bain Capital Ventures</span></span>
+              </div>
+              <div class="mtimeline-item">
+                <span class="mtimeline-dot s1" aria-hidden="true"></span>
+                <span class="mtimeline-value">$11M</span>
+                <span class="mtimeline-label">Series A &middot; Aug 2025<span>General Catalyst, Glade Brook</span></span>
+              </div>
+              <div class="mtimeline-item">
+                <span class="mtimeline-dot s0" aria-hidden="true"></span>
+                <span class="mtimeline-value">$45M</span>
+                <span class="mtimeline-label">Series B (incl. extension) &middot; Mar&ndash;May 2026<span>$200M valuation &middot; Epiq Capital, then Lachy Groom</span></span>
+              </div>
+            </div>
+          </div>
+          <figcaption>
+            The valuation doubled to $200M in the month between the two Series B tranches. Over roughly
+            the same stretch, daily bookings grew from about 18,000 to 26,000, and the certified
+            workforce from 1,440 in January 2026 to around 6,500. That growth rate is exactly why the
+            city-pacing requirement in Journey F exists &mdash; quality control gets outrun by
+            hypergrowth long before capital does. Sources: TechCrunch, YourStory and Storyboard18
+            reporting, March&ndash;May 2026.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <p class="fig-title">Nobody agrees on the size of the workforce this replaces</p>
+          <p class="fig-sub">Estimates of India&rsquo;s domestic-worker population</p>
+          <div class="range-row">
+            <div class="range-track">
+              <span class="range-fill" style="left:7.6%;width:83.3%"></span>
+            </div>
+            <div class="range-labels">
+              <span><b>4.2M</b> &middot; National Domestic Workers&rsquo; Movement estimate</span>
+              <span><b>50M+</b> &middot; ILO estimate</span>
+            </div>
+          </div>
+          <div class="stat-row" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+            <div class="stat-tile">
+              <b>92.4%</b>
+              <span>Of India&rsquo;s workforce overall is employed informally &mdash; domestic work sits at the far end of that spectrum</span>
+            </div>
+            <div class="stat-tile">
+              <b>18&ndash;22%</b>
+              <span>Annual growth reported for the organised, app-based layer of the category</span>
+            </div>
+          </div>
+          <figcaption>
+            A workforce that can&rsquo;t be counted is one that&rsquo;s hard to protect. That uncounted,
+            informal baseline is the backdrop against which Pronto&rsquo;s safety requirements (Journey
+            B) have to be judged &mdash; there is no regulator tracking outcomes for the tens of
+            millions the lower estimate might be missing. Sources: ILO estimates via Drishti IAS;
+            National Domestic Workers&rsquo; Movement; Data For India; category CAGR via Storyboard18.
+          </figcaption>
+        </figure>
       </section>
 
       <section class="cs-block" data-reveal>
@@ -161,7 +223,8 @@
           here. Pronto&rsquo;s core promise &mdash; <em>trusted house help, in minutes</em> &mdash; is
           real and differentiated. What&rsquo;s failing is the <strong>gap between what&rsquo;s promised
           and what&rsquo;s reliably, verifiably delivered</strong>, and it fails at five specific,
-          recurring moments. Each one damages the brand in a different way:
+          recurring moments. Two of the five don&rsquo;t touch the customer at all &mdash; which is
+          easy to miss if you only interview buyers.
         </p>
         <div class="table-scroll">
           <table class="data-table">
@@ -171,6 +234,7 @@
                 <th scope="col">The moment</th>
                 <th scope="col">What happens</th>
                 <th scope="col">What it costs the brand</th>
+                <th scope="col">Hits</th>
               </tr>
             </thead>
             <tbody>
@@ -178,26 +242,31 @@
                 <td><strong>The clock stops being believable</strong></td>
                 <td>Arrivals of 40&ndash;50 minutes reported against a 15-minute promise.</td>
                 <td>The ETA stops being something you can plan around &mdash; the exact pain Pronto exists to remove.</td>
+                <td><span class="pill-tag">Customer</span></td>
               </tr>
               <tr>
                 <td><strong>The visit is a black box</strong></td>
                 <td>No live visibility unless you pay for the Verified tier. Reviewers report directing Pros task by task, and work marked done that wasn&rsquo;t.</td>
                 <td>The customer supervises the work themselves &mdash; re-introducing the effort they paid to eliminate.</td>
+                <td><span class="pill-tag">Customer</span></td>
               </tr>
               <tr>
                 <td><strong>Recovery costs more than the failure</strong></td>
                 <td>Refunds processed inconsistently, with no visible status once requested.</td>
                 <td>Losing 40 minutes to recover ₹200 teaches that failures are expensive to fix. <strong>That lesson outlives the refund.</strong></td>
+                <td><span class="pill-tag is-risk">Retention</span></td>
               </tr>
               <tr>
                 <td><strong>&ldquo;Pronto&rdquo; doesn&rsquo;t mean one thing</strong></td>
                 <td>Reliability varies sharply by city; complaints cluster in newer ones.</td>
                 <td>The brand becomes a lottery based on where you live, and the national average hides the failing cities.</td>
+                <td><span class="pill-tag">Brand</span></td>
               </tr>
               <tr>
                 <td><strong>Worker safety is structurally unsolved</strong></td>
                 <td>Pros are protected by an SOS button and self-defence training.</td>
                 <td>Both only help <em>after</em> something has already started going wrong &mdash; the category&rsquo;s central unresolved risk.</td>
+                <td><span class="pill-tag is-risk">Supply</span></td>
               </tr>
             </tbody>
           </table>
@@ -280,6 +349,20 @@
             these contacts unnecessary &mdash; and to make the remainder resolve on the first touch.
           </p>
         </div>
+
+        <div class="reframe-cards">
+          <div class="reframe-card is-before">
+            <p class="kicker">Before the reframe</p>
+            <p class="headline">&ldquo;Improve support.&rdquo;</p>
+            <p class="detail">Owned by operations &middot; solved with headcount &middot; measured in handle time &middot; budget grows with volume</p>
+          </div>
+          <div class="reframe-card is-after">
+            <p class="kicker">After the reframe</p>
+            <p class="headline">&ldquo;Remove the reason for the contact.&rdquo;</p>
+            <p class="detail">Owned by product &middot; solved with requirements &middot; measured in support-contact rate per booking &middot; cost falls as volume grows</p>
+          </div>
+        </div>
+
         <p>
           That single sentence reorganised the document. It turned &ldquo;improve support&rdquo; &mdash;
           an operations budget line &mdash; into a product requirement with a measurable target, and it
@@ -339,28 +422,48 @@
         <h2 id="research">How I built the evidence</h2>
         <p>
           I had no internal data, so I said so in the document rather than writing around it. Everything
-          in the PRD is grounded in what&rsquo;s publicly verifiable, triangulated across three sources:
+          in the PRD is grounded in what&rsquo;s publicly verifiable, triangulated across three sources
+          &mdash; each logged here with how much weight it can actually carry.
         </p>
-        <ol>
-          <li>
-            <strong>The live product.</strong> The marketed promise, booking types, pricing model, the
-            paid &ldquo;Pronto Verified&rdquo; recorded-session add-on, and the stated support window
-            of roughly 7 AM to 10 PM &mdash; against booking sold as 24/7.
-          </li>
-          <li>
-            <strong>App store reviews and press coverage.</strong> Where the specific failure modes came
-            from: the 40&ndash;50 minute arrivals, the repeated no-shows, the ~40-minute support silence
-            followed by a second agent with no context, agents saying a cancellation &ldquo;isn&rsquo;t
-            possible&rdquo; before negotiating a workaround, and refunds processed inconsistently with no
-            visible status.
-          </li>
-          <li>
-            <strong>Sector reporting.</strong> Reuters&rsquo; April 2026 coverage of India&rsquo;s
-            on-demand house-help sector frames worker safety as the industry&rsquo;s central unresolved
-            risk, quoting an investor in a rival platform calling safety the deciding factor in long-term
-            consumer loyalty.
-          </li>
-        </ol>
+
+        <figure>
+          <p class="fig-title">Evidence base</p>
+          <p class="fig-sub">Three sources, and the confidence each earns</p>
+          <div class="table-scroll">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th scope="col">Source</th>
+                  <th scope="col">What it established</th>
+                  <th scope="col">Confidence</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>The live product</strong><br><span style="font-size:0.82rem;color:var(--ink-3)">App, product page, policies</span></td>
+                  <td>The marketed promise, booking types, pricing model, the paid Verified add-on, and a stated support window of roughly 7 AM to 10 PM against booking sold as 24/7.</td>
+                  <td><span class="pill-tag is-good">High</span></td>
+                </tr>
+                <tr>
+                  <td><strong>App store reviews &amp; press</strong><br><span style="font-size:0.82rem;color:var(--ink-3)">Customer accounts</span></td>
+                  <td>The specific failure modes: 40&ndash;50 minute arrivals, repeated no-shows, a ~40-minute support silence then a second agent with no context, cancellations refused before an ad-hoc workaround, refunds with no visible status.</td>
+                  <td><span class="pill-tag">Directional</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Sector reporting</strong><br><span style="font-size:0.82rem;color:var(--ink-3)">Reuters, Apr 2026</span></td>
+                  <td>Worker safety framed as the category&rsquo;s central unresolved risk, with an investor in a rival platform calling it the deciding factor in long-term consumer loyalty.</td>
+                  <td><span class="pill-tag is-good">High</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>
+            The middle row is the honest weak point: reviews tell you a failure mode <em>exists</em>,
+            never how often. That is exactly why the first open question below asks for the ticket mix
+            &mdash; it is the number that would convert this row from directional to sized.
+          </figcaption>
+        </figure>
+
         <div class="callout">
           <p class="eyebrow">What happened while I was writing this</p>
           <p>
@@ -448,44 +551,53 @@
           </li>
         </ul>
 
-        <h3>The conceptual model</h3>
+        <h3>The conceptual model: a service blueprint, not a feature list</h3>
         <p>
           I organised the whole document around the customer&rsquo;s timeline rather than around
-          features, so every requirement had an obvious owner and an obvious moment:
+          features, then split it by who experiences each phase. Every requirement lands in one cell
+          &mdash; with an owner, a moment, and a counterpart on the other side of the marketplace.
         </p>
 
-        <div class="journey">
-          <div class="journey-col">
-            <h3>Before a visit</h3>
-            <ul>
-              <li>Live, honest ETA</li>
-              <li>Home context and preferences carried into every booking</li>
-              <li>Identity verified for new customers and addresses</li>
-            </ul>
+        <figure class="blueprint">
+          <p class="fig-title">Service blueprint &mdash; four phases, four lanes</p>
+          <p class="fig-sub">What each party sees, at each moment of a booking</p>
+          <div class="blueprint-grid">
+            <span></span>
+            <span class="bp-phase">Before a visit</span>
+            <span class="bp-phase">During a visit</span>
+            <span class="bp-phase">After a visit</span>
+            <span class="bp-phase is-break">When it breaks</span>
+
+            <span class="bp-lane">Customer sees</span>
+            <span class="bp-cell">A live ETA from real conditions, not a marketed number &mdash; with a push when it changes</span>
+            <span class="bp-cell">Status and task-by-task progress on every booking, not just the paid tier</span>
+            <span class="bp-cell">Timestamped proof of what was actually completed</span>
+            <span class="bp-cell is-break">A structured issue report, an automatic outcome, and a refund with a visible status</span>
+
+            <span class="bp-lane">Pro gets</span>
+            <span class="bp-cell">The full task list and home notes before arriving</span>
+            <span class="bp-cell">A discreet, periodic safety check-in &mdash; not only an SOS button to reach for</span>
+            <span class="bp-cell">Feedback and preferences that carry into the next visit</span>
+            <span class="bp-cell is-break">A sanctioned in-app tip, so any off-app cash request is unambiguously a violation</span>
+
+            <span class="bp-lane">System does</span>
+            <span class="bp-cell">Identity and address check for new customers; grace-window cancels refunded in full</span>
+            <span class="bp-cell">Tracks elapsed time against time paid for; scores the visit for risk</span>
+            <span class="bp-cell">Persists home context and preferences so nobody re-briefs their own home</span>
+            <span class="bp-cell is-break">Settles verifiable claims against visit telemetry &mdash; no agent review needed</span>
+
+            <span class="bp-lane">Ops sees</span>
+            <span class="bp-cell">Demand paced against the size of the certified Pro pool in that city</span>
+            <span class="bp-cell">Higher-risk visits surfaced for a proactive check, before any distress signal</span>
+            <span class="bp-cell">Their own city&rsquo;s on-time, no-show and support-contact rates &mdash; not the national average</span>
+            <span class="bp-cell is-break">Reassignment happens inside the system and is reflected in-app, never off-platform</span>
           </div>
-          <div class="journey-col">
-            <h3>During a visit</h3>
-            <ul>
-              <li>Live status and task progress visible to the customer</li>
-              <li>Silent safety check-ins to the Pro</li>
-              <li>City-level quality signals feed local ops</li>
-            </ul>
-          </div>
-          <div class="journey-col">
-            <h3>After a visit</h3>
-            <ul>
-              <li>Proof of what was completed</li>
-              <li>Preferences and feedback carried into the next visit</li>
-            </ul>
-          </div>
-          <div class="journey-col">
-            <h3>When it breaks</h3>
-            <ul>
-              <li>Self-serve fix first; human support second, with context and authority to act</li>
-              <li>Auto-resolution for objectively verifiable failures</li>
-            </ul>
-          </div>
-        </div>
+          <figcaption>
+            Reading down a column shows what a single booking feels like from four sides at once.
+            Reading across a lane shows whether one party has been abandoned at some phase &mdash;
+            which is exactly how the Pro&rsquo;s safety gap became visible in the first place.
+          </figcaption>
+        </figure>
       </section>
 
       <section class="cs-block" data-reveal>
@@ -648,6 +760,101 @@
       </section>
 
       <section class="cs-block" data-reveal>
+        <h2 id="sequencing">Thirty-two requirements is a programme, not a sprint</h2>
+        <p>
+          The weakest thing about the document as written is that it reads as one initiative. So here is
+          the edit I&rsquo;d make to my own PRD: the six journeys plotted on impact versus cost, and
+          three releases cut from that plot, each with an exit criterion. This is my own read of the
+          trade-offs, not internal data &mdash; but it is the argument I&rsquo;d defend in the room.
+        </p>
+
+        <figure>
+          <p class="fig-title">Impact on trust versus cost to build</p>
+          <p class="fig-sub">Six journeys, my assessment</p>
+          <div class="quadrant-wrap">
+            <div class="quadrant-axis-y"><span>Impact on trust &rarr;</span></div>
+            <div>
+              <div class="quadrant">
+                <span class="quadrant-tag is-primary" style="top:10px;left:12px">Ship first</span>
+                <span class="quadrant-tag" style="top:10px;right:12px">Big bets</span>
+                <span class="quadrant-tag" style="bottom:10px;left:12px">Fill-ins</span>
+                <span class="quadrant-tag" style="bottom:10px;right:12px">Defer</span>
+
+                <span class="quadrant-bubble s0" style="left:35%;bottom:85%">C</span>
+                <span class="quadrant-bubble s0" style="left:24%;bottom:78%">D</span>
+                <span class="quadrant-bubble s1" style="left:55%;bottom:68%">A</span>
+                <span class="quadrant-bubble s1" style="left:78%;bottom:62%">B</span>
+                <span class="quadrant-bubble s2" style="left:38%;bottom:35%">E</span>
+                <span class="quadrant-bubble s2" style="left:22%;bottom:30%">F</span>
+              </div>
+              <p class="quadrant-axis-x">Cost to build and operate &rarr;</p>
+            </div>
+          </div>
+          <div class="quadrant-key">
+            <span><b>A</b> Booking &amp; waiting</span>
+            <span><b>B</b> During the visit</span>
+            <span><b>C</b> Self-serve recovery</span>
+            <span><b>D</b> Reaching a human</span>
+            <span><b>E</b> Coming back</span>
+            <span><b>F</b> Local operations</span>
+          </div>
+
+          <details class="table-view">
+            <summary>View as table</summary>
+            <table class="data-table">
+              <thead>
+                <tr><th scope="col">Journey</th><th scope="col">Impact on trust</th><th scope="col">Cost to build</th><th scope="col">Quadrant</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>A &mdash; Booking &amp; waiting</td><td>High</td><td>High</td><td>Big bets</td></tr>
+                <tr><td>B &mdash; During the visit</td><td>High</td><td>High</td><td>Big bets</td></tr>
+                <tr><td>C &mdash; Self-serve recovery</td><td>High</td><td>Low</td><td>Ship first</td></tr>
+                <tr><td>D &mdash; Reaching a human</td><td>High</td><td>Low</td><td>Ship first</td></tr>
+                <tr><td>E &mdash; Coming back</td><td>Low</td><td>Low</td><td>Fill-ins</td></tr>
+                <tr><td>F &mdash; Local operations</td><td>Low</td><td>Low</td><td>Fill-ins</td></tr>
+              </tbody>
+            </table>
+          </details>
+
+          <figcaption>
+            C and D sit top-left because most of what they need is policy, routing and status surfaces
+            rather than new telemetry. B sits right because proactive safety check-ins and per-task
+            progress need real instrumentation on the Pro app. That asymmetry is the whole sequencing
+            argument. No journey lands in &ldquo;Defer&rdquo; &mdash; everything that made it into the
+            document was already worth doing; the only open question was ever order.
+          </figcaption>
+        </figure>
+
+        <h3>Three releases, each with something to prove</h3>
+        <div class="release-cards">
+          <div class="release-card r1">
+            <span class="release-num" aria-hidden="true">R1</span>
+            <div>
+              <h4>Stop the bleeding &mdash; make failure cheap to recover from</h4>
+              <p>Honest ETA with automatic late compensation &middot; self-serve cancel showing the exact refund &middot; refund status visible at any time &middot; live support matched to booking hours &middot; active-booking issues routed first.</p>
+              <p class="release-exit">Exit criterion &mdash; support-contact rate per booking falls, and median time-to-resolution drops.</p>
+            </div>
+          </div>
+          <div class="release-card r2">
+            <span class="release-num" aria-hidden="true">R2</span>
+            <div>
+              <h4>Make the visit legible &mdash; to both sides</h4>
+              <p>Live status and task progress on every booking &middot; the Pro sees the task list and home notes before arriving &middot; structured issue reports auto-resolved against visit data &middot; home context persisted across bookings.</p>
+              <p class="release-exit">Exit criterion &mdash; &ldquo;incomplete task&rdquo; reports fall, and auto-resolution covers most no-show claims.</p>
+            </div>
+          </div>
+          <div class="release-card r3">
+            <span class="release-num" aria-hidden="true">R3</span>
+            <div>
+              <h4>Protect the supply, then the brand</h4>
+              <p>Silent safety check-ins &middot; high-risk visit flags for supervisors &middot; enforced suspension for substantiated cash solicitation &middot; in-app tipping &middot; city-level ops dashboards &middot; timestamped proof for recurring visits.</p>
+              <p class="release-exit">Exit criterion &mdash; Pro retention holds or improves, and no city sits outside a defined on-time band.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-block" data-reveal>
         <h2 id="metrics">How I&rsquo;d know it worked</h2>
         <p>
           Three outcomes, each chosen because it&rsquo;s hard to game and maps directly to one of the
@@ -755,6 +962,159 @@
       </section>
 
       <section class="cs-block" data-reveal>
+        <h2 id="plan">What the three releases look like on a calendar</h2>
+        <p>
+          Twenty weeks, three releases, one hard dependency. Durations below are illustrative &mdash; the
+          shape of the plan is the argument, not the dates.
+        </p>
+
+        <figure class="gantt">
+          <p class="fig-title">Delivery plan</p>
+          <p class="fig-sub">Workstreams by week, with release gates</p>
+          <div class="gantt-legend">
+            <span><i style="background:var(--p0)"></i> R1 &mdash; Stop the bleeding</span>
+            <span><i style="background:var(--p1)"></i> R2 &mdash; Make the visit legible</span>
+            <span><i style="background:var(--p2)"></i> R3 &mdash; Protect supply and brand</span>
+            <span><i class="is-gate"></i> Release gate</span>
+          </div>
+
+          <div class="gantt-inner">
+            <div class="gantt-ticks">
+              <span></span>
+              <div class="gantt-ticks-row">
+                <span style="grid-column:1">W1</span>
+                <span style="grid-column:5">W5</span>
+                <span style="grid-column:9">W9</span>
+                <span style="grid-column:13">W13</span>
+                <span style="grid-column:17">W17</span>
+                <span style="grid-column:20;text-align:right">W20</span>
+              </div>
+            </div>
+
+            <div class="gantt-release-head"><span style="color:var(--p0)">R1 &middot; Recovery first</span><i></i></div>
+            <div class="gantt-row">
+              <span class="gantt-row-label">Support coverage matched to booking hours</span>
+              <div class="gantt-track"><span class="gantt-bar" style="grid-column:1/5;background:var(--p0)"></span></div>
+            </div>
+            <div class="gantt-row">
+              <span class="gantt-row-label">Live ETA + automatic late compensation</span>
+              <div class="gantt-track"><span class="gantt-bar" style="grid-column:1/6;background:var(--p0)"></span></div>
+            </div>
+            <div class="gantt-row">
+              <span class="gantt-row-label">Self-serve cancel, reschedule, refund quote</span>
+              <div class="gantt-track"><span class="gantt-bar" style="grid-column:2/7;background:var(--p0)"></span></div>
+            </div>
+            <div class="gantt-row">
+              <span class="gantt-row-label">Active-booking priority routing</span>
+              <div class="gantt-track"><span class="gantt-bar" style="grid-column:3/7;background:var(--p0)"></span></div>
+            </div>
+            <div class="gantt-row">
+              <span class="gantt-row-label">Refund status surface</span>
+              <div class="gantt-track">
+                <span class="gantt-bar" style="grid-column:4/8;background:var(--p0)"></span>
+                <span class="gantt-gate" style="grid-column:7/8" title="Gate: contact rate must fall"></span>
+              </div>
+            </div>
+
+            <div class="gantt-release-head"><span style="color:var(--p1)">R2 &middot; Legibility</span><i></i></div>
+            <div class="gantt-row">
+              <span class="gantt-row-label">Visit telemetry on the Pro app <span class="flag">&middot; blocker</span></span>
+              <div class="gantt-track"><span class="gantt-bar is-blocked" style="grid-column:6/12;background:var(--p1)"></span></div>
+            </div>
+            <div class="gantt-row">
+              <span class="gantt-row-label">Task list + home notes to the Pro</span>
+              <div class="gantt-track"><span class="gantt-bar" style="grid-column:8/12;background:var(--p1)"></span></div>
+            </div>
+            <div class="gantt-row">
+              <span class="gantt-row-label">Live status + task progress to customer</span>
+              <div class="gantt-track"><span class="gantt-bar" style="grid-column:9/14;background:var(--p1)"></span></div>
+            </div>
+            <div class="gantt-row">
+              <span class="gantt-row-label">Home context persisted across bookings</span>
+              <div class="gantt-track"><span class="gantt-bar" style="grid-column:11/15;background:var(--p1)"></span></div>
+            </div>
+            <div class="gantt-row">
+              <span class="gantt-row-label">Structured issue reporting</span>
+              <div class="gantt-track"><span class="gantt-bar" style="grid-column:10/14;background:var(--p1)"></span></div>
+            </div>
+            <div class="gantt-row">
+              <span class="gantt-row-label">Auto-resolution against visit data</span>
+              <div class="gantt-track">
+                <span class="gantt-bar" style="grid-column:12/16;background:var(--p1)"></span>
+                <span class="gantt-gate" style="grid-column:15/16" title="Gate: incomplete-task reports fall"></span>
+              </div>
+            </div>
+
+            <div class="gantt-release-head"><span style="color:var(--p0)">R3 &middot; Supply and brand</span><i></i></div>
+            <div class="gantt-row">
+              <span class="gantt-row-label">Silent safety check-ins for Pros</span>
+              <div class="gantt-track"><span class="gantt-bar" style="grid-column:14/19;background:var(--p2)"></span></div>
+            </div>
+            <div class="gantt-row">
+              <span class="gantt-row-label">Cash-solicitation enforcement + in-app tipping</span>
+              <div class="gantt-track"><span class="gantt-bar" style="grid-column:15/19;background:var(--p2)"></span></div>
+            </div>
+            <div class="gantt-row">
+              <span class="gantt-row-label">High-risk visit flags for supervisors</span>
+              <div class="gantt-track"><span class="gantt-bar" style="grid-column:16/20;background:var(--p2)"></span></div>
+            </div>
+            <div class="gantt-row">
+              <span class="gantt-row-label">Timestamped proof for recurring visits</span>
+              <div class="gantt-track"><span class="gantt-bar" style="grid-column:17/21;background:var(--p2)"></span></div>
+            </div>
+            <div class="gantt-row">
+              <span class="gantt-row-label">City-level ops dashboards</span>
+              <div class="gantt-track">
+                <span class="gantt-bar" style="grid-column:17/21;background:var(--p2)"></span>
+                <span class="gantt-gate" style="grid-column:20/21" title="Gate: Pro retention holds"></span>
+              </div>
+            </div>
+
+            <div class="gantt-row">
+              <span class="gantt-row-label" style="color:var(--ink-3)">Telemetry &amp; measurement</span>
+              <div class="gantt-track" style="background-image:none"><span class="gantt-bar is-dashed" style="grid-column:1/21"></span></div>
+            </div>
+          </div>
+
+          <details class="table-view">
+            <summary>View as table</summary>
+            <table class="data-table">
+              <thead>
+                <tr><th scope="col">Workstream</th><th scope="col">Release</th><th scope="col">Weeks</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Support coverage matched to booking hours</td><td>R1</td><td>1&ndash;4</td></tr>
+                <tr><td>Live ETA + automatic late compensation</td><td>R1</td><td>1&ndash;5</td></tr>
+                <tr><td>Self-serve cancel, reschedule, refund quote</td><td>R1</td><td>2&ndash;6</td></tr>
+                <tr><td>Active-booking priority routing</td><td>R1</td><td>3&ndash;6</td></tr>
+                <tr><td>Refund status surface <span class="pill-tag is-risk">Gate: wk 7</span></td><td>R1</td><td>4&ndash;7</td></tr>
+                <tr><td>Visit telemetry on the Pro app &middot; blocker</td><td>R2</td><td>6&ndash;11</td></tr>
+                <tr><td>Task list + home notes to the Pro</td><td>R2</td><td>8&ndash;11</td></tr>
+                <tr><td>Live status + task progress to customer</td><td>R2</td><td>9&ndash;13</td></tr>
+                <tr><td>Structured issue reporting</td><td>R2</td><td>10&ndash;13</td></tr>
+                <tr><td>Home context persisted across bookings</td><td>R2</td><td>11&ndash;14</td></tr>
+                <tr><td>Auto-resolution against visit data <span class="pill-tag is-risk">Gate: wk 15</span></td><td>R2</td><td>12&ndash;15</td></tr>
+                <tr><td>Silent safety check-ins for Pros</td><td>R3</td><td>14&ndash;18</td></tr>
+                <tr><td>Cash-solicitation enforcement + in-app tipping</td><td>R3</td><td>15&ndash;18</td></tr>
+                <tr><td>High-risk visit flags for supervisors</td><td>R3</td><td>16&ndash;19</td></tr>
+                <tr><td>Timestamped proof for recurring visits</td><td>R3</td><td>17&ndash;20</td></tr>
+                <tr><td>City-level ops dashboards <span class="pill-tag is-risk">Gate: wk 20</span></td><td>R3</td><td>17&ndash;20</td></tr>
+                <tr><td>Telemetry &amp; measurement</td><td>Cross-cutting</td><td>1&ndash;20</td></tr>
+              </tbody>
+            </table>
+          </details>
+
+          <figcaption>
+            The dashed outline on <strong>visit telemetry</strong> is the one hard dependency in the
+            plan: auto-resolution, task progress and proof of completion are all downstream of it, which
+            is why it starts in week 6 and why nothing that depends on it is promised inside R1. The gate
+            after each release is deliberate &mdash; if R1 doesn&rsquo;t move the support-contact rate,
+            the diagnosis was wrong and R2 should be re-argued rather than built.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="cs-block" data-reveal>
         <h2 id="learned">What writing this taught me</h2>
         <ul>
           <li>
@@ -779,11 +1139,10 @@
             as a constraint kept the document from sprawling while still acknowledging the dependency.
           </li>
           <li>
-            <strong>What I&rsquo;d do differently:</strong> I&rsquo;d sequence this into shippable slices.
-            As written it reads as one initiative, and thirty-one requirements is a programme, not a
-            sprint. With internal data I&rsquo;d cut a first release around the two P0s with the clearest
-            payoff &mdash; honest ETAs and self-serve cancellation with visible refund status &mdash; and
-            prove the support-contact rate moves before committing to the rest.
+            <strong>What I&rsquo;d do differently:</strong> the first draft read as one initiative.
+            Thirty-two requirements is a programme, not a sprint &mdash; so the sequencing above is the
+            edit I made to my own document, and the thing I&rsquo;d have written first with internal data
+            in hand.
           </li>
         </ul>
       </section>
@@ -800,9 +1159,11 @@
           <li><a href="#research">Building the evidence</a></li>
           <li><a href="#solution">The proposal</a></li>
           <li><a href="#requirements">The requirements</a></li>
+          <li><a href="#sequencing">Sequencing</a></li>
           <li><a href="#metrics">How I&rsquo;d know it worked</a></li>
           <li><a href="#scope">Scope discipline</a></li>
           <li><a href="#questions">Open questions</a></li>
+          <li><a href="#plan">Delivery plan</a></li>
           <li><a href="#learned">What it taught me</a></li>
         </ol>
       </nav>
