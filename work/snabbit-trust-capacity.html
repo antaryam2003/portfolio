@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Snabbit: what happens when ten minutes isn&rsquo;t enough &mdash; Antarya Mondal</title>
 <meta name="description" content="A trust, capacity and safety PRD for Snabbit, India's 10-minute house-help platform: six moments where the promise breaks, the missing policy engine behind them, and 27 requirements across six journeys.">
-<meta name="theme-color" content="#e9f3ff">
+<meta name="theme-color" content="#e9f3ff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#08131f" media="(prefers-color-scheme: dark)">
 
 <meta property="og:type" content="article">
 <meta property="og:title" content="Snabbit: what happens when ten minutes isn&#39;t enough">
@@ -17,14 +18,228 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
 
+<script>
+  /* Same key and default the rest of the site uses, applied before first paint. */
+  (function () {
+    try {
+      var saved = localStorage.getItem("am-theme");
+      document.documentElement.setAttribute("data-theme", saved || "light");
+    } catch (e) {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  })();
+</script>
+
+<style>
+/* Light palette — from the supplied light-mode design. */
+:root {
+  --sc-01: #e9f3ff;
+  --sc-02: #eaf6f7;
+  --sc-03: #e7f6ec;
+  --sc-04: rgba(96,165,250,.38);
+  --sc-05: rgba(45,212,191,.32);
+  --sc-06: rgba(134,239,172,.30);
+  --sc-07: rgba(255,255,255,.86);
+  --sc-08: rgba(11,43,66,.09);
+  --sc-09: #0b2233;
+  --sc-10: rgba(11,43,66,.16);
+  --sc-11: #0d7c86;
+  --sc-12: #3d576d;
+  --sc-13: #6a8399;
+  --sc-14: rgba(11,43,66,.16);
+  --sc-15: rgba(11,43,66,.12);
+  --sc-16: #3d576d;
+  --sc-17: #0b2233;
+  --sc-18: #3d576d;
+  --sc-19: #0b2233;
+  --sc-20: #ffffff;
+  --sc-21: #0a626b;
+  --sc-22: #0b2233;
+  --sc-23: rgba(11,43,66,.09);
+  --sc-24: rgba(255,255,255,.68);
+  --sc-25: #0b2233;
+  --sc-26: #3d576d;
+  --sc-27: #0b2233;
+  --sc-28: #0b2233;
+  --sc-29: #0b2233;
+  --sc-30: #3d576d;
+  --sc-31: #b4541b;
+  --sc-32: rgba(11,43,66,.09);
+  --sc-33: #6a8399;
+  --sc-34: #0b2233;
+  --sc-35: rgba(11,43,66,.12);
+  --sc-36: rgba(180,84,27,.09);
+  --sc-37: #b4541b;
+  --sc-38: #8e400f;
+  --sc-39: #2f9e6b;
+  --sc-40: #2f7d4f;
+  --sc-41: rgba(47,158,107,.1);
+  --sc-42: #2f7d4f;
+  --sc-43: #215c3e;
+  --sc-44: rgba(255,255,255,.86);
+  --sc-45: rgba(255,255,255,.62);
+  --sc-46: rgba(13,124,134,.28);
+  --sc-47: #0b2233;
+  --sc-48: #3d576d;
+  --sc-49: rgba(255,255,255,.55);
+  --sc-50: rgba(180,84,27,.06);
+  --sc-51: rgba(180,84,27,.28);
+  --sc-52: rgba(180,84,27,.18);
+  --sc-53: rgba(180,84,27,.3);
+  --sc-54: #0b2233;
+  --sc-55: rgba(180,84,27,.5);
+  --sc-56: rgba(47,158,107,.06);
+  --sc-57: rgba(47,158,107,.28);
+  --sc-58: rgba(47,158,107,.18);
+  --sc-59: rgba(47,158,107,.3);
+  --sc-60: rgba(255,255,255,.5);
+  --sc-61: rgba(13,124,134,.4);
+  --sc-62: rgba(11,43,66,.09);
+  --sc-63: rgba(11,43,66,.022);
+  --sc-64: rgba(13,124,134,.07);
+  --sc-65: rgba(13,124,134,.26);
+  --sc-66: #073f45;
+  --sc-67: rgba(13,124,134,.5);
+  --sc-68: rgba(47,158,107,.5);
+  --sc-69: rgba(47,158,107,.07);
+  --sc-70: rgba(47,158,107,.26);
+  --sc-71: #215c3e;
+  --sc-72: rgba(11,43,66,.12);
+  --sc-73: #ffffff;
+  --sc-74: rgba(11,43,66,.12);
+  --sc-75: rgba(13,124,134,.14);
+  --sc-76: rgba(13,124,134,.45);
+  --sc-77: rgba(13,124,134,.1);
+  --sc-78: rgba(11,43,66,.16);
+  --sc-79: rgba(47,158,107,.12);
+  --sc-80: rgba(47,158,107,.35);
+  --sc-81: rgba(47,158,107,.55);
+  --sc-82: rgba(180,84,27,.35);
+  --sc-83: rgba(180,84,27,.1);
+  --sc-84: rgba(47,158,107,.4);
+  --sc-85: rgba(47,158,107,.2);
+  --sc-86: rgba(180,84,27,.45);
+  --sc-87: rgba(47,158,107,.24);
+  --sc-88: rgba(47,158,107,.16);
+  --sc-grain: .34;
+  --pager-surface: rgba(255,255,255,.68);
+  --pager-border: rgba(11,43,66,.09);
+  --pager-label: #3d576d;
+  --pager-title: #0b2233;
+  --sc-accent: #0d7c86;
+}
+/* Dark palette — from the supplied dark-mode design. */
+:root[data-theme="dark"] {
+  --sc-01: #08131f;
+  --sc-02: #08181f;
+  --sc-03: #071a17;
+  --sc-04: rgba(56,130,246,.26);
+  --sc-05: rgba(45,212,191,.22);
+  --sc-06: rgba(34,197,94,.16);
+  --sc-07: rgba(8,19,31,.86);
+  --sc-08: rgba(190,215,235,.12);
+  --sc-09: #eaf1f7;
+  --sc-10: rgba(190,215,235,.28);
+  --sc-11: #f0b45e;
+  --sc-12: #9db2c4;
+  --sc-13: #7f96aa;
+  --sc-14: rgba(190,215,235,.3);
+  --sc-15: rgba(190,215,235,.2);
+  --sc-16: #a7bccd;
+  --sc-17: #f4f8fb;
+  --sc-18: #a9bfd0;
+  --sc-19: #e8f1f7;
+  --sc-20: #08131f;
+  --sc-21: #ffd39a;
+  --sc-22: #dce8f1;
+  --sc-23: rgba(190,215,235,.14);
+  --sc-24: #0b1a28;
+  --sc-25: #e4eef5;
+  --sc-26: #93a9bb;
+  --sc-27: #f1f6fa;
+  --sc-28: #eaf3f9;
+  --sc-29: #eef5fa;
+  --sc-30: #8ba1b4;
+  --sc-31: #e0705f;
+  --sc-32: rgba(190,215,235,.13);
+  --sc-33: #6c8299;
+  --sc-34: #cfe0ec;
+  --sc-35: rgba(190,215,235,.22);
+  --sc-36: rgba(224,112,95,.09);
+  --sc-37: #e9a396;
+  --sc-38: #f2bfb5;
+  --sc-39: #7ec8b8;
+  --sc-40: #7ec8b8;
+  --sc-41: rgba(126,200,184,.1);
+  --sc-42: #9cd3c6;
+  --sc-43: #bfe4da;
+  --sc-44: #102437;
+  --sc-45: #0b1a28;
+  --sc-46: rgba(240,180,94,.28);
+  --sc-47: #f6fafc;
+  --sc-48: #b3c8d8;
+  --sc-49: rgba(8,19,31,.55);
+  --sc-50: rgba(224,112,95,.06);
+  --sc-51: rgba(224,112,95,.28);
+  --sc-52: rgba(224,112,95,.18);
+  --sc-53: rgba(224,112,95,.3);
+  --sc-54: #dbe7ef;
+  --sc-55: rgba(224,112,95,.5);
+  --sc-56: rgba(126,200,184,.06);
+  --sc-57: rgba(126,200,184,.28);
+  --sc-58: rgba(126,200,184,.18);
+  --sc-59: rgba(126,200,184,.3);
+  --sc-60: rgba(8,19,31,.5);
+  --sc-61: rgba(240,180,94,.4);
+  --sc-62: rgba(190,215,235,.1);
+  --sc-63: rgba(255,255,255,.012);
+  --sc-64: rgba(240,180,94,.07);
+  --sc-65: rgba(240,180,94,.26);
+  --sc-66: #f4e2c6;
+  --sc-67: rgba(240,180,94,.5);
+  --sc-68: rgba(126,200,184,.5);
+  --sc-69: rgba(126,200,184,.07);
+  --sc-70: rgba(126,200,184,.26);
+  --sc-71: #cfe9e1;
+  --sc-72: rgba(190,215,235,.16);
+  --sc-73: #0e1e2e;
+  --sc-74: rgba(190,215,235,.18);
+  --sc-75: rgba(240,180,94,.14);
+  --sc-76: rgba(240,180,94,.45);
+  --sc-77: rgba(240,180,94,.1);
+  --sc-78: rgba(190,215,235,.35);
+  --sc-79: rgba(126,200,184,.12);
+  --sc-80: rgba(126,200,184,.35);
+  --sc-81: rgba(126,200,184,.55);
+  --sc-82: rgba(224,112,95,.35);
+  --sc-83: rgba(224,112,95,.1);
+  --sc-84: rgba(126,200,184,.4);
+  --sc-85: rgba(126,200,184,.2);
+  --sc-86: rgba(224,112,95,.45);
+  --sc-87: rgba(126,200,184,.24);
+  --sc-88: rgba(126,200,184,.16);
+  --sc-grain: .22;
+  --pager-surface: #0b1a28;
+  --pager-border: rgba(190,215,235,.14);
+  --pager-label: #8ba1b4;
+  --pager-title: #eef5fa;
+  --sc-accent: #f0b45e;
+}
+</style>
+
 <style>
   *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; background: #08131f; color: #dce8f1; font-family: 'IBM Plex Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-  a { color: #f0b45e; text-decoration: none; }
-  a:hover { color: #ffd39a; }
-  ::selection { background: rgba(240,180,94,.28); }
-  :focus-visible { outline: 2px solid #f0b45e; outline-offset: 3px; }
+  body { margin: 0; background-color: #eaf6f7; color: #0b2233; font-family: 'IBM Plex Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  @keyframes drift-a { from { transform: translate3d(0,0,0) scale(1); } to { transform: translate3d(6vw,8vh,0) scale(1.14); } }
+  @keyframes drift-b { from { transform: translate3d(0,0,0) scale(1.06); } to { transform: translate3d(-8vw,-6vh,0) scale(0.94); } }
+  @keyframes drift-c { from { transform: translate3d(0,0,0) scale(0.96); } to { transform: translate3d(5vw,-7vh,0) scale(1.1); } }
+  @media (prefers-reduced-motion: reduce) { [data-blob] { animation: none !important; } }
+  [data-grain] { background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyMDAnIGhlaWdodD0nMjAwJz48ZmlsdGVyIGlkPSduJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nMC44NScgbnVtT2N0YXZlcz0nNCcgc3RpdGNoVGlsZXM9J3N0aXRjaCcvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPScyMDAnIGhlaWdodD0nMjAwJyBmaWx0ZXI9J3VybCgjbiknLz48L3N2Zz4="); }
+  a { color: #0d7c86; text-decoration: none; }
+  a:hover { color: #0a626b; }
+  ::selection { background: #0d7c86; color: #ffffff; }
+  :focus-visible { outline: 2px solid #0d7c86; outline-offset: 3px; }
   @media (max-width: 1024px) {
     [data-cols="6"] { grid-template-columns: repeat(3, 1fr) !important; }
     [data-cols="4"], [data-cols="3"] { grid-template-columns: repeat(2, 1fr) !important; }
@@ -41,21 +256,23 @@
   @media print {
     * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     section, figure { break-inside: avoid; }
+    [data-bg-layer] { display: none !important; }
   }
 </style>
 
 <style>
-  /* Page canvas uses the homepage gradient (--bg-top/--bg-mid/--bg-bottom in
-     style.css). The case study keeps its own dark reading column on top, since
-     its type and panels are authored light-on-dark. */
-  html {
-    background: linear-gradient(to bottom, #e9f3ff 0%, #eaf6f7 48%, #e7f6ec 100%) fixed;
-  }
-  body { background: transparent; }
+  /* Page-level colours from the dark design; the light values sit in the
+     block above, which the light design already supplies. */
+  :root[data-theme="dark"] body { background-color: #08181f; color: #dce8f1; }
+  :root[data-theme="dark"] a { color: #f0b45e; }
+  :root[data-theme="dark"] a:hover { color: #ffd39a; }
+  :root[data-theme="dark"] ::selection { background: rgba(240,180,94,.28); color: inherit; }
+  :root[data-theme="dark"] :focus-visible { outline-color: #f0b45e; }
+
   img, svg { max-width: 100%; }
   .skip-link { position: absolute; left: -9999px; }
-  .skip-link:focus { left: 12px; top: 12px; z-index: 100; padding: 10px 16px; background: #f0b45e; color: #08131f;
-    font: 500 14px/1 'IBM Plex Sans', sans-serif; border-radius: 8px; }
+  .skip-link:focus { left: 12px; top: 12px; z-index: 100; padding: 10px 16px;
+    background: var(--sc-accent); color: #fff; font: 500 14px/1 'IBM Plex Sans', sans-serif; border-radius: 8px; }
   @media (max-width: 700px) {
     header nav { gap: 16px !important; font-size: 13px !important; }
   }
@@ -66,73 +283,80 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<div style="max-width:1440px;margin:0 auto;background:#08131f;overflow:hidden">
+<div data-bg-layer="true" aria-hidden="true" style="position:fixed;inset:0;z-index:-2;overflow:hidden;background:linear-gradient(to bottom,var(--sc-01) 0%,var(--sc-02) 48%,var(--sc-03) 100%)">
+  <span data-blob="a" style="position:absolute;width:46vw;height:46vw;min-width:380px;min-height:380px;top:-12vw;left:-8vw;border-radius:50%;filter:blur(90px);will-change:transform;background:var(--sc-04);animation:drift-a 26s cubic-bezier(.22,1,.36,1) infinite alternate"></span>
+  <span data-blob="b" style="position:absolute;width:40vw;height:40vw;min-width:320px;min-height:320px;top:34vh;right:-12vw;border-radius:50%;filter:blur(90px);will-change:transform;background:var(--sc-05);animation:drift-b 32s cubic-bezier(.22,1,.36,1) infinite alternate"></span>
+  <span data-blob="c" style="position:absolute;width:44vw;height:44vw;min-width:340px;min-height:340px;bottom:-14vw;left:22vw;border-radius:50%;filter:blur(90px);will-change:transform;background:var(--sc-06);animation:drift-c 29s cubic-bezier(.22,1,.36,1) infinite alternate"></span>
+</div>
+<div data-bg-layer="true" data-grain="true" aria-hidden="true" style="position:fixed;inset:-50%;z-index:-1;pointer-events:none;opacity:var(--sc-grain);mix-blend-mode:soft-light"></div>
 
-  <header style="position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 40px;background:rgba(8,19,31,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(190,215,235,.12)">
-    <a href="../index.html" style="display:flex;align-items:center;gap:12px;color:#eaf1f7">
-      <span style="display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(190,215,235,.28);border-radius:8px;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#f0b45e">AM</span>
+<div style="max-width:1440px;margin:0 auto;overflow:hidden">
+
+  <header style="position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 40px;background:var(--sc-07);backdrop-filter:blur(14px);border-bottom:1px solid var(--sc-08)">
+    <a href="../index.html" style="display:flex;align-items:center;gap:12px;color:var(--sc-09)">
+      <span style="display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--sc-10);border-radius:8px;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.06em;color:var(--sc-11)">AM</span>
       <span style="font:500 15px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.01em">Antarya Mondal</span>
     </a>
     <nav style="display:flex;align-items:center;gap:28px;font:400 14px/1 'IBM Plex Sans',sans-serif">
-      <a href="../index.html#about" style="color:#9db2c4">About</a>
-      <a href="../index.html#work" style="color:#9db2c4">Case studies</a>
-      <a href="../index.html#contact" style="color:#9db2c4">Contact</a>
+      <a href="../index.html#about" style="color:var(--sc-12)">About</a>
+      <a href="../index.html#work" style="color:var(--sc-12)">Case studies</a>
+      <a href="../index.html#contact" style="color:var(--sc-12)">Contact</a>
     </nav>
   </header>
 
   <!-- ══ HERO ══ -->
   <section id="main" data-screen-label="Hero" style="padding:64px 40px 0">
     <div style="max-width:1120px;margin:0 auto">
-      <a href="../index.html#work" style="display:inline-flex;align-items:center;gap:8px;font:400 13px/1 'IBM Plex Mono',monospace;letter-spacing:.04em;color:#7f96aa">← All case studies</a>
+      <a href="../index.html#work" style="display:inline-flex;align-items:center;gap:8px;font:400 13px/1 'IBM Plex Mono',monospace;letter-spacing:.04em;color:var(--sc-13)">← All case studies</a>
 
       <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:44px 0 28px">
-        <span style="font:500 13px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#f0b45e">01</span>
-        <span style="width:18px;height:1px;background:rgba(190,215,235,.3)"></span>
-        <span style="display:inline-flex;align-items:center;white-space:nowrap;padding:7px 13px;border:1px solid rgba(190,215,235,.2);border-radius:999px;font:400 12px/1.2 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#a7bccd">Product requirements</span>
-        <span style="display:inline-flex;align-items:center;white-space:nowrap;padding:7px 13px;border:1px solid rgba(190,215,235,.2);border-radius:999px;font:400 12px/1.2 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#a7bccd">Marketplace trust</span>
-        <span style="display:inline-flex;align-items:center;white-space:nowrap;padding:7px 13px;border:1px solid rgba(190,215,235,.2);border-radius:999px;font:400 12px/1.2 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#a7bccd">Two-sided safety</span>
+        <span style="font:500 13px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;color:var(--sc-11)">01</span>
+        <span style="width:18px;height:1px;background:var(--sc-14)"></span>
+        <span style="display:inline-flex;align-items:center;white-space:nowrap;padding:7px 13px;border:1px solid var(--sc-15);border-radius:999px;font:400 12px/1.2 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--sc-16)">Product requirements</span>
+        <span style="display:inline-flex;align-items:center;white-space:nowrap;padding:7px 13px;border:1px solid var(--sc-15);border-radius:999px;font:400 12px/1.2 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--sc-16)">Marketplace trust</span>
+        <span style="display:inline-flex;align-items:center;white-space:nowrap;padding:7px 13px;border:1px solid var(--sc-15);border-radius:999px;font:400 12px/1.2 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--sc-16)">Two-sided safety</span>
       </div>
 
-      <h1 style="max-width:15ch;margin:0;font:300 clamp(44px,6.4vw,88px)/1.02 'Newsreader',Georgia,serif;letter-spacing:-.025em;color:#f4f8fb;text-wrap:balance">Snabbit: what happens when ten minutes <em style="font-style:italic;color:#f0b45e">isn't</em> enough</h1>
+      <h1 style="max-width:15ch;margin:0;font:300 clamp(44px,6.4vw,88px)/1.02 'Newsreader',Georgia,serif;letter-spacing:-.025em;color:var(--sc-17);text-wrap:balance">Snabbit: what happens when ten minutes <em style="font-style:italic;color:var(--sc-11)">isn't</em> enough</h1>
 
-      <p style="max-width:62ch;margin:32px 0 0;font:400 20px/1.6 'IBM Plex Sans',sans-serif;color:#a9bfd0;text-wrap:pretty">Snabbit has won the speed race — 15,000 Experts, 40,000 jobs a day, a $56M Series D. The 10-minute promise works often enough to fund all of it. So I didn't write a PRD for a missing feature. I wrote one for the six moments where the promise quietly breaks, and for what those breakdowns have in common: <strong style="color:#e8f1f7;font-weight:500">there is no policy engine behind the app.</strong></p>
+      <p style="max-width:62ch;margin:32px 0 0;font:400 20px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-18);text-wrap:pretty">Snabbit has won the speed race — 15,000 Experts, 40,000 jobs a day, a $56M Series D. The 10-minute promise works often enough to fund all of it. So I didn't write a PRD for a missing feature. I wrote one for the six moments where the promise quietly breaks, and for what those breakdowns have in common: <strong style="color:var(--sc-19);font-weight:500">there is no policy engine behind the app.</strong></p>
 
       <div style="display:flex;flex-wrap:wrap;gap:12px;margin:36px 0 0">
-        <a href="https://www.snabbit.com/" style="display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;background:#f0b45e;color:#08131f;font:500 14px/1 'IBM Plex Sans',sans-serif" style-hover="background:#ffd39a">See the live product →</a>
-        <a href="mailto:mondalantarya2@gmail.com?subject=Chat%20about%20the%20Snabbit%20PRD" style="display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;border:1px solid rgba(190,215,235,.28);color:#dce8f1;font:500 14px/1 'IBM Plex Sans',sans-serif" style-hover="border-color:#f0b45e;color:#f0b45e">Talk to me about it</a>
+        <a href="https://www.snabbit.com/" style="display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;background:var(--sc-11);color:var(--sc-20);font:500 14px/1 'IBM Plex Sans',sans-serif" style-hover="background:var(--sc-21)">See the live product →</a>
+        <a href="mailto:mondalantarya2@gmail.com?subject=Chat%20about%20the%20Snabbit%20PRD" style="display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;border:1px solid var(--sc-10);color:var(--sc-22);font:500 14px/1 'IBM Plex Sans',sans-serif" style-hover="border-color:var(--sc-11);color:var(--sc-11)">Talk to me about it</a>
       </div>
 
-      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:64px 0 0;background:rgba(190,215,235,.14);border:1px solid rgba(190,215,235,.14);border-radius:14px;overflow:hidden">
-        <div style="padding:22px 24px;background:#0b1a28">
-          <div style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#7f96aa">Role</div>
-          <div style="margin-top:10px;font:400 16px/1.4 'IBM Plex Sans',sans-serif;color:#e4eef5">Self-directed product exercise</div>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:64px 0 0;background:var(--sc-23);border:1px solid var(--sc-23);border-radius:14px;overflow:hidden">
+        <div style="padding:22px 24px;background:var(--sc-24)">
+          <div style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--sc-13)">Role</div>
+          <div style="margin-top:10px;font:400 16px/1.4 'IBM Plex Sans',sans-serif;color:var(--sc-25)">Self-directed product exercise</div>
         </div>
-        <div style="padding:22px 24px;background:#0b1a28">
-          <div style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#7f96aa">Artefact</div>
-          <div style="margin-top:10px;font:400 16px/1.4 'IBM Plex Sans',sans-serif;color:#e4eef5">Feature PRD on a live product</div>
+        <div style="padding:22px 24px;background:var(--sc-24)">
+          <div style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--sc-13)">Artefact</div>
+          <div style="margin-top:10px;font:400 16px/1.4 'IBM Plex Sans',sans-serif;color:var(--sc-25)">Feature PRD on a live product</div>
         </div>
-        <div style="padding:22px 24px;background:#0b1a28">
-          <div style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#7f96aa">Timeline</div>
-          <div style="margin-top:10px;font:400 16px/1.4 'IBM Plex Sans',sans-serif;color:#e4eef5">July 2026</div>
+        <div style="padding:22px 24px;background:var(--sc-24)">
+          <div style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--sc-13)">Timeline</div>
+          <div style="margin-top:10px;font:400 16px/1.4 'IBM Plex Sans',sans-serif;color:var(--sc-25)">July 2026</div>
         </div>
-        <div style="padding:22px 24px;background:#0b1a28">
-          <div style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#7f96aa">Focus</div>
-          <div style="margin-top:10px;font:400 16px/1.4 'IBM Plex Sans',sans-serif;color:#e4eef5">Capacity, recovery, worker safety</div>
+        <div style="padding:22px 24px;background:var(--sc-24)">
+          <div style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--sc-13)">Focus</div>
+          <div style="margin-top:10px;font:400 16px/1.4 'IBM Plex Sans',sans-serif;color:var(--sc-25)">Capacity, recovery, worker safety</div>
         </div>
       </div>
 
-      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin:56px 0 0;padding:36px 0 0;border-top:1px solid rgba(190,215,235,.14)">
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin:56px 0 0;padding:36px 0 0;border-top:1px solid var(--sc-23)">
         <div>
-          <div style="font:300 56px/1 'Newsreader',Georgia,serif;letter-spacing:-.03em;color:#f0b45e">10 min</div>
-          <div style="margin-top:12px;max-width:26ch;font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:#93a9bb">The arrival promise the entire brand is built on</div>
+          <div style="font:300 56px/1 'Newsreader',Georgia,serif;letter-spacing:-.03em;color:var(--sc-11)">10 min</div>
+          <div style="margin-top:12px;max-width:26ch;font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:var(--sc-26)">The arrival promise the entire brand is built on</div>
         </div>
         <div>
-          <div style="font:300 56px/1 'Newsreader',Georgia,serif;letter-spacing:-.03em;color:#f0b45e">6</div>
-          <div style="margin-top:12px;max-width:26ch;font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:#93a9bb">Distinct moments where that promise measurably breaks</div>
+          <div style="font:300 56px/1 'Newsreader',Georgia,serif;letter-spacing:-.03em;color:var(--sc-11)">6</div>
+          <div style="margin-top:12px;max-width:26ch;font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:var(--sc-26)">Distinct moments where that promise measurably breaks</div>
         </div>
         <div>
-          <div style="font:300 56px/1 'Newsreader',Georgia,serif;letter-spacing:-.03em;color:#f0b45e">27</div>
-          <div style="margin-top:12px;max-width:26ch;font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:#93a9bb">Requirements specified across six user journeys</div>
+          <div style="font:300 56px/1 'Newsreader',Georgia,serif;letter-spacing:-.03em;color:var(--sc-11)">27</div>
+          <div style="margin-top:12px;max-width:26ch;font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:var(--sc-26)">Requirements specified across six user journeys</div>
         </div>
       </div>
     </div>
@@ -141,91 +365,91 @@
   <!-- ══ THE PRODUCT / SCALE ══ -->
   <section data-screen-label="The product" id="product" style="padding:120px 40px 0">
     <div style="max-width:1120px;margin:0 auto">
-      <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#7f96aa">01 — The product</div>
-      <h2 style="max-width:24ch;margin:22px 0 0;font:300 clamp(32px,3.8vw,50px)/1.08 'Newsreader',Georgia,serif;letter-spacing:-.02em;color:#f1f6fa">A category that didn't exist two years ago</h2>
-      <p style="max-width:64ch;margin:24px 0 0;font:400 17px/1.68 'IBM Plex Sans',sans-serif;color:#a9bfd0;text-wrap:pretty">Snabbit sends a background-verified, all-women "Expert" to your door in about ten minutes for cleaning, dishwashing, laundry and related chores. Founded in 2024, it created the quick house-help category in India — and the numbers say the core mechanic works.</p>
+      <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sc-13)">01 — The product</div>
+      <h2 style="max-width:24ch;margin:22px 0 0;font:300 clamp(32px,3.8vw,50px)/1.08 'Newsreader',Georgia,serif;letter-spacing:-.02em;color:var(--sc-27)">A category that didn't exist two years ago</h2>
+      <p style="max-width:64ch;margin:24px 0 0;font:400 17px/1.68 'IBM Plex Sans',sans-serif;color:var(--sc-18);text-wrap:pretty">Snabbit sends a background-verified, all-women "Expert" to your door in about ten minutes for cleaning, dishwashing, laundry and related chores. Founded in 2024, it created the quick house-help category in India — and the numbers say the core mechanic works.</p>
 
-      <div data-cols="6" style="display:grid;grid-template-columns:repeat(6,1fr);gap:1px;margin:44px 0 0;background:rgba(190,215,235,.14);border:1px solid rgba(190,215,235,.14);border-radius:14px;overflow:hidden">
-        <div style="padding:24px 18px;background:#0b1a28">
-          <div style="font:300 30px/1 'Newsreader',Georgia,serif;color:#eaf3f9">15,000<span style="color:#f0b45e">+</span></div>
-          <div style="margin-top:8px;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:#7f96aa">Experts</div>
+      <div data-cols="6" style="display:grid;grid-template-columns:repeat(6,1fr);gap:1px;margin:44px 0 0;background:var(--sc-23);border:1px solid var(--sc-23);border-radius:14px;overflow:hidden">
+        <div style="padding:24px 18px;background:var(--sc-24)">
+          <div style="font:300 30px/1 'Newsreader',Georgia,serif;color:var(--sc-28)">15,000<span style="color:var(--sc-11)">+</span></div>
+          <div style="margin-top:8px;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:var(--sc-13)">Experts</div>
         </div>
-        <div style="padding:24px 18px;background:#0b1a28">
-          <div style="font:300 30px/1 'Newsreader',Georgia,serif;color:#eaf3f9">40,000<span style="color:#f0b45e">+</span></div>
-          <div style="margin-top:8px;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:#7f96aa">Jobs / day</div>
+        <div style="padding:24px 18px;background:var(--sc-24)">
+          <div style="font:300 30px/1 'Newsreader',Georgia,serif;color:var(--sc-28)">40,000<span style="color:var(--sc-11)">+</span></div>
+          <div style="margin-top:8px;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:var(--sc-13)">Jobs / day</div>
         </div>
-        <div style="padding:24px 18px;background:#0b1a28">
-          <div style="font:300 30px/1 'Newsreader',Georgia,serif;color:#eaf3f9">1M<span style="color:#f0b45e">+</span></div>
-          <div style="margin-top:8px;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:#7f96aa">Monthly jobs</div>
+        <div style="padding:24px 18px;background:var(--sc-24)">
+          <div style="font:300 30px/1 'Newsreader',Georgia,serif;color:var(--sc-28)">1M<span style="color:var(--sc-11)">+</span></div>
+          <div style="margin-top:8px;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:var(--sc-13)">Monthly jobs</div>
         </div>
-        <div style="padding:24px 18px;background:#0b1a28">
-          <div style="font:300 30px/1 'Newsreader',Georgia,serif;color:#eaf3f9">140</div>
-          <div style="margin-top:8px;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:#7f96aa">Micro-markets</div>
+        <div style="padding:24px 18px;background:var(--sc-24)">
+          <div style="font:300 30px/1 'Newsreader',Georgia,serif;color:var(--sc-28)">140</div>
+          <div style="margin-top:8px;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:var(--sc-13)">Micro-markets</div>
         </div>
-        <div style="padding:24px 18px;background:#0b1a28">
-          <div style="font:300 30px/1 'Newsreader',Georgia,serif;color:#eaf3f9">5</div>
-          <div style="margin-top:8px;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:#7f96aa">Cities</div>
+        <div style="padding:24px 18px;background:var(--sc-24)">
+          <div style="font:300 30px/1 'Newsreader',Georgia,serif;color:var(--sc-28)">5</div>
+          <div style="margin-top:8px;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:var(--sc-13)">Cities</div>
         </div>
-        <div style="padding:24px 18px;background:#0b1a28">
-          <div style="font:300 30px/1 'Newsreader',Georgia,serif;color:#eaf3f9">$56M</div>
-          <div style="margin-top:8px;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:#7f96aa">Series D, Apr 2026</div>
+        <div style="padding:24px 18px;background:var(--sc-24)">
+          <div style="font:300 30px/1 'Newsreader',Georgia,serif;color:var(--sc-28)">$56M</div>
+          <div style="margin-top:8px;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:var(--sc-13)">Series D, Apr 2026</div>
         </div>
       </div>
 
-      <figure style="margin:56px 0 0;padding:34px 36px 30px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-radius:18px">
-        <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#f0b45e">Figure 1</div>
-        <div style="margin:14px 0 4px;font:400 24px/1.25 'Newsreader',Georgia,serif;color:#eef5fa">Scale arrived faster than the trust surface underneath it</div>
-        <div style="font:400 14px/1.5 'IBM Plex Sans',sans-serif;color:#8ba1b4">Daily jobs, Apr 2025 – Jul 2026, against publicly documented trust incidents</div>
+      <figure style="margin:56px 0 0;padding:34px 36px 30px;background:var(--sc-24);border:1px solid var(--sc-23);border-radius:18px">
+        <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sc-11)">Figure 1</div>
+        <div style="margin:14px 0 4px;font:400 24px/1.25 'Newsreader',Georgia,serif;color:var(--sc-29)">Scale arrived faster than the trust surface underneath it</div>
+        <div style="font:400 14px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-30)">Daily jobs, Apr 2025 – Jul 2026, against publicly documented trust incidents</div>
 
         <div style="margin-top:26px;overflow-x:auto">
           <svg viewBox="0 0 1040 330" style="display:block;width:100%;min-width:760px;height:auto" role="img" aria-label="Line chart of Snabbit daily jobs growing from 400 to over 40,000 between April 2025 and July 2026, with public trust incidents marked from March 2026 onward">
             <defs>
               <linearGradient id="snGrow" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#f0b45e" stop-opacity=".28"></stop>
-                <stop offset="100%" stop-color="#f0b45e" stop-opacity="0"></stop>
+                <stop offset="0%" stop-color="var(--sc-11)" stop-opacity=".28"></stop>
+                <stop offset="100%" stop-color="var(--sc-11)" stop-opacity="0"></stop>
               </linearGradient>
               <pattern id="snHatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="0" y2="7" stroke="#e0705f" stroke-opacity=".5" stroke-width="1.6"></line>
+                <line x1="0" y1="0" x2="0" y2="7" stroke="var(--sc-31)" stroke-opacity=".5" stroke-width="1.6"></line>
               </pattern>
             </defs>
 
-            <g stroke="rgba(190,215,235,.13)" stroke-width="1">
+            <g stroke="var(--sc-32)" stroke-width="1">
               <line x1="80" y1="210" x2="1010" y2="210"></line>
               <line x1="80" y1="145" x2="1010" y2="145"></line>
               <line x1="80" y1="80" x2="1010" y2="80"></line>
             </g>
-            <g font-family="'IBM Plex Mono', monospace" font-size="11" fill="#6c8299">
+            <g font-family="'IBM Plex Mono', monospace" font-size="11" fill="var(--sc-33)">
               <text x="70" y="214" text-anchor="end">0</text>
               <text x="70" y="149" text-anchor="end">20k</text>
               <text x="70" y="84" text-anchor="end">40k</text>
             </g>
 
             <path d="M80,208 L264,200 L448,175 L632,133 L754,82 L816,55 L1000,48 L1000,210 L80,210 Z" fill="url(#snGrow)"></path>
-            <polyline points="80,208 264,200 448,175 632,133 754,82 816,55 1000,48" fill="none" stroke="#f0b45e" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"></polyline>
-            <g fill="#f0b45e">
+            <polyline points="80,208 264,200 448,175 632,133 754,82 816,55 1000,48" fill="none" stroke="var(--sc-11)" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"></polyline>
+            <g fill="var(--sc-11)">
               <circle cx="80" cy="208" r="4"></circle>
               <circle cx="816" cy="55" r="4"></circle>
               <circle cx="1000" cy="48" r="4"></circle>
             </g>
-            <g font-family="'IBM Plex Sans', sans-serif" font-size="12" fill="#cfe0ec">
+            <g font-family="'IBM Plex Sans', sans-serif" font-size="12" fill="var(--sc-34)">
               <text x="92" y="199">400 jobs/day</text>
               <text x="1000" y="34" text-anchor="end">40,000+ jobs/day</text>
             </g>
 
             <rect x="742" y="228" width="268" height="58" fill="url(#snHatch)" rx="6"></rect>
-            <rect x="742" y="228" width="268" height="58" fill="none" stroke="#e0705f" stroke-opacity=".45" rx="6"></rect>
-            <g font-family="'IBM Plex Mono', monospace" font-size="10.5" fill="#e0705f" letter-spacing="1">
+            <rect x="742" y="228" width="268" height="58" fill="none" stroke="var(--sc-31)" stroke-opacity=".45" rx="6"></rect>
+            <g font-family="'IBM Plex Mono', monospace" font-size="10.5" fill="var(--sc-31)" letter-spacing="1">
               <text x="756" y="248">PACK LOCK-OUTS · NO-SHOWS</text>
               <text x="756" y="264">THEFT REPORTS · WORKER SAFETY</text>
               <text x="756" y="280">BREAK OVERRIDES</text>
             </g>
 
-            <g stroke="rgba(190,215,235,.22)" stroke-dasharray="3 4">
+            <g stroke="var(--sc-35)" stroke-dasharray="3 4">
               <line x1="448" y1="175" x2="448" y2="300"></line>
               <line x1="754" y1="82" x2="754" y2="300"></line>
               <line x1="816" y1="55" x2="816" y2="300"></line>
             </g>
-            <g font-family="'IBM Plex Mono', monospace" font-size="10.5" fill="#8ba1b4">
+            <g font-family="'IBM Plex Mono', monospace" font-size="10.5" fill="var(--sc-30)">
               <text x="82" y="304">APR 2025</text>
               <text x="448" y="316" text-anchor="middle">SERIES C · $30M</text>
               <text x="754" y="316" text-anchor="middle">1M MONTHLY · KAVACH</text>
@@ -235,7 +459,7 @@
           </svg>
         </div>
 
-        <figcaption style="margin:22px 0 0;padding-top:18px;border-top:1px solid rgba(190,215,235,.12);max-width:88ch;font:italic 400 14px/1.6 'Newsreader',Georgia,serif;color:#8ba1b4">Growth is not the problem — it is the pressure. Every documented trust failure sits in the steepest part of this curve, and Snabbit's own <strong style="font-style:normal;font-weight:500;color:#cfe0ec">Kavach</strong> safety launch lands in the same month as the 1M-job milestone. Incident markers are a public timeline (app-store reviews, ThePrint, Scroll.in, Business Standard), not a measured rate.</figcaption>
+        <figcaption style="margin:22px 0 0;padding-top:18px;border-top:1px solid var(--sc-08);max-width:88ch;font:italic 400 14px/1.6 'Newsreader',Georgia,serif;color:var(--sc-30)">Growth is not the problem — it is the pressure. Every documented trust failure sits in the steepest part of this curve, and Snabbit's own <strong style="font-style:normal;font-weight:500;color:var(--sc-34)">Kavach</strong> safety launch lands in the same month as the 1M-job milestone. Incident markers are a public timeline (app-store reviews, ThePrint, Scroll.in, Business Standard), not a measured rate.</figcaption>
       </figure>
     </div>
   </section>
@@ -243,124 +467,124 @@
   <!-- ══ THE PROBLEM ══ -->
   <section data-screen-label="The problem" id="problem" style="padding:120px 40px 0">
     <div style="max-width:1120px;margin:0 auto">
-      <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#7f96aa">02 — The problem</div>
-      <h2 style="max-width:26ch;margin:22px 0 0;font:300 clamp(32px,3.8vw,50px)/1.08 'Newsreader',Georgia,serif;letter-spacing:-.02em;color:#f1f6fa">Six moments, each breaking a different part of the promise</h2>
-      <p style="max-width:64ch;margin:24px 0 0;font:400 17px/1.68 'IBM Plex Sans',sans-serif;color:#a9bfd0;text-wrap:pretty">Read across app-store reviews, press coverage and worker reporting, the failures are not random. They cluster at six recurring moments — and each damages a different piece of what Snabbit sells.</p>
+      <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sc-13)">02 — The problem</div>
+      <h2 style="max-width:26ch;margin:22px 0 0;font:300 clamp(32px,3.8vw,50px)/1.08 'Newsreader',Georgia,serif;letter-spacing:-.02em;color:var(--sc-27)">Six moments, each breaking a different part of the promise</h2>
+      <p style="max-width:64ch;margin:24px 0 0;font:400 17px/1.68 'IBM Plex Sans',sans-serif;color:var(--sc-18);text-wrap:pretty">Read across app-store reviews, press coverage and worker reporting, the failures are not random. They cluster at six recurring moments — and each damages a different piece of what Snabbit sells.</p>
 
       <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:44px 0 0">
-        <div style="padding:26px 24px 24px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-top:2px solid #e0705f;border-radius:14px">
+        <div style="padding:26px 24px 24px;background:var(--sc-24);border:1px solid var(--sc-23);border-top:2px solid var(--sc-31);border-radius:14px">
           <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-            <span style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e0705f">M1</span>
-            <span style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#6c8299">Reliability</span>
+            <span style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:var(--sc-31)">M1</span>
+            <span style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--sc-33)">Reliability</span>
           </div>
-          <div style="margin:16px 0 0;font:400 21px/1.25 'Newsreader',Georgia,serif;color:#eef5fa">The clock stops being believable</div>
-          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">An Expert assigned 30 minutes late on a 12-minute ETA, then an hour of no-show and an unanswered phone.</p>
-          <div style="margin:18px 0 0;padding:12px 14px;background:rgba(224,112,95,.09);border-radius:10px;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:#e9a396"><strong style="font-weight:500;color:#f2bfb5">Cost:</strong> the ETA stops being something you can plan a day around — the exact pain the product exists to remove.</div>
+          <div style="margin:16px 0 0;font:400 21px/1.25 'Newsreader',Georgia,serif;color:var(--sc-29)">The clock stops being believable</div>
+          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">An Expert assigned 30 minutes late on a 12-minute ETA, then an hour of no-show and an unanswered phone.</p>
+          <div style="margin:18px 0 0;padding:12px 14px;background:var(--sc-36);border-radius:10px;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-37)"><strong style="font-weight:500;color:var(--sc-38)">Cost:</strong> the ETA stops being something you can plan a day around — the exact pain the product exists to remove.</div>
         </div>
 
-        <div style="padding:26px 24px 24px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-top:2px solid #e0705f;border-radius:14px">
+        <div style="padding:26px 24px 24px;background:var(--sc-24);border:1px solid var(--sc-23);border-top:2px solid var(--sc-31);border-radius:14px">
           <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-            <span style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e0705f">M2</span>
-            <span style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#6c8299">Capacity</span>
+            <span style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:var(--sc-31)">M2</span>
+            <span style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--sc-33)">Capacity</span>
           </div>
-          <div style="margin:16px 0 0;font:400 21px/1.25 'Newsreader',Georgia,serif;color:#eef5fa">Packs are sold ahead of real capacity</div>
-          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">Discounted prepaid packs bought, then no redeemable slots for weeks — while packs keep selling.</p>
-          <div style="margin:18px 0 0;padding:12px 14px;background:rgba(224,112,95,.09);border-radius:10px;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:#e9a396"><strong style="font-weight:500;color:#f2bfb5">Cost:</strong> the customer has already paid for a promise local supply cannot keep.</div>
+          <div style="margin:16px 0 0;font:400 21px/1.25 'Newsreader',Georgia,serif;color:var(--sc-29)">Packs are sold ahead of real capacity</div>
+          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">Discounted prepaid packs bought, then no redeemable slots for weeks — while packs keep selling.</p>
+          <div style="margin:18px 0 0;padding:12px 14px;background:var(--sc-36);border-radius:10px;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-37)"><strong style="font-weight:500;color:var(--sc-38)">Cost:</strong> the customer has already paid for a promise local supply cannot keep.</div>
         </div>
 
-        <div style="padding:26px 24px 24px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-top:2px solid #e0705f;border-radius:14px">
+        <div style="padding:26px 24px 24px;background:var(--sc-24);border:1px solid var(--sc-23);border-top:2px solid var(--sc-31);border-radius:14px">
           <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-            <span style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e0705f">M3</span>
-            <span style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#6c8299">Recovery</span>
+            <span style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:var(--sc-31)">M3</span>
+            <span style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--sc-33)">Recovery</span>
           </div>
-          <div style="margin:16px 0 0;font:400 21px/1.25 'Newsreader',Georgia,serif;color:#eef5fa">Recovery is harder than the original problem</div>
-          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">A 24-hour email SLA for something happening now; agents saying refund and reassignment are both impossible.</p>
-          <div style="margin:18px 0 0;padding:12px 14px;background:rgba(224,112,95,.09);border-radius:10px;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:#e9a396"><strong style="font-weight:500;color:#f2bfb5">Cost:</strong> failures teach that fixing them is expensive. That lesson outlives the refund.</div>
+          <div style="margin:16px 0 0;font:400 21px/1.25 'Newsreader',Georgia,serif;color:var(--sc-29)">Recovery is harder than the original problem</div>
+          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">A 24-hour email SLA for something happening now; agents saying refund and reassignment are both impossible.</p>
+          <div style="margin:18px 0 0;padding:12px 14px;background:var(--sc-36);border-radius:10px;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-37)"><strong style="font-weight:500;color:var(--sc-38)">Cost:</strong> failures teach that fixing them is expensive. That lesson outlives the refund.</div>
         </div>
 
-        <div style="padding:26px 24px 24px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-top:2px solid #e0705f;border-radius:14px">
+        <div style="padding:26px 24px 24px;background:var(--sc-24);border:1px solid var(--sc-23);border-top:2px solid var(--sc-31);border-radius:14px">
           <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-            <span style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e0705f">M4</span>
-            <span style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#6c8299">Accountability</span>
+            <span style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:var(--sc-31)">M4</span>
+            <span style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--sc-33)">Accountability</span>
           </div>
-          <div style="margin:16px 0 0;font:400 21px/1.25 'Newsreader',Georgia,serif;color:#eef5fa">Misconduct has no enforced consequence</div>
-          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">A Noida theft became local news; another reported case ended with the worker offered "a second chance."</p>
-          <div style="margin:18px 0 0;padding:12px 14px;background:rgba(224,112,95,.09);border-radius:10px;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:#e9a396"><strong style="font-weight:500;color:#f2bfb5">Cost:</strong> "verified" becomes a claim about onboarding, not about what happens afterwards.</div>
+          <div style="margin:16px 0 0;font:400 21px/1.25 'Newsreader',Georgia,serif;color:var(--sc-29)">Misconduct has no enforced consequence</div>
+          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">A Noida theft became local news; another reported case ended with the worker offered "a second chance."</p>
+          <div style="margin:18px 0 0;padding:12px 14px;background:var(--sc-36);border-radius:10px;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-37)"><strong style="font-weight:500;color:var(--sc-38)">Cost:</strong> "verified" becomes a claim about onboarding, not about what happens afterwards.</div>
         </div>
 
-        <div style="padding:26px 24px 24px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-top:2px solid #7ec8b8;border-radius:14px">
+        <div style="padding:26px 24px 24px;background:var(--sc-24);border:1px solid var(--sc-23);border-top:2px solid var(--sc-39);border-radius:14px">
           <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-            <span style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#7ec8b8">M5</span>
-            <span style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#6c8299">Expert side</span>
+            <span style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:var(--sc-40)">M5</span>
+            <span style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--sc-33)">Expert side</span>
           </div>
-          <div style="margin:16px 0 0;font:400 21px/1.25 'Newsreader',Georgia,serif;color:#eef5fa">Worker safety is structurally unsolved</div>
-          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">Experts fear harassment inside strangers' homes with no training — and invent their own coping routines.</p>
-          <div style="margin:18px 0 0;padding:12px 14px;background:rgba(126,200,184,.1);border-radius:10px;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:#9cd3c6"><strong style="font-weight:500;color:#bfe4da">Cost:</strong> the supply side absorbs a risk the platform created and does not yet manage.</div>
+          <div style="margin:16px 0 0;font:400 21px/1.25 'Newsreader',Georgia,serif;color:var(--sc-29)">Worker safety is structurally unsolved</div>
+          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">Experts fear harassment inside strangers' homes with no training — and invent their own coping routines.</p>
+          <div style="margin:18px 0 0;padding:12px 14px;background:var(--sc-41);border-radius:10px;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-42)"><strong style="font-weight:500;color:var(--sc-43)">Cost:</strong> the supply side absorbs a risk the platform created and does not yet manage.</div>
         </div>
 
-        <div style="padding:26px 24px 24px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-top:2px solid #7ec8b8;border-radius:14px">
+        <div style="padding:26px 24px 24px;background:var(--sc-24);border:1px solid var(--sc-23);border-top:2px solid var(--sc-39);border-radius:14px">
           <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-            <span style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#7ec8b8">M6</span>
-            <span style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#6c8299">Expert side</span>
+            <span style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:var(--sc-40)">M6</span>
+            <span style="font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--sc-33)">Expert side</span>
           </div>
-          <div style="margin:16px 0 0;font:400 21px/1.25 'Newsreader',Georgia,serif;color:#eef5fa">Scheduling undermines the reliability being sold</div>
-          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">A 1–3 PM break window overridden mid-shift, leaving some Experts without a meal until 4–5 PM.</p>
-          <div style="margin:18px 0 0;padding:12px 14px;background:rgba(126,200,184,.1);border-radius:10px;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:#9cd3c6"><strong style="font-weight:500;color:#bfe4da">Cost:</strong> an unpredictable workforce is a weak base for a ten-minute guarantee.</div>
+          <div style="margin:16px 0 0;font:400 21px/1.25 'Newsreader',Georgia,serif;color:var(--sc-29)">Scheduling undermines the reliability being sold</div>
+          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">A 1–3 PM break window overridden mid-shift, leaving some Experts without a meal until 4–5 PM.</p>
+          <div style="margin:18px 0 0;padding:12px 14px;background:var(--sc-41);border-radius:10px;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-42)"><strong style="font-weight:500;color:var(--sc-43)">Cost:</strong> an unpredictable workforce is a weak base for a ten-minute guarantee.</div>
         </div>
       </div>
 
       <!-- Figure 2: pack capacity gap -->
-      <figure style="margin:56px 0 0;padding:34px 36px 30px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-radius:18px">
-        <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#f0b45e">Figure 2</div>
-        <div style="margin:14px 0 4px;font:400 24px/1.25 'Newsreader',Georgia,serif;color:#eef5fa">The pack gap: sold on demand, redeemed against supply</div>
-        <div style="font:400 14px/1.5 'IBM Plex Sans',sans-serif;color:#8ba1b4">A single micro-market across one pack validity window — the mechanic, drawn without invented data</div>
+      <figure style="margin:56px 0 0;padding:34px 36px 30px;background:var(--sc-24);border:1px solid var(--sc-23);border-radius:18px">
+        <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sc-11)">Figure 2</div>
+        <div style="margin:14px 0 4px;font:400 24px/1.25 'Newsreader',Georgia,serif;color:var(--sc-29)">The pack gap: sold on demand, redeemed against supply</div>
+        <div style="font:400 14px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-30)">A single micro-market across one pack validity window — the mechanic, drawn without invented data</div>
 
         <div style="margin-top:26px;overflow-x:auto">
           <svg viewBox="0 0 1090 320" style="display:block;width:100%;min-width:760px;height:auto" role="img" aria-label="Diagram showing prepaid pack slots sold rising in a straight line while redeemable slots flatten, opening a widening shortfall wedge that expires unused">
             <defs>
               <pattern id="snGapHatch" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="0" y2="8" stroke="#e0705f" stroke-opacity=".45" stroke-width="1.6"></line>
+                <line x1="0" y1="0" x2="0" y2="8" stroke="var(--sc-31)" stroke-opacity=".45" stroke-width="1.6"></line>
               </pattern>
             </defs>
 
-            <line x1="96" y1="242" x2="1000" y2="242" stroke="rgba(190,215,235,.2)"></line>
-            <line x1="96" y1="242" x2="96" y2="46" stroke="rgba(190,215,235,.2)"></line>
-            <text x="96" y="34" font-family="'IBM Plex Mono', monospace" font-size="10.5" fill="#6c8299">SLOTS (CUMULATIVE)</text>
+            <line x1="96" y1="242" x2="1000" y2="242" stroke="var(--sc-15)"></line>
+            <line x1="96" y1="242" x2="96" y2="46" stroke="var(--sc-15)"></line>
+            <text x="96" y="34" font-family="'IBM Plex Mono', monospace" font-size="10.5" fill="var(--sc-33)">SLOTS (CUMULATIVE)</text>
 
             <path d="M96,242 L900,58 L900,168 Z" fill="url(#snGapHatch)"></path>
 
-            <line x1="96" y1="242" x2="900" y2="58" stroke="#f0b45e" stroke-width="2.6" stroke-linecap="round"></line>
-            <path d="M96,242 C300,200 520,182 900,168" fill="none" stroke="#7ec8b8" stroke-width="2.6" stroke-linecap="round"></path>
+            <line x1="96" y1="242" x2="900" y2="58" stroke="var(--sc-11)" stroke-width="2.6" stroke-linecap="round"></line>
+            <path d="M96,242 C300,200 520,182 900,168" fill="none" stroke="var(--sc-39)" stroke-width="2.6" stroke-linecap="round"></path>
 
-            <circle cx="900" cy="58" r="4.5" fill="#f0b45e"></circle>
-            <circle cx="900" cy="168" r="4.5" fill="#7ec8b8"></circle>
+            <circle cx="900" cy="58" r="4.5" fill="var(--sc-11)"></circle>
+            <circle cx="900" cy="168" r="4.5" fill="var(--sc-39)"></circle>
 
             <g font-family="'IBM Plex Sans', sans-serif" font-size="13.5">
-              <text x="912" y="54" fill="#f0b45e">Pack slots sold</text>
-              <text x="912" y="72" fill="#8ba1b4" font-size="11.5">Priced on demand, uncapped</text>
-              <text x="912" y="164" fill="#7ec8b8">Slots actually redeemable</text>
-              <text x="912" y="182" fill="#8ba1b4" font-size="11.5">Bounded by local Expert supply</text>
+              <text x="912" y="54" fill="var(--sc-11)">Pack slots sold</text>
+              <text x="912" y="72" fill="var(--sc-30)" font-size="11.5">Priced on demand, uncapped</text>
+              <text x="912" y="164" fill="var(--sc-39)">Slots actually redeemable</text>
+              <text x="912" y="182" fill="var(--sc-30)" font-size="11.5">Bounded by local Expert supply</text>
             </g>
 
-            <line x1="540" y1="150" x2="618" y2="106" stroke="#e0705f" stroke-width="1.2"></line>
-            <g font-family="'IBM Plex Sans', sans-serif" font-size="13.5" fill="#e9a396">
+            <line x1="540" y1="150" x2="618" y2="106" stroke="var(--sc-31)" stroke-width="1.2"></line>
+            <g font-family="'IBM Plex Sans', sans-serif" font-size="13.5" fill="var(--sc-37)">
               <text x="360" y="146" text-anchor="end" font-weight="500">The gap the customer</text>
               <text x="360" y="164" text-anchor="end" font-weight="500">discovers after paying</text>
             </g>
-            <line x1="368" y1="152" x2="536" y2="152" stroke="#e0705f" stroke-width="1.2" stroke-dasharray="3 4"></line>
+            <line x1="368" y1="152" x2="536" y2="152" stroke="var(--sc-31)" stroke-width="1.2" stroke-dasharray="3 4"></line>
 
-            <line x1="900" y1="46" x2="900" y2="258" stroke="rgba(190,215,235,.28)" stroke-dasharray="4 5"></line>
-            <g font-family="'IBM Plex Mono', monospace" font-size="10.5" fill="#8ba1b4">
+            <line x1="900" y1="46" x2="900" y2="258" stroke="var(--sc-10)" stroke-dasharray="4 5"></line>
+            <g font-family="'IBM Plex Mono', monospace" font-size="10.5" fill="var(--sc-30)">
               <text x="100" y="262">PACK PURCHASED</text>
               <text x="900" y="278" text-anchor="middle">VALIDITY EXPIRES</text>
             </g>
-            <g font-family="'IBM Plex Sans', sans-serif" font-size="12.5" fill="#e0705f">
+            <g font-family="'IBM Plex Sans', sans-serif" font-size="12.5" fill="var(--sc-31)">
               <text x="900" y="298" text-anchor="middle">Unredeemed balance today: a support ticket, not a refund</text>
             </g>
           </svg>
         </div>
 
-        <figcaption style="margin:22px 0 0;padding-top:18px;border-top:1px solid rgba(190,215,235,.12);max-width:88ch;font:italic 400 14px/1.6 'Newsreader',Georgia,serif;color:#8ba1b4">Pack sales scale with marketing; redemption scales with Experts on the ground in one micro-market. Nothing in the product forces those two lines to meet — so the wedge between them is sold, paid for, and then expires. Support reportedly explains it as "high demand" while packs continue to sell.</figcaption>
+        <figcaption style="margin:22px 0 0;padding-top:18px;border-top:1px solid var(--sc-08);max-width:88ch;font:italic 400 14px/1.6 'Newsreader',Georgia,serif;color:var(--sc-30)">Pack sales scale with marketing; redemption scales with Experts on the ground in one micro-market. Nothing in the product forces those two lines to meet — so the wedge between them is sold, paid for, and then expires. Support reportedly explains it as "high demand" while packs continue to sell.</figcaption>
       </figure>
     </div>
   </section>
@@ -368,76 +592,76 @@
   <!-- ══ THE REFRAME ══ -->
   <section data-screen-label="The reframe" id="insight" style="padding:120px 40px 0">
     <div style="max-width:1120px;margin:0 auto">
-      <div style="padding:56px 56px 52px;background:linear-gradient(180deg,#102437 0%,#0b1a28 100%);border:1px solid rgba(240,180,94,.28);border-radius:22px">
-        <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#f0b45e">03 — The reframe</div>
-        <h2 style="max-width:30ch;margin:22px 0 0;font:300 clamp(32px,4vw,54px)/1.06 'Newsreader',Georgia,serif;letter-spacing:-.02em;color:#f6fafc">These are not support problems in disguise. They are the absence of a policy engine.</h2>
-        <p style="max-width:66ch;margin:26px 0 0;font:400 18px/1.65 'IBM Plex Sans',sans-serif;color:#b3c8d8;text-wrap:pretty">This is the sentence that reorganised the document. Every failure above has the same shape: a decision the system is not allowed to make, arriving as a human problem. Adding support headcount makes that queue faster. It does not make it smaller.</p>
+      <div style="padding:56px 56px 52px;background:linear-gradient(180deg,var(--sc-44) 0%,var(--sc-45) 100%);border:1px solid var(--sc-46);border-radius:22px">
+        <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sc-11)">03 — The reframe</div>
+        <h2 style="max-width:30ch;margin:22px 0 0;font:300 clamp(32px,4vw,54px)/1.06 'Newsreader',Georgia,serif;letter-spacing:-.02em;color:var(--sc-47)">These are not support problems in disguise. They are the absence of a policy engine.</h2>
+        <p style="max-width:66ch;margin:26px 0 0;font:400 18px/1.65 'IBM Plex Sans',sans-serif;color:var(--sc-48);text-wrap:pretty">This is the sentence that reorganised the document. Every failure above has the same shape: a decision the system is not allowed to make, arriving as a human problem. Adding support headcount makes that queue faster. It does not make it smaller.</p>
 
         <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:40px 0 0">
-          <div style="padding:22px 22px 20px;background:rgba(8,19,31,.55);border:1px solid rgba(190,215,235,.14);border-radius:14px">
-            <div style="font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#7f96aa">Symptom</div>
-            <div style="margin:12px 0 0;font:400 17px/1.45 'IBM Plex Sans',sans-serif;color:#e8f1f7">"We cannot refund, we cannot allot new professional."</div>
-            <div style="margin:18px 0 0;padding-top:16px;border-top:1px dashed rgba(190,215,235,.2);font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#f0b45e">Missing engine</div>
-            <div style="margin:10px 0 0;font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:#a9bfd0">An agent-side authority rule. Nobody at the front line can approve what policy already allows.</div>
+          <div style="padding:22px 22px 20px;background:var(--sc-49);border:1px solid var(--sc-23);border-radius:14px">
+            <div style="font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--sc-13)">Symptom</div>
+            <div style="margin:12px 0 0;font:400 17px/1.45 'IBM Plex Sans',sans-serif;color:var(--sc-19)">"We cannot refund, we cannot allot new professional."</div>
+            <div style="margin:18px 0 0;padding-top:16px;border-top:1px dashed var(--sc-15);font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--sc-11)">Missing engine</div>
+            <div style="margin:10px 0 0;font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:var(--sc-18)">An agent-side authority rule. Nobody at the front line can approve what policy already allows.</div>
           </div>
-          <div style="padding:22px 22px 20px;background:rgba(8,19,31,.55);border:1px solid rgba(190,215,235,.14);border-radius:14px">
-            <div style="font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#7f96aa">Symptom</div>
-            <div style="margin:12px 0 0;font:400 17px/1.45 'IBM Plex Sans',sans-serif;color:#e8f1f7">Booking locked because it is "past scheduled time."</div>
-            <div style="margin:18px 0 0;padding-top:16px;border-top:1px dashed rgba(190,215,235,.2);font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#f0b45e">Missing engine</div>
-            <div style="margin:10px 0 0;font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:#a9bfd0">An override path. A rule written for late customers fires hardest on the ones the platform failed.</div>
+          <div style="padding:22px 22px 20px;background:var(--sc-49);border:1px solid var(--sc-23);border-radius:14px">
+            <div style="font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--sc-13)">Symptom</div>
+            <div style="margin:12px 0 0;font:400 17px/1.45 'IBM Plex Sans',sans-serif;color:var(--sc-19)">Booking locked because it is "past scheduled time."</div>
+            <div style="margin:18px 0 0;padding-top:16px;border-top:1px dashed var(--sc-15);font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--sc-11)">Missing engine</div>
+            <div style="margin:10px 0 0;font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:var(--sc-18)">An override path. A rule written for late customers fires hardest on the ones the platform failed.</div>
           </div>
-          <div style="padding:22px 22px 20px;background:rgba(8,19,31,.55);border:1px solid rgba(190,215,235,.14);border-radius:14px">
-            <div style="font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#7f96aa">Symptom</div>
-            <div style="margin:12px 0 0;font:400 17px/1.45 'IBM Plex Sans',sans-serif;color:#e8f1f7">A theft report resolved with the worker's "second chance."</div>
-            <div style="margin:18px 0 0;padding-top:16px;border-top:1px dashed rgba(190,215,235,.2);font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#f0b45e">Missing engine</div>
-            <div style="margin:10px 0 0;font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:#a9bfd0">A defined suspension trigger. No evidence standard, no owner, no consequence.</div>
+          <div style="padding:22px 22px 20px;background:var(--sc-49);border:1px solid var(--sc-23);border-radius:14px">
+            <div style="font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--sc-13)">Symptom</div>
+            <div style="margin:12px 0 0;font:400 17px/1.45 'IBM Plex Sans',sans-serif;color:var(--sc-19)">A theft report resolved with the worker's "second chance."</div>
+            <div style="margin:18px 0 0;padding-top:16px;border-top:1px dashed var(--sc-15);font:400 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--sc-11)">Missing engine</div>
+            <div style="margin:10px 0 0;font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:var(--sc-18)">A defined suspension trigger. No evidence standard, no owner, no consequence.</div>
           </div>
         </div>
       </div>
 
       <!-- Figure 3: recovery before / after -->
-      <figure style="margin:56px 0 0;padding:34px 36px 30px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-radius:18px">
-        <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#f0b45e">Figure 3</div>
-        <div style="margin:14px 0 4px;font:400 24px/1.25 'Newsreader',Georgia,serif;color:#eef5fa">One failed booking, two recovery paths</div>
-        <div style="font:400 14px/1.5 'IBM Plex Sans',sans-serif;color:#8ba1b4">Same trigger — Expert never arrived — traced through today's product and the proposed one</div>
+      <figure style="margin:56px 0 0;padding:34px 36px 30px;background:var(--sc-24);border:1px solid var(--sc-23);border-radius:18px">
+        <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sc-11)">Figure 3</div>
+        <div style="margin:14px 0 4px;font:400 24px/1.25 'Newsreader',Georgia,serif;color:var(--sc-29)">One failed booking, two recovery paths</div>
+        <div style="font:400 14px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-30)">Same trigger — Expert never arrived — traced through today's product and the proposed one</div>
 
         <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:30px">
-          <div style="padding:24px 24px 20px;background:rgba(224,112,95,.06);border:1px solid rgba(224,112,95,.28);border-radius:14px">
+          <div style="padding:24px 24px 20px;background:var(--sc-50);border:1px solid var(--sc-51);border-radius:14px">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-              <span style="font:500 13px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#e9a396">Today</span>
-              <span style="display:inline-flex;align-items:center;white-space:nowrap;padding:6px 11px;background:rgba(224,112,95,.18);border-radius:999px;font:500 11.5px/1.2 'IBM Plex Mono',monospace;color:#f2bfb5">7 steps · 24h+</span>
+              <span style="font:500 13px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--sc-37)">Today</span>
+              <span style="display:inline-flex;align-items:center;white-space:nowrap;padding:6px 11px;background:var(--sc-52);border-radius:999px;font:500 11.5px/1.2 'IBM Plex Mono',monospace;color:var(--sc-38)">7 steps · 24h+</span>
             </div>
             <ol style="margin:22px 0 0;padding:0;list-style:none;display:grid;gap:0">
-              <li style="padding-bottom:18px;border-left:1px solid rgba(224,112,95,.3);margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:#e0705f"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:#dbe7ef">Customer notices nobody came</span></li>
-              <li style="padding-bottom:18px;border-left:1px solid rgba(224,112,95,.3);margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:rgba(224,112,95,.5)"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:#dbe7ef">Calls the Expert — unanswered</span></li>
-              <li style="padding-bottom:18px;border-left:1px solid rgba(224,112,95,.3);margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:rgba(224,112,95,.5)"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:#dbe7ef">Tries to cancel — <strong style="font-weight:500;color:#f2bfb5">blocked, past scheduled time</strong></span></li>
-              <li style="padding-bottom:18px;border-left:1px solid rgba(224,112,95,.3);margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:rgba(224,112,95,.5)"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:#dbe7ef">Emails support → 24-hour SLA, mid-booking</span></li>
-              <li style="padding-bottom:18px;border-left:1px solid rgba(224,112,95,.3);margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:rgba(224,112,95,.5)"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:#dbe7ef">Agent: no refund, no reassignment, no escalation</span></li>
-              <li style="padding-bottom:18px;border-left:1px solid rgba(224,112,95,.3);margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:rgba(224,112,95,.5)"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:#dbe7ef">Posts a public review</span></li>
-              <li style="margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:#e0705f"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:#dbe7ef">Founder's-office number resolves it — <strong style="font-weight:500;color:#f2bfb5">off-system</strong></span></li>
+              <li style="padding-bottom:18px;border-left:1px solid var(--sc-53);margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:var(--sc-31)"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-54)">Customer notices nobody came</span></li>
+              <li style="padding-bottom:18px;border-left:1px solid var(--sc-53);margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:var(--sc-55)"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-54)">Calls the Expert — unanswered</span></li>
+              <li style="padding-bottom:18px;border-left:1px solid var(--sc-53);margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:var(--sc-55)"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-54)">Tries to cancel — <strong style="font-weight:500;color:var(--sc-38)">blocked, past scheduled time</strong></span></li>
+              <li style="padding-bottom:18px;border-left:1px solid var(--sc-53);margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:var(--sc-55)"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-54)">Emails support → 24-hour SLA, mid-booking</span></li>
+              <li style="padding-bottom:18px;border-left:1px solid var(--sc-53);margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:var(--sc-55)"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-54)">Agent: no refund, no reassignment, no escalation</span></li>
+              <li style="padding-bottom:18px;border-left:1px solid var(--sc-53);margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:var(--sc-55)"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-54)">Posts a public review</span></li>
+              <li style="margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:var(--sc-31)"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-54)">Founder's-office number resolves it — <strong style="font-weight:500;color:var(--sc-38)">off-system</strong></span></li>
             </ol>
-            <div style="margin:20px 0 0;padding-top:16px;border-top:1px dashed rgba(224,112,95,.3);font:400 14px/1.55 'IBM Plex Sans',sans-serif;color:#e9a396">Resolution exists, but it runs through goodwill and public pressure — neither of which scales to 40,000 jobs a day.</div>
+            <div style="margin:20px 0 0;padding-top:16px;border-top:1px dashed var(--sc-53);font:400 14px/1.55 'IBM Plex Sans',sans-serif;color:var(--sc-37)">Resolution exists, but it runs through goodwill and public pressure — neither of which scales to 40,000 jobs a day.</div>
           </div>
 
-          <div style="padding:24px 24px 20px;background:rgba(126,200,184,.06);border:1px solid rgba(126,200,184,.28);border-radius:14px">
+          <div style="padding:24px 24px 20px;background:var(--sc-56);border:1px solid var(--sc-57);border-radius:14px">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-              <span style="font:500 13px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#9cd3c6">Proposed</span>
-              <span style="display:inline-flex;align-items:center;white-space:nowrap;padding:6px 11px;background:rgba(126,200,184,.18);border-radius:999px;font:500 11.5px/1.2 'IBM Plex Mono',monospace;color:#bfe4da">3 steps · 0 humans</span>
+              <span style="font:500 13px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--sc-42)">Proposed</span>
+              <span style="display:inline-flex;align-items:center;white-space:nowrap;padding:6px 11px;background:var(--sc-58);border-radius:999px;font:500 11.5px/1.2 'IBM Plex Mono',monospace;color:var(--sc-43)">3 steps · 0 humans</span>
             </div>
             <ol style="margin:22px 0 0;padding:0;list-style:none;display:grid;gap:0">
-              <li style="padding-bottom:18px;border-left:1px solid rgba(126,200,184,.3);margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:#7ec8b8"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:#dbe7ef"><strong style="font-weight:500;color:#bfe4da">The system notices first.</strong> Live status inconsistent with ETA → booking flagged at-risk, customer notified</span></li>
-              <li style="padding-bottom:18px;border-left:1px solid rgba(126,200,184,.3);margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:#7ec8b8"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:#dbe7ef"><strong style="font-weight:500;color:#bfe4da">Cancel stays open.</strong> No lockout past scheduled time, ever</span></li>
-              <li style="margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:#7ec8b8"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:#dbe7ef"><strong style="font-weight:500;color:#bfe4da">No-show past grace auto-resolves.</strong> Refund or credit issued against visit data, status visible until it lands</span></li>
+              <li style="padding-bottom:18px;border-left:1px solid var(--sc-59);margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:var(--sc-39)"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-54)"><strong style="font-weight:500;color:var(--sc-43)">The system notices first.</strong> Live status inconsistent with ETA → booking flagged at-risk, customer notified</span></li>
+              <li style="padding-bottom:18px;border-left:1px solid var(--sc-59);margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:var(--sc-39)"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-54)"><strong style="font-weight:500;color:var(--sc-43)">Cancel stays open.</strong> No lockout past scheduled time, ever</span></li>
+              <li style="margin-left:9px;padding-left:22px;position:relative"><span style="position:absolute;left:-6px;top:2px;width:11px;height:11px;border-radius:999px;background:var(--sc-39)"></span><span style="font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-54)"><strong style="font-weight:500;color:var(--sc-43)">No-show past grace auto-resolves.</strong> Refund or credit issued against visit data, status visible until it lands</span></li>
             </ol>
-            <div style="margin:26px 0 0;padding:18px 18px;background:rgba(8,19,31,.5);border-radius:12px">
-              <div style="font:400 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#7f96aa">Escape hatch, not the default</div>
-              <div style="margin:10px 0 0;font:400 14.5px/1.55 'IBM Plex Sans',sans-serif;color:#a9bfd0">A live human reachable in every hour bookings can be placed — with authority to refund, reassign or cancel inside published policy, without escalating.</div>
+            <div style="margin:26px 0 0;padding:18px 18px;background:var(--sc-60);border-radius:12px">
+              <div style="font:400 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--sc-13)">Escape hatch, not the default</div>
+              <div style="margin:10px 0 0;font:400 14.5px/1.55 'IBM Plex Sans',sans-serif;color:var(--sc-18)">A live human reachable in every hour bookings can be placed — with authority to refund, reassign or cancel inside published policy, without escalating.</div>
             </div>
-            <div style="margin:20px 0 0;padding-top:16px;border-top:1px dashed rgba(126,200,184,.3);font:400 14px/1.55 'IBM Plex Sans',sans-serif;color:#9cd3c6">Nothing here is a new feature. It is the same policy, made enforceable by the system that caused the failure.</div>
+            <div style="margin:20px 0 0;padding-top:16px;border-top:1px dashed var(--sc-59);font:400 14px/1.55 'IBM Plex Sans',sans-serif;color:var(--sc-42)">Nothing here is a new feature. It is the same policy, made enforceable by the system that caused the failure.</div>
           </div>
         </div>
 
-        <figcaption style="margin:24px 0 0;padding-top:18px;border-top:1px solid rgba(190,215,235,.12);max-width:88ch;font:italic 400 14px/1.6 'Newsreader',Georgia,serif;color:#8ba1b4">Steps on the left are drawn from a single documented review thread; the right column is this PRD's Journeys A, C and D applied to the same trigger. The measure of success is not a faster queue — it is the left column becoming unreachable.</figcaption>
+        <figcaption style="margin:24px 0 0;padding-top:18px;border-top:1px solid var(--sc-08);max-width:88ch;font:italic 400 14px/1.6 'Newsreader',Georgia,serif;color:var(--sc-30)">Steps on the left are drawn from a single documented review thread; the right column is this PRD's Journeys A, C and D applied to the same trigger. The measure of success is not a faster queue — it is the left column becoming unreachable.</figcaption>
       </figure>
     </div>
   </section>
@@ -445,82 +669,82 @@
   <!-- ══ EVIDENCE ══ -->
   <section data-screen-label="Evidence" id="research" style="padding:120px 40px 0">
     <div style="max-width:1120px;margin:0 auto">
-      <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#7f96aa">04 — How I built the evidence</div>
-      <h2 style="max-width:26ch;margin:22px 0 0;font:300 clamp(32px,3.8vw,50px)/1.08 'Newsreader',Georgia,serif;letter-spacing:-.02em;color:#f1f6fa">No internal data — so I said so, and triangulated</h2>
-      <p style="max-width:64ch;margin:24px 0 0;font:400 17px/1.68 'IBM Plex Sans',sans-serif;color:#a9bfd0;text-wrap:pretty">A claim only entered the PRD if it appeared in at least two of these three sources. Everything else is written as an assumption or an open question.</p>
+      <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sc-13)">04 — How I built the evidence</div>
+      <h2 style="max-width:26ch;margin:22px 0 0;font:300 clamp(32px,3.8vw,50px)/1.08 'Newsreader',Georgia,serif;letter-spacing:-.02em;color:var(--sc-27)">No internal data — so I said so, and triangulated</h2>
+      <p style="max-width:64ch;margin:24px 0 0;font:400 17px/1.68 'IBM Plex Sans',sans-serif;color:var(--sc-18);text-wrap:pretty">A claim only entered the PRD if it appeared in at least two of these three sources. Everything else is written as an assumption or an open question.</p>
 
-      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:44px 0 0;background:rgba(190,215,235,.14);border:1px solid rgba(190,215,235,.14);border-radius:16px;overflow:hidden">
-        <div style="padding:30px 28px;background:#0b1a28">
-          <div style="display:grid;place-items:center;width:38px;height:38px;border-radius:999px;border:1px solid rgba(240,180,94,.4);font:500 13px/1 'IBM Plex Mono',monospace;color:#f0b45e">A</div>
-          <div style="margin:20px 0 0;font:400 20px/1.3 'Newsreader',Georgia,serif;color:#eef5fa">The live product</div>
-          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">Marketed ~10-minute promise, ₹99/hr flat pricing, instant and scheduled booking, prepaid packs, the published cancellation policy and its 15-minute mutual grace period.</p>
-          <div style="margin:18px 0 0;font:400 12px/1.5 'IBM Plex Mono',monospace;color:#6c8299">snabbit.com · in-app policy</div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:44px 0 0;background:var(--sc-23);border:1px solid var(--sc-23);border-radius:16px;overflow:hidden">
+        <div style="padding:30px 28px;background:var(--sc-24)">
+          <div style="display:grid;place-items:center;width:38px;height:38px;border-radius:999px;border:1px solid var(--sc-61);font:500 13px/1 'IBM Plex Mono',monospace;color:var(--sc-11)">A</div>
+          <div style="margin:20px 0 0;font:400 20px/1.3 'Newsreader',Georgia,serif;color:var(--sc-29)">The live product</div>
+          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">Marketed ~10-minute promise, ₹99/hr flat pricing, instant and scheduled booking, prepaid packs, the published cancellation policy and its 15-minute mutual grace period.</p>
+          <div style="margin:18px 0 0;font:400 12px/1.5 'IBM Plex Mono',monospace;color:var(--sc-33)">snabbit.com · in-app policy</div>
         </div>
-        <div style="padding:30px 28px;background:#0b1a28">
-          <div style="display:grid;place-items:center;width:38px;height:38px;border-radius:999px;border:1px solid rgba(240,180,94,.4);font:500 13px/1 'IBM Plex Mono',monospace;color:#f0b45e">B</div>
-          <div style="margin:20px 0 0;font:400 20px/1.3 'Newsreader',Georgia,serif;color:#eef5fa">App-store reviews</div>
-          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">Where the specific failure modes came from: the 30-minute-late assignment, the cancel lockout, pack slots unavailable until expiry, inaccurate location detection, refunds promised and not received.</p>
-          <div style="margin:18px 0 0;font:400 12px/1.5 'IBM Plex Mono',monospace;color:#6c8299">App Store · Play Store</div>
+        <div style="padding:30px 28px;background:var(--sc-24)">
+          <div style="display:grid;place-items:center;width:38px;height:38px;border-radius:999px;border:1px solid var(--sc-61);font:500 13px/1 'IBM Plex Mono',monospace;color:var(--sc-11)">B</div>
+          <div style="margin:20px 0 0;font:400 20px/1.3 'Newsreader',Georgia,serif;color:var(--sc-29)">App-store reviews</div>
+          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">Where the specific failure modes came from: the 30-minute-late assignment, the cancel lockout, pack slots unavailable until expiry, inaccurate location detection, refunds promised and not received.</p>
+          <div style="margin:18px 0 0;font:400 12px/1.5 'IBM Plex Mono',monospace;color:var(--sc-33)">App Store · Play Store</div>
         </div>
-        <div style="padding:30px 28px;background:#0b1a28">
-          <div style="display:grid;place-items:center;width:38px;height:38px;border-radius:999px;border:1px solid rgba(240,180,94,.4);font:500 13px/1 'IBM Plex Mono',monospace;color:#f0b45e">C</div>
-          <div style="margin:20px 0 0;font:400 20px/1.3 'Newsreader',Georgia,serif;color:#eef5fa">Press &amp; worker reporting</div>
-          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">The Noida theft case, ground reporting on harassment fears and self-invented safeguards, overridden break windows, the Kavach launch, and sector framing of safety as the category's decisive risk.</p>
-          <div style="margin:18px 0 0;font:400 12px/1.5 'IBM Plex Mono',monospace;color:#6c8299">ThePrint · Scroll.in · Business&nbsp;Standard · TechCrunch · Reuters</div>
+        <div style="padding:30px 28px;background:var(--sc-24)">
+          <div style="display:grid;place-items:center;width:38px;height:38px;border-radius:999px;border:1px solid var(--sc-61);font:500 13px/1 'IBM Plex Mono',monospace;color:var(--sc-11)">C</div>
+          <div style="margin:20px 0 0;font:400 20px/1.3 'Newsreader',Georgia,serif;color:var(--sc-29)">Press &amp; worker reporting</div>
+          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">The Noida theft case, ground reporting on harassment fears and self-invented safeguards, overridden break windows, the Kavach launch, and sector framing of safety as the category's decisive risk.</p>
+          <div style="margin:18px 0 0;font:400 12px/1.5 'IBM Plex Mono',monospace;color:var(--sc-33)">ThePrint · Scroll.in · Business&nbsp;Standard · TechCrunch · Reuters</div>
         </div>
       </div>
 
       <!-- competitive matrix -->
       <figure style="margin:56px 0 0">
-        <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#f0b45e">Figure 4</div>
-        <div style="margin:14px 0 4px;font:400 24px/1.25 'Newsreader',Georgia,serif;color:#eef5fa">Speed is now parity. Nobody has taken the next gap.</div>
-        <div style="font:400 14px/1.5 'IBM Plex Sans',sans-serif;color:#8ba1b4">Publicly stated positions, July 2026</div>
+        <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sc-11)">Figure 4</div>
+        <div style="margin:14px 0 4px;font:400 24px/1.25 'Newsreader',Georgia,serif;color:var(--sc-29)">Speed is now parity. Nobody has taken the next gap.</div>
+        <div style="font:400 14px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-30)">Publicly stated positions, July 2026</div>
 
-        <div style="margin-top:26px;overflow-x:auto;border:1px solid rgba(190,215,235,.14);border-radius:16px">
-          <table style="width:100%;min-width:820px;border-collapse:collapse;background:#0b1a28">
+        <div style="margin-top:26px;overflow-x:auto;border:1px solid var(--sc-23);border-radius:16px">
+          <table style="width:100%;min-width:820px;border-collapse:collapse;background:var(--sc-24)">
             <thead>
               <tr>
-                <th style="padding:18px 22px;text-align:left;background:#102437;font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#8ba1b4;border-bottom:1px solid rgba(190,215,235,.14)"></th>
-                <th style="padding:18px 22px;text-align:left;background:#102437;font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#f0b45e;border-bottom:1px solid rgba(190,215,235,.14)">Snabbit</th>
-                <th style="padding:18px 22px;text-align:left;background:#102437;font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#8ba1b4;border-bottom:1px solid rgba(190,215,235,.14)">UC InstaHelp</th>
-                <th style="padding:18px 22px;text-align:left;background:#102437;font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#8ba1b4;border-bottom:1px solid rgba(190,215,235,.14)">Pronto</th>
+                <th style="padding:18px 22px;text-align:left;background:var(--sc-44);font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--sc-30);border-bottom:1px solid var(--sc-23)"></th>
+                <th style="padding:18px 22px;text-align:left;background:var(--sc-44);font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--sc-11);border-bottom:1px solid var(--sc-23)">Snabbit</th>
+                <th style="padding:18px 22px;text-align:left;background:var(--sc-44);font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--sc-30);border-bottom:1px solid var(--sc-23)">UC InstaHelp</th>
+                <th style="padding:18px 22px;text-align:left;background:var(--sc-44);font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--sc-30);border-bottom:1px solid var(--sc-23)">Pronto</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td style="padding:18px 22px;font:500 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#e4eef5;border-bottom:1px solid rgba(190,215,235,.1)">Speed claim</td>
-                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#a9bfd0;border-bottom:1px solid rgba(190,215,235,.1)">~10 minutes</td>
-                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#a9bfd0;border-bottom:1px solid rgba(190,215,235,.1)">Instant, on-demand</td>
-                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#a9bfd0;border-bottom:1px solid rgba(190,215,235,.1)">~15 minutes</td>
+                <td style="padding:18px 22px;font:500 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-25);border-bottom:1px solid var(--sc-62)">Speed claim</td>
+                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-18);border-bottom:1px solid var(--sc-62)">~10 minutes</td>
+                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-18);border-bottom:1px solid var(--sc-62)">Instant, on-demand</td>
+                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-18);border-bottom:1px solid var(--sc-62)">~15 minutes</td>
               </tr>
               <tr>
-                <td style="padding:18px 22px;font:500 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#e4eef5;border-bottom:1px solid rgba(190,215,235,.1);background:rgba(255,255,255,.012)">Monthly scale</td>
-                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#a9bfd0;border-bottom:1px solid rgba(190,215,235,.1);background:rgba(255,255,255,.012)">1M+ jobs (Mar 2026)</td>
-                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#a9bfd0;border-bottom:1px solid rgba(190,215,235,.1);background:rgba(255,255,255,.012)">1M+ bookings (Mar 2026)</td>
-                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#a9bfd0;border-bottom:1px solid rgba(190,215,235,.1);background:rgba(255,255,255,.012)">500k+ fulfilled</td>
+                <td style="padding:18px 22px;font:500 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-25);border-bottom:1px solid var(--sc-62);background:var(--sc-63)">Monthly scale</td>
+                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-18);border-bottom:1px solid var(--sc-62);background:var(--sc-63)">1M+ jobs (Mar 2026)</td>
+                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-18);border-bottom:1px solid var(--sc-62);background:var(--sc-63)">1M+ bookings (Mar 2026)</td>
+                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-18);border-bottom:1px solid var(--sc-62);background:var(--sc-63)">500k+ fulfilled</td>
               </tr>
               <tr>
-                <td style="padding:18px 22px;font:500 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#e4eef5;border-bottom:1px solid rgba(190,215,235,.1)">Worker safety tooling</td>
-                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#a9bfd0;border-bottom:1px solid rgba(190,215,235,.1)">SOS + Kavach risk flags (Mar 2026)</td>
-                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#a9bfd0;border-bottom:1px solid rgba(190,215,235,.1)">Not differentiated publicly</td>
-                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#a9bfd0;border-bottom:1px solid rgba(190,215,235,.1)">SOS + self-defence training</td>
+                <td style="padding:18px 22px;font:500 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-25);border-bottom:1px solid var(--sc-62)">Worker safety tooling</td>
+                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-18);border-bottom:1px solid var(--sc-62)">SOS + Kavach risk flags (Mar 2026)</td>
+                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-18);border-bottom:1px solid var(--sc-62)">Not differentiated publicly</td>
+                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-18);border-bottom:1px solid var(--sc-62)">SOS + self-defence training</td>
               </tr>
               <tr>
-                <td style="padding:18px 22px;font:500 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#e4eef5;border-bottom:1px solid rgba(190,215,235,.1);background:rgba(255,255,255,.012)">Capacity honesty at purchase</td>
-                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#e9a396;border-bottom:1px solid rgba(190,215,235,.1);background:rgba(255,255,255,.012)">Packs sold uncapped</td>
-                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#a9bfd0;border-bottom:1px solid rgba(190,215,235,.1);background:rgba(255,255,255,.012)">Not differentiated publicly</td>
-                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#a9bfd0;border-bottom:1px solid rgba(190,215,235,.1);background:rgba(255,255,255,.012)">Not differentiated publicly</td>
+                <td style="padding:18px 22px;font:500 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-25);border-bottom:1px solid var(--sc-62);background:var(--sc-63)">Capacity honesty at purchase</td>
+                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-37);border-bottom:1px solid var(--sc-62);background:var(--sc-63)">Packs sold uncapped</td>
+                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-18);border-bottom:1px solid var(--sc-62);background:var(--sc-63)">Not differentiated publicly</td>
+                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-18);border-bottom:1px solid var(--sc-62);background:var(--sc-63)">Not differentiated publicly</td>
               </tr>
               <tr>
-                <td style="padding:18px 22px;font:500 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#e4eef5">Enforced misconduct consequence</td>
-                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#e9a396">No published trigger</td>
-                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#a9bfd0">No published trigger</td>
-                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#a9bfd0">No published trigger</td>
+                <td style="padding:18px 22px;font:500 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-25)">Enforced misconduct consequence</td>
+                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-37)">No published trigger</td>
+                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-18)">No published trigger</td>
+                <td style="padding:18px 22px;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-18)">No published trigger</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <figcaption style="margin:22px 0 0;max-width:88ch;font:italic 400 14px/1.6 'Newsreader',Georgia,serif;color:#8ba1b4">All three now compete on the same clock, and all three answer safety with a button the worker has to press. The two bottom rows are empty for everyone — which is what makes them a differentiator rather than table stakes.</figcaption>
+        <figcaption style="margin:22px 0 0;max-width:88ch;font:italic 400 14px/1.6 'Newsreader',Georgia,serif;color:var(--sc-30)">All three now compete on the same clock, and all three answer safety with a button the worker has to press. The two bottom rows are empty for everyone — which is what makes them a differentiator rather than table stakes.</figcaption>
       </figure>
     </div>
   </section>
@@ -528,90 +752,90 @@
   <!-- ══ THE PROPOSAL ══ -->
   <section data-screen-label="The proposal" id="solution" style="padding:120px 40px 0">
     <div style="max-width:1120px;margin:0 auto">
-      <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#7f96aa">05 — The proposal</div>
-      <h2 style="max-width:30ch;margin:22px 0 0;font:300 clamp(32px,3.8vw,50px)/1.08 'Newsreader',Georgia,serif;letter-spacing:-.02em;color:#f1f6fa">Make the promise hold on both sides of the booking</h2>
-      <p style="max-width:66ch;margin:24px 0 0;font:400 17px/1.68 'IBM Plex Sans',sans-serif;color:#a9bfd0;text-wrap:pretty">Capacity sold matches capacity that can actually be delivered; a failing visit resolves itself before a human is needed; and Experts are protected proactively rather than left to invent their own coping routines.</p>
+      <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sc-13)">05 — The proposal</div>
+      <h2 style="max-width:30ch;margin:22px 0 0;font:300 clamp(32px,3.8vw,50px)/1.08 'Newsreader',Georgia,serif;letter-spacing:-.02em;color:var(--sc-27)">Make the promise hold on both sides of the booking</h2>
+      <p style="max-width:66ch;margin:24px 0 0;font:400 17px/1.68 'IBM Plex Sans',sans-serif;color:var(--sc-18);text-wrap:pretty">Capacity sold matches capacity that can actually be delivered; a failing visit resolves itself before a human is needed; and Experts are protected proactively rather than left to invent their own coping routines.</p>
 
       <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:44px 0 0">
-        <div style="padding:30px 26px 28px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-radius:16px">
-          <div style="font:300 40px/1 'Newsreader',Georgia,serif;color:#f0b45e">01</div>
-          <div style="margin:18px 0 0;font:400 21px/1.3 'Newsreader',Georgia,serif;color:#eef5fa">Customers only buy what can be delivered</div>
-          <p style="margin:14px 0 0;font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">Packs and instant slots capped to forecast micro-market capacity — and any balance that can't be honoured refunds itself.</p>
+        <div style="padding:30px 26px 28px;background:var(--sc-24);border:1px solid var(--sc-23);border-radius:16px">
+          <div style="font:300 40px/1 'Newsreader',Georgia,serif;color:var(--sc-11)">01</div>
+          <div style="margin:18px 0 0;font:400 21px/1.3 'Newsreader',Georgia,serif;color:var(--sc-29)">Customers only buy what can be delivered</div>
+          <p style="margin:14px 0 0;font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">Packs and instant slots capped to forecast micro-market capacity — and any balance that can't be honoured refunds itself.</p>
         </div>
-        <div style="padding:30px 26px 28px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-radius:16px">
-          <div style="font:300 40px/1 'Newsreader',Georgia,serif;color:#f0b45e">02</div>
-          <div style="margin:18px 0 0;font:400 21px/1.3 'Newsreader',Georgia,serif;color:#eef5fa">A failing booking fixes itself first</div>
-          <p style="margin:14px 0 0;font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">No-shows, lockouts and stuck refunds resolve against visit data, with a live human reachable when they can't.</p>
+        <div style="padding:30px 26px 28px;background:var(--sc-24);border:1px solid var(--sc-23);border-radius:16px">
+          <div style="font:300 40px/1 'Newsreader',Georgia,serif;color:var(--sc-11)">02</div>
+          <div style="margin:18px 0 0;font:400 21px/1.3 'Newsreader',Georgia,serif;color:var(--sc-29)">A failing booking fixes itself first</div>
+          <p style="margin:14px 0 0;font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">No-shows, lockouts and stuck refunds resolve against visit data, with a live human reachable when they can't.</p>
         </div>
-        <div style="padding:30px 26px 28px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-radius:16px">
-          <div style="font:300 40px/1 'Newsreader',Georgia,serif;color:#f0b45e">03</div>
-          <div style="margin:18px 0 0;font:400 21px/1.3 'Newsreader',Georgia,serif;color:#eef5fa">Experts are protected before something goes wrong</div>
-          <p style="margin:14px 0 0;font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">Logged proactive check-ins, an enforced consequence for substantiated misconduct, and a break schedule the app honours.</p>
+        <div style="padding:30px 26px 28px;background:var(--sc-24);border:1px solid var(--sc-23);border-radius:16px">
+          <div style="font:300 40px/1 'Newsreader',Georgia,serif;color:var(--sc-11)">03</div>
+          <div style="margin:18px 0 0;font:400 21px/1.3 'Newsreader',Georgia,serif;color:var(--sc-29)">Experts are protected before something goes wrong</div>
+          <p style="margin:14px 0 0;font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">Logged proactive check-ins, an enforced consequence for substantiated misconduct, and a break schedule the app honours.</p>
         </div>
       </div>
 
       <!-- Figure 5: two-sided journey map -->
-      <figure style="margin:56px 0 0;padding:34px 36px 30px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-radius:18px">
-        <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#f0b45e">Figure 5</div>
-        <div style="margin:14px 0 4px;font:400 24px/1.25 'Newsreader',Georgia,serif;color:#eef5fa">The conceptual model: one booking, two sides, four moments</div>
-        <div style="font:400 14px/1.5 'IBM Plex Sans',sans-serif;color:#8ba1b4">Customer above the line, Expert below — every requirement in the PRD hangs off one cell of this grid</div>
+      <figure style="margin:56px 0 0;padding:34px 36px 30px;background:var(--sc-24);border:1px solid var(--sc-23);border-radius:18px">
+        <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sc-11)">Figure 5</div>
+        <div style="margin:14px 0 4px;font:400 24px/1.25 'Newsreader',Georgia,serif;color:var(--sc-29)">The conceptual model: one booking, two sides, four moments</div>
+        <div style="font:400 14px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-30)">Customer above the line, Expert below — every requirement in the PRD hangs off one cell of this grid</div>
 
         <div style="margin-top:30px;overflow-x:auto">
           <div style="min-width:900px">
             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
-              <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#7f96aa;padding-bottom:14px">Before the visit</div>
-              <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#7f96aa;padding-bottom:14px">Dispatch &amp; arrival</div>
-              <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#7f96aa;padding-bottom:14px">During the visit</div>
-              <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#7f96aa;padding-bottom:14px">When it breaks</div>
+              <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--sc-13);padding-bottom:14px">Before the visit</div>
+              <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--sc-13);padding-bottom:14px">Dispatch &amp; arrival</div>
+              <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--sc-13);padding-bottom:14px">During the visit</div>
+              <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--sc-13);padding-bottom:14px">When it breaks</div>
             </div>
 
             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
-              <div style="padding:20px 20px 18px;background:rgba(240,180,94,.07);border:1px solid rgba(240,180,94,.26);border-radius:14px">
-                <div style="font:400 15.5px/1.45 'IBM Plex Sans',sans-serif;color:#f4e2c6">Real redemption availability shown <em style="font-style:italic;color:#f0b45e">before</em> the pack is paid for</div>
-                <div style="margin:12px 0 0;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:#93a9bb">Reschedule limits and fees disclosed at purchase. No pack required for a first booking.</div>
+              <div style="padding:20px 20px 18px;background:var(--sc-64);border:1px solid var(--sc-65);border-radius:14px">
+                <div style="font:400 15.5px/1.45 'IBM Plex Sans',sans-serif;color:var(--sc-66)">Real redemption availability shown <em style="font-style:italic;color:var(--sc-11)">before</em> the pack is paid for</div>
+                <div style="margin:12px 0 0;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-26)">Reschedule limits and fees disclosed at purchase. No pack required for a first booking.</div>
               </div>
-              <div style="padding:20px 20px 18px;background:rgba(240,180,94,.07);border:1px solid rgba(240,180,94,.26);border-radius:14px">
-                <div style="font:400 15.5px/1.45 'IBM Plex Sans',sans-serif;color:#f4e2c6">At-risk flag fires <em style="font-style:italic;color:#f0b45e">before</em> the ETA is breached</div>
-                <div style="margin:12px 0 0;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:#93a9bb">Map-pin confirmation and a distance sanity check against the promised ETA before dispatch.</div>
+              <div style="padding:20px 20px 18px;background:var(--sc-64);border:1px solid var(--sc-65);border-radius:14px">
+                <div style="font:400 15.5px/1.45 'IBM Plex Sans',sans-serif;color:var(--sc-66)">At-risk flag fires <em style="font-style:italic;color:var(--sc-11)">before</em> the ETA is breached</div>
+                <div style="margin:12px 0 0;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-26)">Map-pin confirmation and a distance sanity check against the promised ETA before dispatch.</div>
               </div>
-              <div style="padding:20px 20px 18px;background:rgba(240,180,94,.07);border:1px solid rgba(240,180,94,.26);border-radius:14px">
-                <div style="font:400 15.5px/1.45 'IBM Plex Sans',sans-serif;color:#f4e2c6">Live status and the booked task list, visible throughout</div>
-                <div style="margin:12px 0 0;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:#93a9bb">So completed work isn't disputed afterwards — by either side.</div>
+              <div style="padding:20px 20px 18px;background:var(--sc-64);border:1px solid var(--sc-65);border-radius:14px">
+                <div style="font:400 15.5px/1.45 'IBM Plex Sans',sans-serif;color:var(--sc-66)">Live status and the booked task list, visible throughout</div>
+                <div style="margin:12px 0 0;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-26)">So completed work isn't disputed afterwards — by either side.</div>
               </div>
-              <div style="padding:20px 20px 18px;background:rgba(240,180,94,.07);border:1px solid rgba(240,180,94,.26);border-radius:14px">
-                <div style="font:400 15.5px/1.45 'IBM Plex Sans',sans-serif;color:#f4e2c6">Structured report → auto-resolution → visible refund status</div>
-                <div style="margin:12px 0 0;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:#93a9bb">Never a lockout. A live human in every bookable hour, with authority to act.</div>
+              <div style="padding:20px 20px 18px;background:var(--sc-64);border:1px solid var(--sc-65);border-radius:14px">
+                <div style="font:400 15.5px/1.45 'IBM Plex Sans',sans-serif;color:var(--sc-66)">Structured report → auto-resolution → visible refund status</div>
+                <div style="margin:12px 0 0;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-26)">Never a lockout. A live human in every bookable hour, with authority to act.</div>
               </div>
             </div>
 
             <div style="display:flex;align-items:center;gap:16px;margin:22px 0">
-              <span style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#f0b45e;white-space:nowrap">↑ Customer</span>
-              <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(240,180,94,.5),rgba(126,200,184,.5))"></span>
-              <span style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#7ec8b8;white-space:nowrap">Expert ↓</span>
+              <span style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--sc-11);white-space:nowrap">↑ Customer</span>
+              <span style="flex:1;height:1px;background:linear-gradient(90deg,var(--sc-67),var(--sc-68))"></span>
+              <span style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--sc-40);white-space:nowrap">Expert ↓</span>
             </div>
 
             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
-              <div style="padding:20px 20px 18px;background:rgba(126,200,184,.07);border:1px solid rgba(126,200,184,.26);border-radius:14px">
-                <div style="font:400 15.5px/1.45 'IBM Plex Sans',sans-serif;color:#cfe9e1">Flag discomfort about a booking <em style="font-style:italic;color:#7ec8b8">before</em> accepting</div>
-                <div style="margin:12px 0 0;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:#93a9bb">With no penalty to future assignment — replacing the informal screening Experts do today.</div>
+              <div style="padding:20px 20px 18px;background:var(--sc-69);border:1px solid var(--sc-70);border-radius:14px">
+                <div style="font:400 15.5px/1.45 'IBM Plex Sans',sans-serif;color:var(--sc-71)">Flag discomfort about a booking <em style="font-style:italic;color:var(--sc-40)">before</em> accepting</div>
+                <div style="margin:12px 0 0;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-26)">With no penalty to future assignment — replacing the informal screening Experts do today.</div>
               </div>
-              <div style="padding:20px 20px 18px;background:rgba(126,200,184,.07);border:1px solid rgba(126,200,184,.26);border-radius:14px">
-                <div style="font:400 15.5px/1.45 'IBM Plex Sans',sans-serif;color:#cfe9e1">Break windows fixed for the shift once assigned</div>
-                <div style="margin:12px 0 0;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:#93a9bb">No silent mid-shift override. Adherence logged, not surveyed.</div>
+              <div style="padding:20px 20px 18px;background:var(--sc-69);border:1px solid var(--sc-70);border-radius:14px">
+                <div style="font:400 15.5px/1.45 'IBM Plex Sans',sans-serif;color:var(--sc-71)">Break windows fixed for the shift once assigned</div>
+                <div style="margin:12px 0 0;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-26)">No silent mid-shift override. Adherence logged, not surveyed.</div>
               </div>
-              <div style="padding:20px 20px 18px;background:rgba(126,200,184,.07);border:1px solid rgba(126,200,184,.26);border-radius:14px">
-                <div style="font:400 15.5px/1.45 'IBM Plex Sans',sans-serif;color:#cfe9e1">Discreet periodic safety check-ins, logged</div>
-                <div style="margin:12px 0 0;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:#93a9bb">No SOS press required. Response rate and acknowledgment time recorded for coverage.</div>
+              <div style="padding:20px 20px 18px;background:var(--sc-69);border:1px solid var(--sc-70);border-radius:14px">
+                <div style="font:400 15.5px/1.45 'IBM Plex Sans',sans-serif;color:var(--sc-71)">Discreet periodic safety check-ins, logged</div>
+                <div style="margin:12px 0 0;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-26)">No SOS press required. Response rate and acknowledgment time recorded for coverage.</div>
               </div>
-              <div style="padding:20px 20px 18px;background:rgba(126,200,184,.07);border:1px solid rgba(126,200,184,.26);border-radius:14px">
-                <div style="font:400 15.5px/1.45 'IBM Plex Sans',sans-serif;color:#cfe9e1">Substantiated misconduct suspends pending review</div>
-                <div style="margin:12px 0 0;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:#93a9bb">Both directions: the customer gets concrete support for a police report; the Expert gets a defined process.</div>
+              <div style="padding:20px 20px 18px;background:var(--sc-69);border:1px solid var(--sc-70);border-radius:14px">
+                <div style="font:400 15.5px/1.45 'IBM Plex Sans',sans-serif;color:var(--sc-71)">Substantiated misconduct suspends pending review</div>
+                <div style="margin:12px 0 0;font:400 13.5px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-26)">Both directions: the customer gets concrete support for a police report; the Expert gets a defined process.</div>
               </div>
             </div>
           </div>
         </div>
 
-        <figcaption style="margin:24px 0 0;padding-top:18px;border-top:1px solid rgba(190,215,235,.12);max-width:88ch;font:italic 400 14px/1.6 'Newsreader',Georgia,serif;color:#8ba1b4">Organising by moment rather than by feature gave every requirement an obvious owner and an obvious trigger — and made the empty cells visible. The Expert row is not a fairness appendix: unpredictable supply is what breaks the customer row.</figcaption>
+        <figcaption style="margin:24px 0 0;padding-top:18px;border-top:1px solid var(--sc-08);max-width:88ch;font:italic 400 14px/1.6 'Newsreader',Georgia,serif;color:var(--sc-30)">Organising by moment rather than by feature gave every requirement an obvious owner and an obvious trigger — and made the empty cells visible. The Expert row is not a fairness appendix: unpredictable supply is what breaks the customer row.</figcaption>
       </figure>
     </div>
   </section>
@@ -620,126 +844,126 @@
   
   <section data-screen-label="Wireframes" id="wireframes" style="padding:120px 40px 0">
     <div style="max-width:1120px;margin:0 auto">
-      <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#7f96aa">06 — What it looks like in the app</div>
-      <h2 style="max-width:26ch;margin:22px 0 0;font:300 clamp(32px,3.8vw,50px)/1.08 'Newsreader',Georgia,serif;letter-spacing:-.02em;color:#f1f6fa">Four screens the requirements imply</h2>
-      <p style="max-width:64ch;margin:24px 0 0;font:400 17px/1.68 'IBM Plex Sans',sans-serif;color:#a9bfd0;text-wrap:pretty">Deliberately low-fidelity — a PRD specifies outcomes, not layouts. These exist to prove each requirement is buildable and to show where the policy engine surfaces.</p>
+      <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sc-13)">06 — What it looks like in the app</div>
+      <h2 style="max-width:26ch;margin:22px 0 0;font:300 clamp(32px,3.8vw,50px)/1.08 'Newsreader',Georgia,serif;letter-spacing:-.02em;color:var(--sc-27)">Four screens the requirements imply</h2>
+      <p style="max-width:64ch;margin:24px 0 0;font:400 17px/1.68 'IBM Plex Sans',sans-serif;color:var(--sc-18);text-wrap:pretty">Deliberately low-fidelity — a PRD specifies outcomes, not layouts. These exist to prove each requirement is buildable and to show where the policy engine surfaces.</p>
 
       <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin:48px 0 0">
 
         <!-- WF 1 -->
         <div style="display:flex;flex-direction:column">
-          <div style="flex:1;display:flex;flex-direction:column;padding:14px;background:#0b1a28;border:1px solid rgba(190,215,235,.16);border-radius:22px">
-            <div style="flex:1;display:flex;flex-direction:column;border:1px solid rgba(190,215,235,.14);border-radius:16px;overflow:hidden;background:#0e1e2e">
-              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid rgba(190,215,235,.1)">
-                <span style="width:40px;height:5px;border-radius:999px;background:rgba(190,215,235,.28)"></span>
-                <span style="width:22px;height:5px;border-radius:999px;background:rgba(190,215,235,.18)"></span>
+          <div style="flex:1;display:flex;flex-direction:column;padding:14px;background:var(--sc-24);border:1px solid var(--sc-72);border-radius:22px">
+            <div style="flex:1;display:flex;flex-direction:column;border:1px solid var(--sc-23);border-radius:16px;overflow:hidden;background:var(--sc-73)">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid var(--sc-62)">
+                <span style="width:40px;height:5px;border-radius:999px;background:var(--sc-10)"></span>
+                <span style="width:22px;height:5px;border-radius:999px;background:var(--sc-74)"></span>
               </div>
               <div style="flex:1;padding:16px 14px 18px;display:grid;gap:12px;align-content:start">
-                <div style="padding:11px 12px;background:rgba(240,180,94,.14);border:1px solid rgba(240,180,94,.4);border-radius:10px">
-                  <div style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#f0b45e">AT RISK</div>
-                  <div style="margin-top:8px;font:400 12.5px/1.4 'IBM Plex Sans',sans-serif;color:#f4e2c6">Your Expert may not make the 10:15 window</div>
+                <div style="padding:11px 12px;background:var(--sc-75);border:1px solid var(--sc-61);border-radius:10px">
+                  <div style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:var(--sc-11)">AT RISK</div>
+                  <div style="margin-top:8px;font:400 12.5px/1.4 'IBM Plex Sans',sans-serif;color:var(--sc-66)">Your Expert may not make the 10:15 window</div>
                 </div>
                 <div style="display:grid;gap:7px">
-                  <span style="height:6px;width:80%;border-radius:999px;background:rgba(190,215,235,.2)"></span>
-                  <span style="height:6px;width:62%;border-radius:999px;background:rgba(190,215,235,.13)"></span>
+                  <span style="height:6px;width:80%;border-radius:999px;background:var(--sc-15)"></span>
+                  <span style="height:6px;width:62%;border-radius:999px;background:var(--sc-32)"></span>
                 </div>
-                <div style="display:grid;gap:8px;padding:12px;border:1px dashed rgba(190,215,235,.22);border-radius:10px">
-                  <span style="height:6px;width:70%;border-radius:999px;background:rgba(190,215,235,.16)"></span>
-                  <span style="height:6px;width:45%;border-radius:999px;background:rgba(190,215,235,.12)"></span>
+                <div style="display:grid;gap:8px;padding:12px;border:1px dashed var(--sc-35);border-radius:10px">
+                  <span style="height:6px;width:70%;border-radius:999px;background:var(--sc-72)"></span>
+                  <span style="height:6px;width:45%;border-radius:999px;background:var(--sc-08)"></span>
                 </div>
                 <div style="display:grid;gap:8px">
-                  <div style="padding:10px;border-radius:999px;background:#f0b45e;text-align:center;font:500 11.5px/1.3 'IBM Plex Sans',sans-serif;color:#08131f">Wait — keep booking</div>
-                  <div style="padding:10px;border-radius:999px;border:1px solid rgba(190,215,235,.3);text-align:center;font:500 11.5px/1.3 'IBM Plex Sans',sans-serif;color:#cfe0ec">Cancel, full refund</div>
+                  <div style="padding:10px;border-radius:999px;background:var(--sc-11);text-align:center;font:500 11.5px/1.3 'IBM Plex Sans',sans-serif;color:var(--sc-20)">Wait — keep booking</div>
+                  <div style="padding:10px;border-radius:999px;border:1px solid var(--sc-14);text-align:center;font:500 11.5px/1.3 'IBM Plex Sans',sans-serif;color:var(--sc-34)">Cancel, full refund</div>
                 </div>
               </div>
             </div>
           </div>
-          <div style="margin:18px 0 0;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#f0b45e">WF-01 · P0</div>
-          <div style="margin:10px 0 0;min-height:44px;font:400 16px/1.35 'Newsreader',Georgia,serif;color:#eef5fa">At-risk booking, surfaced early</div>
-          <p style="margin:8px 0 0;min-height:42px;font:400 13.5px/1.55 'IBM Plex Sans',sans-serif;color:#8ba1b4">The customer is told before they notice — and cancel is never locked.</p>
+          <div style="margin:18px 0 0;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:var(--sc-11)">WF-01 · P0</div>
+          <div style="margin:10px 0 0;min-height:44px;font:400 16px/1.35 'Newsreader',Georgia,serif;color:var(--sc-29)">At-risk booking, surfaced early</div>
+          <p style="margin:8px 0 0;min-height:42px;font:400 13.5px/1.55 'IBM Plex Sans',sans-serif;color:var(--sc-30)">The customer is told before they notice — and cancel is never locked.</p>
         </div>
 
         <!-- WF 2 -->
         <div style="display:flex;flex-direction:column">
-          <div style="flex:1;display:flex;flex-direction:column;padding:14px;background:#0b1a28;border:1px solid rgba(190,215,235,.16);border-radius:22px">
-            <div style="flex:1;display:flex;flex-direction:column;border:1px solid rgba(190,215,235,.14);border-radius:16px;overflow:hidden;background:#0e1e2e">
-              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid rgba(190,215,235,.1)">
-                <span style="width:40px;height:5px;border-radius:999px;background:rgba(190,215,235,.28)"></span>
-                <span style="width:22px;height:5px;border-radius:999px;background:rgba(190,215,235,.18)"></span>
+          <div style="flex:1;display:flex;flex-direction:column;padding:14px;background:var(--sc-24);border:1px solid var(--sc-72);border-radius:22px">
+            <div style="flex:1;display:flex;flex-direction:column;border:1px solid var(--sc-23);border-radius:16px;overflow:hidden;background:var(--sc-73)">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid var(--sc-62)">
+                <span style="width:40px;height:5px;border-radius:999px;background:var(--sc-10)"></span>
+                <span style="width:22px;height:5px;border-radius:999px;background:var(--sc-74)"></span>
               </div>
               <div style="flex:1;padding:16px 14px 18px;display:grid;gap:10px;align-content:start">
-                <div style="font:500 10px/1.35 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#7f96aa">WHAT WENT WRONG?</div>
+                <div style="font:500 10px/1.35 'IBM Plex Mono',monospace;letter-spacing:.1em;color:var(--sc-13)">WHAT WENT WRONG?</div>
                 <div style="display:grid;gap:7px">
-                  <div style="display:flex;align-items:center;gap:9px;padding:9px 11px;border:1px solid rgba(240,180,94,.45);background:rgba(240,180,94,.1);border-radius:9px"><span style="flex:0 0 11px;width:11px;height:11px;border-radius:999px;border:3px solid #f0b45e"></span><span style="font:400 11.5px/1.35 'IBM Plex Sans',sans-serif;color:#f4e2c6">Nobody arrived</span></div>
-                  <div style="display:flex;align-items:center;gap:9px;padding:9px 11px;border:1px solid rgba(190,215,235,.18);border-radius:9px"><span style="flex:0 0 11px;width:11px;height:11px;border-radius:999px;border:1px solid rgba(190,215,235,.35)"></span><span style="font:400 11.5px/1.35 'IBM Plex Sans',sans-serif;color:#a9bfd0">Tasks not completed</span></div>
-                  <div style="display:flex;align-items:center;gap:9px;padding:9px 11px;border:1px solid rgba(190,215,235,.18);border-radius:9px"><span style="flex:0 0 11px;width:11px;height:11px;border-radius:999px;border:1px solid rgba(190,215,235,.35)"></span><span style="font:400 11.5px/1.35 'IBM Plex Sans',sans-serif;color:#a9bfd0">Item missing or damaged</span></div>
-                  <div style="display:flex;align-items:center;gap:9px;padding:9px 11px;border:1px solid rgba(190,215,235,.18);border-radius:9px"><span style="flex:0 0 11px;width:11px;height:11px;border-radius:999px;border:1px solid rgba(190,215,235,.35)"></span><span style="font:400 11.5px/1.35 'IBM Plex Sans',sans-serif;color:#a9bfd0">Misconduct</span></div>
+                  <div style="display:flex;align-items:center;gap:9px;padding:9px 11px;border:1px solid var(--sc-76);background:var(--sc-77);border-radius:9px"><span style="flex:0 0 11px;width:11px;height:11px;border-radius:999px;border:3px solid var(--sc-11)"></span><span style="font:400 11.5px/1.35 'IBM Plex Sans',sans-serif;color:var(--sc-66)">Nobody arrived</span></div>
+                  <div style="display:flex;align-items:center;gap:9px;padding:9px 11px;border:1px solid var(--sc-74);border-radius:9px"><span style="flex:0 0 11px;width:11px;height:11px;border-radius:999px;border:1px solid var(--sc-78)"></span><span style="font:400 11.5px/1.35 'IBM Plex Sans',sans-serif;color:var(--sc-18)">Tasks not completed</span></div>
+                  <div style="display:flex;align-items:center;gap:9px;padding:9px 11px;border:1px solid var(--sc-74);border-radius:9px"><span style="flex:0 0 11px;width:11px;height:11px;border-radius:999px;border:1px solid var(--sc-78)"></span><span style="font:400 11.5px/1.35 'IBM Plex Sans',sans-serif;color:var(--sc-18)">Item missing or damaged</span></div>
+                  <div style="display:flex;align-items:center;gap:9px;padding:9px 11px;border:1px solid var(--sc-74);border-radius:9px"><span style="flex:0 0 11px;width:11px;height:11px;border-radius:999px;border:1px solid var(--sc-78)"></span><span style="font:400 11.5px/1.35 'IBM Plex Sans',sans-serif;color:var(--sc-18)">Misconduct</span></div>
                 </div>
-                <div style="margin-top:2px;padding:11px 12px;background:rgba(126,200,184,.12);border:1px solid rgba(126,200,184,.35);border-radius:10px;font:400 11.5px/1.45 'IBM Plex Sans',sans-serif;color:#bfe4da">Verified against visit data — refund issued now, no agent needed</div>
+                <div style="margin-top:2px;padding:11px 12px;background:var(--sc-79);border:1px solid var(--sc-80);border-radius:10px;font:400 11.5px/1.45 'IBM Plex Sans',sans-serif;color:var(--sc-43)">Verified against visit data — refund issued now, no agent needed</div>
               </div>
             </div>
           </div>
-          <div style="margin:18px 0 0;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#f0b45e">WF-02 · P0</div>
-          <div style="margin:10px 0 0;min-height:44px;font:400 16px/1.35 'Newsreader',Georgia,serif;color:#eef5fa">Structured report, auto-resolved</div>
-          <p style="margin:8px 0 0;min-height:42px;font:400 13.5px/1.55 'IBM Plex Sans',sans-serif;color:#8ba1b4">Replaces free-text chat and the 24-hour email cycle for anything verifiable.</p>
+          <div style="margin:18px 0 0;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:var(--sc-11)">WF-02 · P0</div>
+          <div style="margin:10px 0 0;min-height:44px;font:400 16px/1.35 'Newsreader',Georgia,serif;color:var(--sc-29)">Structured report, auto-resolved</div>
+          <p style="margin:8px 0 0;min-height:42px;font:400 13.5px/1.55 'IBM Plex Sans',sans-serif;color:var(--sc-30)">Replaces free-text chat and the 24-hour email cycle for anything verifiable.</p>
         </div>
 
         <!-- WF 3 -->
         <div style="display:flex;flex-direction:column">
-          <div style="flex:1;display:flex;flex-direction:column;padding:14px;background:#0b1a28;border:1px solid rgba(190,215,235,.16);border-radius:22px">
-            <div style="flex:1;display:flex;flex-direction:column;border:1px solid rgba(190,215,235,.14);border-radius:16px;overflow:hidden;background:#0e1e2e">
-              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid rgba(190,215,235,.1)">
-                <span style="width:40px;height:5px;border-radius:999px;background:rgba(190,215,235,.28)"></span>
-                <span style="width:22px;height:5px;border-radius:999px;background:rgba(190,215,235,.18)"></span>
+          <div style="flex:1;display:flex;flex-direction:column;padding:14px;background:var(--sc-24);border:1px solid var(--sc-72);border-radius:22px">
+            <div style="flex:1;display:flex;flex-direction:column;border:1px solid var(--sc-23);border-radius:16px;overflow:hidden;background:var(--sc-73)">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid var(--sc-62)">
+                <span style="width:40px;height:5px;border-radius:999px;background:var(--sc-10)"></span>
+                <span style="width:22px;height:5px;border-radius:999px;background:var(--sc-74)"></span>
               </div>
               <div style="flex:1;padding:16px 14px 18px;display:grid;gap:11px;align-content:start">
-                <div style="font:500 10px/1.35 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#7f96aa">12-VISIT PACK · YOUR AREA</div>
+                <div style="font:500 10px/1.35 'IBM Plex Mono',monospace;letter-spacing:.1em;color:var(--sc-13)">12-VISIT PACK · YOUR AREA</div>
                 <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:5px">
-                  <span style="height:16px;border-radius:4px;background:rgba(126,200,184,.55)"></span>
-                  <span style="height:16px;border-radius:4px;background:rgba(126,200,184,.55)"></span>
-                  <span style="height:16px;border-radius:4px;background:rgba(126,200,184,.3)"></span>
-                  <span style="height:16px;border-radius:4px;background:rgba(224,112,95,.35)"></span>
-                  <span style="height:16px;border-radius:4px;background:rgba(126,200,184,.55)"></span>
-                  <span style="height:16px;border-radius:4px;background:rgba(224,112,95,.35)"></span>
-                  <span style="height:16px;border-radius:4px;background:rgba(126,200,184,.3)"></span>
+                  <span style="height:16px;border-radius:4px;background:var(--sc-81)"></span>
+                  <span style="height:16px;border-radius:4px;background:var(--sc-81)"></span>
+                  <span style="height:16px;border-radius:4px;background:var(--sc-59)"></span>
+                  <span style="height:16px;border-radius:4px;background:var(--sc-82)"></span>
+                  <span style="height:16px;border-radius:4px;background:var(--sc-81)"></span>
+                  <span style="height:16px;border-radius:4px;background:var(--sc-82)"></span>
+                  <span style="height:16px;border-radius:4px;background:var(--sc-59)"></span>
                 </div>
-                <div style="font:400 11px/1.4 'IBM Plex Sans',sans-serif;color:#8ba1b4">8 of 12 visits are redeemable in Koramangala within validity</div>
-                <div style="padding:11px 12px;background:rgba(224,112,95,.1);border:1px solid rgba(224,112,95,.35);border-radius:10px;font:400 11.5px/1.45 'IBM Plex Sans',sans-serif;color:#e9a396">Anything unredeemed at expiry refunds automatically</div>
-                <div style="padding:10px;border-radius:999px;background:#f0b45e;text-align:center;font:500 11.5px/1.3 'IBM Plex Sans',sans-serif;color:#08131f">Buy 8-visit pack instead</div>
+                <div style="font:400 11px/1.4 'IBM Plex Sans',sans-serif;color:var(--sc-30)">8 of 12 visits are redeemable in Koramangala within validity</div>
+                <div style="padding:11px 12px;background:var(--sc-83);border:1px solid var(--sc-82);border-radius:10px;font:400 11.5px/1.45 'IBM Plex Sans',sans-serif;color:var(--sc-37)">Anything unredeemed at expiry refunds automatically</div>
+                <div style="padding:10px;border-radius:999px;background:var(--sc-11);text-align:center;font:500 11.5px/1.3 'IBM Plex Sans',sans-serif;color:var(--sc-20)">Buy 8-visit pack instead</div>
               </div>
             </div>
           </div>
-          <div style="margin:18px 0 0;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#f0b45e">WF-03 · P0</div>
-          <div style="margin:10px 0 0;min-height:44px;font:400 16px/1.35 'Newsreader',Georgia,serif;color:#eef5fa">Capacity shown before payment</div>
-          <p style="margin:8px 0 0;min-height:42px;font:400 13.5px/1.55 'IBM Plex Sans',sans-serif;color:#8ba1b4">The pack shrinks to what the micro-market can actually deliver.</p>
+          <div style="margin:18px 0 0;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:var(--sc-11)">WF-03 · P0</div>
+          <div style="margin:10px 0 0;min-height:44px;font:400 16px/1.35 'Newsreader',Georgia,serif;color:var(--sc-29)">Capacity shown before payment</div>
+          <p style="margin:8px 0 0;min-height:42px;font:400 13.5px/1.55 'IBM Plex Sans',sans-serif;color:var(--sc-30)">The pack shrinks to what the micro-market can actually deliver.</p>
         </div>
 
         <!-- WF 4 -->
         <div style="display:flex;flex-direction:column">
-          <div style="flex:1;display:flex;flex-direction:column;padding:14px;background:#0b1a28;border:1px solid rgba(126,200,184,.3);border-radius:22px">
-            <div style="flex:1;display:flex;flex-direction:column;border:1px solid rgba(190,215,235,.14);border-radius:16px;overflow:hidden;background:#0e1e2e">
-              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid rgba(190,215,235,.1)">
-                <span style="width:40px;height:5px;border-radius:999px;background:rgba(126,200,184,.4)"></span>
-                <span style="width:22px;height:5px;border-radius:999px;background:rgba(190,215,235,.18)"></span>
+          <div style="flex:1;display:flex;flex-direction:column;padding:14px;background:var(--sc-24);border:1px solid var(--sc-59);border-radius:22px">
+            <div style="flex:1;display:flex;flex-direction:column;border:1px solid var(--sc-23);border-radius:16px;overflow:hidden;background:var(--sc-73)">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid var(--sc-62)">
+                <span style="width:40px;height:5px;border-radius:999px;background:var(--sc-84)"></span>
+                <span style="width:22px;height:5px;border-radius:999px;background:var(--sc-74)"></span>
               </div>
               <div style="flex:1;padding:16px 14px 18px;display:grid;gap:11px;align-content:start">
-                <div style="font:500 10px/1.35 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#7ec8b8">EXPERT APP · CHECK-IN</div>
-                <div style="font:400 13px/1.45 'IBM Plex Sans',sans-serif;color:#cfe9e1">All good at this booking?</div>
+                <div style="font:500 10px/1.35 'IBM Plex Mono',monospace;letter-spacing:.1em;color:var(--sc-40)">EXPERT APP · CHECK-IN</div>
+                <div style="font:400 13px/1.45 'IBM Plex Sans',sans-serif;color:var(--sc-71)">All good at this booking?</div>
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-                  <div style="padding:11px;border-radius:12px;background:rgba(126,200,184,.2);text-align:center;font:500 11.5px/1.3 'IBM Plex Sans',sans-serif;color:#bfe4da">Yes</div>
-                  <div style="padding:11px;border-radius:12px;border:1px solid rgba(224,112,95,.45);text-align:center;font:500 11.5px/1.3 'IBM Plex Sans',sans-serif;color:#e9a396">Not really</div>
+                  <div style="padding:11px;border-radius:12px;background:var(--sc-85);text-align:center;font:500 11.5px/1.3 'IBM Plex Sans',sans-serif;color:var(--sc-43)">Yes</div>
+                  <div style="padding:11px;border-radius:12px;border:1px solid var(--sc-86);text-align:center;font:500 11.5px/1.3 'IBM Plex Sans',sans-serif;color:var(--sc-37)">Not really</div>
                 </div>
-                <div style="padding:11px 12px;border:1px dashed rgba(190,215,235,.22);border-radius:10px;display:grid;gap:7px">
-                  <span style="font:400 10px/1.35 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#7f96aa">BREAK · FIXED FOR THIS SHIFT</span>
-                  <span style="font:400 12.5px/1.35 'IBM Plex Sans',sans-serif;color:#cfe0ec">1:00 – 3:00 PM · cannot be reassigned</span>
+                <div style="padding:11px 12px;border:1px dashed var(--sc-35);border-radius:10px;display:grid;gap:7px">
+                  <span style="font:400 10px/1.35 'IBM Plex Mono',monospace;letter-spacing:.08em;color:var(--sc-13)">BREAK · FIXED FOR THIS SHIFT</span>
+                  <span style="font:400 12.5px/1.35 'IBM Plex Sans',sans-serif;color:var(--sc-34)">1:00 – 3:00 PM · cannot be reassigned</span>
                 </div>
-                <div style="font:400 10.5px/1.4 'IBM Plex Mono',monospace;color:#6c8299">CHECK-IN LOGGED · 3 OF 4 THIS VISIT</div>
+                <div style="font:400 10.5px/1.4 'IBM Plex Mono',monospace;color:var(--sc-33)">CHECK-IN LOGGED · 3 OF 4 THIS VISIT</div>
               </div>
             </div>
           </div>
-          <div style="margin:18px 0 0;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#7ec8b8">WF-04 · P0</div>
-          <div style="margin:10px 0 0;min-height:44px;font:400 16px/1.35 'Newsreader',Georgia,serif;color:#eef5fa">Expert check-in and a break that holds</div>
-          <p style="margin:8px 0 0;min-height:42px;font:400 13.5px/1.55 'IBM Plex Sans',sans-serif;color:#8ba1b4">Discreet, periodic, logged — and the break window is not the dispatcher's to take.</p>
+          <div style="margin:18px 0 0;font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;color:var(--sc-40)">WF-04 · P0</div>
+          <div style="margin:10px 0 0;min-height:44px;font:400 16px/1.35 'Newsreader',Georgia,serif;color:var(--sc-29)">Expert check-in and a break that holds</div>
+          <p style="margin:8px 0 0;min-height:42px;font:400 13.5px/1.55 'IBM Plex Sans',sans-serif;color:var(--sc-30)">Discreet, periodic, logged — and the break window is not the dispatcher's to take.</p>
         </div>
       </div>
     </div>
@@ -749,39 +973,39 @@
   <!-- ══ EXPERT SIDE ══ -->
   <section data-screen-label="Expert side" id="expert" style="padding:120px 40px 0">
     <div style="max-width:1120px;margin:0 auto">
-      <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#7f96aa">07 — The Expert side</div>
-      <h2 style="max-width:28ch;margin:22px 0 0;font:300 clamp(32px,3.8vw,50px)/1.08 'Newsreader',Georgia,serif;letter-spacing:-.02em;color:#f1f6fa">A trust PRD that only protects the buyer isn't a trust PRD</h2>
-      <p style="max-width:66ch;margin:24px 0 0;font:400 17px/1.68 'IBM Plex Sans',sans-serif;color:#a9bfd0;text-wrap:pretty">Snabbit's supply is 15,000 women entering strangers' homes on a ten-minute dispatch. Kavach, launched March 2026, is the company's own acknowledgment that reactive tooling wasn't enough. This PRD doesn't rebuild it — it makes its coverage verifiable.</p>
+      <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sc-13)">07 — The Expert side</div>
+      <h2 style="max-width:28ch;margin:22px 0 0;font:300 clamp(32px,3.8vw,50px)/1.08 'Newsreader',Georgia,serif;letter-spacing:-.02em;color:var(--sc-27)">A trust PRD that only protects the buyer isn't a trust PRD</h2>
+      <p style="max-width:66ch;margin:24px 0 0;font:400 17px/1.68 'IBM Plex Sans',sans-serif;color:var(--sc-18);text-wrap:pretty">Snabbit's supply is 15,000 women entering strangers' homes on a ten-minute dispatch. Kavach, launched March 2026, is the company's own acknowledgment that reactive tooling wasn't enough. This PRD doesn't rebuild it — it makes its coverage verifiable.</p>
 
-      <figure style="margin:44px 0 0;padding:34px 36px 30px;background:#0b1a28;border:1px solid rgba(126,200,184,.24);border-radius:18px">
-        <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#7ec8b8">Figure 6</div>
-        <div style="margin:14px 0 4px;font:400 24px/1.25 'Newsreader',Georgia,serif;color:#eef5fa">Reactive coverage vs. proactive coverage, across one 120-minute visit</div>
-        <div style="font:400 14px/1.5 'IBM Plex Sans',sans-serif;color:#8ba1b4">Where the platform knows how the Expert is doing — and where it doesn't</div>
+      <figure style="margin:44px 0 0;padding:34px 36px 30px;background:var(--sc-24);border:1px solid var(--sc-87);border-radius:18px">
+        <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sc-40)">Figure 6</div>
+        <div style="margin:14px 0 4px;font:400 24px/1.25 'Newsreader',Georgia,serif;color:var(--sc-29)">Reactive coverage vs. proactive coverage, across one 120-minute visit</div>
+        <div style="font:400 14px/1.5 'IBM Plex Sans',sans-serif;color:var(--sc-30)">Where the platform knows how the Expert is doing — and where it doesn't</div>
 
         <div style="margin-top:30px;overflow-x:auto">
           <svg viewBox="0 0 1060 300" style="display:block;width:100%;min-width:760px;height:auto" role="img" aria-label="Diagram comparing today's SOS-only coverage, which is blind for the whole visit until an SOS is pressed, with proposed periodic logged check-ins every 25 minutes">
             <defs>
               <pattern id="snBlind" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="0" y2="8" stroke="#8ba1b4" stroke-opacity=".28" stroke-width="1.4"></line>
+                <line x1="0" y1="0" x2="0" y2="8" stroke="var(--sc-30)" stroke-opacity=".28" stroke-width="1.4"></line>
               </pattern>
             </defs>
 
-            <g font-family="'IBM Plex Mono', monospace" font-size="11" fill="#7f96aa" letter-spacing="1">
+            <g font-family="'IBM Plex Mono', monospace" font-size="11" fill="var(--sc-13)" letter-spacing="1">
               <text x="0" y="60">TODAY · SOS ONLY</text>
               <text x="0" y="196">PROPOSED · LOGGED CHECK-INS</text>
             </g>
 
             <rect x="200" y="70" width="800" height="42" fill="url(#snBlind)" rx="8"></rect>
-            <rect x="200" y="70" width="800" height="42" fill="none" stroke="rgba(190,215,235,.22)" rx="8"></rect>
-            <text x="600" y="96" text-anchor="middle" font-family="'IBM Plex Sans', sans-serif" font-size="13.5" fill="#93a9bb">No signal — the platform learns nothing unless she presses the button</text>
+            <rect x="200" y="70" width="800" height="42" fill="none" stroke="var(--sc-35)" rx="8"></rect>
+            <text x="600" y="96" text-anchor="middle" font-family="'IBM Plex Sans', sans-serif" font-size="13.5" fill="var(--sc-26)">No signal — the platform learns nothing unless she presses the button</text>
 
-            <circle cx="760" cy="91" r="10" fill="#e0705f"></circle>
-            <text x="760" y="95" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9.5" fill="#08131f" font-weight="600">SOS</text>
-            <line x1="760" y1="105" x2="760" y2="130" stroke="#e0705f" stroke-width="1.2" stroke-dasharray="3 3"></line>
-            <text x="770" y="134" font-family="'IBM Plex Sans', sans-serif" font-size="12.5" fill="#e9a396">Coverage begins only after something has started</text>
+            <circle cx="760" cy="91" r="10" fill="var(--sc-31)"></circle>
+            <text x="760" y="95" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9.5" fill="var(--sc-20)" font-weight="600">SOS</text>
+            <line x1="760" y1="105" x2="760" y2="130" stroke="var(--sc-31)" stroke-width="1.2" stroke-dasharray="3 3"></line>
+            <text x="770" y="134" font-family="'IBM Plex Sans', sans-serif" font-size="12.5" fill="var(--sc-37)">Coverage begins only after something has started</text>
 
-            <line x1="200" y1="206" x2="1000" y2="206" stroke="rgba(126,200,184,.4)" stroke-width="2"></line>
-            <g fill="#7ec8b8">
+            <line x1="200" y1="206" x2="1000" y2="206" stroke="var(--sc-84)" stroke-width="2"></line>
+            <g fill="var(--sc-39)">
               <circle cx="200" cy="206" r="7"></circle>
               <circle cx="360" cy="206" r="7"></circle>
               <circle cx="520" cy="206" r="7"></circle>
@@ -789,7 +1013,7 @@
               <circle cx="840" cy="206" r="7"></circle>
               <circle cx="1000" cy="206" r="7"></circle>
             </g>
-            <g font-family="'IBM Plex Mono', monospace" font-size="10" fill="#9cd3c6" text-anchor="middle">
+            <g font-family="'IBM Plex Mono', monospace" font-size="10" fill="var(--sc-42)" text-anchor="middle">
               <text x="200" y="186">CHECK-IN</text>
               <text x="360" y="186">CHECK-IN</text>
               <text x="520" y="186">CHECK-IN</text>
@@ -797,10 +1021,10 @@
               <text x="840" y="186">CHECK-IN</text>
               <text x="1000" y="186">CLOSE-OUT</text>
             </g>
-            <rect x="200" y="222" width="800" height="34" fill="rgba(126,200,184,.1)" rx="8"></rect>
-            <text x="600" y="243" text-anchor="middle" font-family="'IBM Plex Sans', sans-serif" font-size="13" fill="#bfe4da">Every prompt logged with response rate and acknowledgment time — coverage becomes measurable</text>
+            <rect x="200" y="222" width="800" height="34" fill="var(--sc-41)" rx="8"></rect>
+            <text x="600" y="243" text-anchor="middle" font-family="'IBM Plex Sans', sans-serif" font-size="13" fill="var(--sc-43)">Every prompt logged with response rate and acknowledgment time — coverage becomes measurable</text>
 
-            <g font-family="'IBM Plex Mono', monospace" font-size="10.5" fill="#6c8299">
+            <g font-family="'IBM Plex Mono', monospace" font-size="10.5" fill="var(--sc-33)">
               <text x="200" y="278">0 MIN</text>
               <text x="600" y="278" text-anchor="middle">60 MIN</text>
               <text x="1000" y="278" text-anchor="end">120 MIN · VISIT ENDS</text>
@@ -808,24 +1032,24 @@
           </svg>
         </div>
 
-        <figcaption style="margin:22px 0 0;padding-top:18px;border-top:1px solid rgba(190,215,235,.12);max-width:88ch;font:italic 400 14px/1.6 'Newsreader',Georgia,serif;color:#8ba1b4">An SOS button measures incidents. Logged check-ins measure coverage — which is the only way to tell whether a safety programme is working before the next news story. Only the logging and verifiability of Kavach are in scope here, not its risk model.</figcaption>
+        <figcaption style="margin:22px 0 0;padding-top:18px;border-top:1px solid var(--sc-08);max-width:88ch;font:italic 400 14px/1.6 'Newsreader',Georgia,serif;color:var(--sc-30)">An SOS button measures incidents. Logged check-ins measure coverage — which is the only way to tell whether a safety programme is working before the next news story. Only the logging and verifiability of Kavach are in scope here, not its risk model.</figcaption>
       </figure>
 
       <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:32px 0 0">
-        <div style="padding:26px 24px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-radius:14px">
-          <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#7ec8b8">Scheduling integrity</div>
-          <div style="margin:14px 0 0;font:400 19px/1.3 'Newsreader',Georgia,serif;color:#eef5fa">The break window is not the dispatcher's to take</div>
-          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">Fixed for the shift once assigned, never silently overridden, adherence logged rather than surveyed — because an Expert who ate at 5 PM is not a reliable ten-minute promise.</p>
+        <div style="padding:26px 24px;background:var(--sc-24);border:1px solid var(--sc-23);border-radius:14px">
+          <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--sc-40)">Scheduling integrity</div>
+          <div style="margin:14px 0 0;font:400 19px/1.3 'Newsreader',Georgia,serif;color:var(--sc-29)">The break window is not the dispatcher's to take</div>
+          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">Fixed for the shift once assigned, never silently overridden, adherence logged rather than surveyed — because an Expert who ate at 5 PM is not a reliable ten-minute promise.</p>
         </div>
-        <div style="padding:26px 24px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-radius:14px">
-          <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#7ec8b8">Consent</div>
-          <div style="margin:14px 0 0;font:400 19px/1.3 'Newsreader',Georgia,serif;color:#eef5fa">Discomfort can be declared before acceptance</div>
-          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">Without penalty to future assignment — and a recurring household can be permanently excluded. The informal screening Experts already do, made official.</p>
+        <div style="padding:26px 24px;background:var(--sc-24);border:1px solid var(--sc-23);border-radius:14px">
+          <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--sc-40)">Consent</div>
+          <div style="margin:14px 0 0;font:400 19px/1.3 'Newsreader',Georgia,serif;color:var(--sc-29)">Discomfort can be declared before acceptance</div>
+          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">Without penalty to future assignment — and a recurring household can be permanently excluded. The informal screening Experts already do, made official.</p>
         </div>
-        <div style="padding:26px 24px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-radius:14px">
-          <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#7ec8b8">Transparency</div>
-          <div style="margin:14px 0 0;font:400 19px/1.3 'Newsreader',Georgia,serif;color:#eef5fa">Earnings and leave stated in plain terms</div>
-          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">Incentive structure and paid-vs-unpaid entitlement shown in-app, addressing reported confusion about time off in a business that sells "reduced absenteeism."</p>
+        <div style="padding:26px 24px;background:var(--sc-24);border:1px solid var(--sc-23);border-radius:14px">
+          <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--sc-40)">Transparency</div>
+          <div style="margin:14px 0 0;font:400 19px/1.3 'Newsreader',Georgia,serif;color:var(--sc-29)">Earnings and leave stated in plain terms</div>
+          <p style="margin:12px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">Incentive structure and paid-vs-unpaid entitlement shown in-app, addressing reported confusion about time off in a business that sells "reduced absenteeism."</p>
         </div>
       </div>
     </div>
@@ -834,87 +1058,87 @@
   <!-- ══ REQUIREMENTS ══ -->
   <section data-screen-label="Requirements" id="requirements" style="padding:120px 40px 0">
     <div style="max-width:1120px;margin:0 auto">
-      <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#7f96aa">08 — The requirements</div>
-      <h2 style="max-width:26ch;margin:22px 0 0;font:300 clamp(32px,3.8vw,50px)/1.08 'Newsreader',Georgia,serif;letter-spacing:-.02em;color:#f1f6fa">Where the weight sits</h2>
-      <p style="max-width:64ch;margin:24px 0 0;font:400 17px/1.68 'IBM Plex Sans',sans-serif;color:#a9bfd0;text-wrap:pretty">Twenty-seven requirements across six journeys plus cross-cutting telemetry, each written so it can be judged done or not done without prescribing implementation.</p>
+      <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sc-13)">08 — The requirements</div>
+      <h2 style="max-width:26ch;margin:22px 0 0;font:300 clamp(32px,3.8vw,50px)/1.08 'Newsreader',Georgia,serif;letter-spacing:-.02em;color:var(--sc-27)">Where the weight sits</h2>
+      <p style="max-width:64ch;margin:24px 0 0;font:400 17px/1.68 'IBM Plex Sans',sans-serif;color:var(--sc-18);text-wrap:pretty">Twenty-seven requirements across six journeys plus cross-cutting telemetry, each written so it can be judged done or not done without prescribing implementation.</p>
 
       <div style="display:flex;flex-wrap:wrap;gap:20px;margin:36px 0 0">
-        <span style="display:inline-flex;align-items:center;gap:9px;font:400 13px/1 'IBM Plex Sans',sans-serif;color:#a9bfd0"><span style="width:12px;height:12px;border-radius:3px;background:#f0b45e"></span>P0 — required to ship (18)</span>
-        <span style="display:inline-flex;align-items:center;gap:9px;font:400 13px/1 'IBM Plex Sans',sans-serif;color:#a9bfd0"><span style="width:12px;height:12px;border-radius:3px;background:#7ec8b8"></span>P1 — genuinely trustworthy (8)</span>
-        <span style="display:inline-flex;align-items:center;gap:9px;font:400 13px/1 'IBM Plex Sans',sans-serif;color:#a9bfd0"><span style="width:12px;height:12px;border-radius:3px;background:rgba(190,215,235,.3)"></span>P2 — follow-on (1)</span>
+        <span style="display:inline-flex;align-items:center;gap:9px;font:400 13px/1 'IBM Plex Sans',sans-serif;color:var(--sc-18)"><span style="width:12px;height:12px;border-radius:3px;background:var(--sc-11)"></span>P0 — required to ship (18)</span>
+        <span style="display:inline-flex;align-items:center;gap:9px;font:400 13px/1 'IBM Plex Sans',sans-serif;color:var(--sc-18)"><span style="width:12px;height:12px;border-radius:3px;background:var(--sc-39)"></span>P1 — genuinely trustworthy (8)</span>
+        <span style="display:inline-flex;align-items:center;gap:9px;font:400 13px/1 'IBM Plex Sans',sans-serif;color:var(--sc-18)"><span style="width:12px;height:12px;border-radius:3px;background:var(--sc-14)"></span>P2 — follow-on (1)</span>
       </div>
 
       <div style="display:grid;gap:14px;margin:32px 0 0">
         <div data-cols="req" style="display:grid;grid-template-columns:230px 1fr 56px;align-items:center;gap:20px">
-          <div style="font:400 15px/1.35 'IBM Plex Sans',sans-serif;color:#dbe7ef">A — Booking &amp; capacity</div>
-          <div style="display:flex;gap:4px;height:26px"><span style="flex:3;border-radius:5px;background:#f0b45e"></span><span style="flex:2;border-radius:5px;background:#7ec8b8"></span><span style="flex:7"></span></div>
-          <div style="font:400 14px/1 'IBM Plex Mono',monospace;color:#8ba1b4;text-align:right">5</div>
+          <div style="font:400 15px/1.35 'IBM Plex Sans',sans-serif;color:var(--sc-54)">A — Booking &amp; capacity</div>
+          <div style="display:flex;gap:4px;height:26px"><span style="flex:3;border-radius:5px;background:var(--sc-11)"></span><span style="flex:2;border-radius:5px;background:var(--sc-39)"></span><span style="flex:7"></span></div>
+          <div style="font:400 14px/1 'IBM Plex Mono',monospace;color:var(--sc-30);text-align:right">5</div>
         </div>
         <div data-cols="req" style="display:grid;grid-template-columns:230px 1fr 56px;align-items:center;gap:20px">
-          <div style="font:400 15px/1.35 'IBM Plex Sans',sans-serif;color:#dbe7ef">B — During the visit</div>
-          <div style="display:flex;gap:4px;height:26px"><span style="flex:3;border-radius:5px;background:#f0b45e"></span><span style="flex:1;border-radius:5px;background:#7ec8b8"></span><span style="flex:8"></span></div>
-          <div style="font:400 14px/1 'IBM Plex Mono',monospace;color:#8ba1b4;text-align:right">4</div>
+          <div style="font:400 15px/1.35 'IBM Plex Sans',sans-serif;color:var(--sc-54)">B — During the visit</div>
+          <div style="display:flex;gap:4px;height:26px"><span style="flex:3;border-radius:5px;background:var(--sc-11)"></span><span style="flex:1;border-radius:5px;background:var(--sc-39)"></span><span style="flex:8"></span></div>
+          <div style="font:400 14px/1 'IBM Plex Mono',monospace;color:var(--sc-30);text-align:right">4</div>
         </div>
         <div data-cols="req" style="display:grid;grid-template-columns:230px 1fr 56px;align-items:center;gap:20px">
-          <div style="font:400 15px/1.35 'IBM Plex Sans',sans-serif;color:#dbe7ef">C — Self-serve recovery</div>
-          <div style="display:flex;gap:4px;height:26px"><span style="flex:3;border-radius:5px;background:#f0b45e"></span><span style="flex:1;border-radius:5px;background:#7ec8b8"></span><span style="flex:8"></span></div>
-          <div style="font:400 14px/1 'IBM Plex Mono',monospace;color:#8ba1b4;text-align:right">4</div>
+          <div style="font:400 15px/1.35 'IBM Plex Sans',sans-serif;color:var(--sc-54)">C — Self-serve recovery</div>
+          <div style="display:flex;gap:4px;height:26px"><span style="flex:3;border-radius:5px;background:var(--sc-11)"></span><span style="flex:1;border-radius:5px;background:var(--sc-39)"></span><span style="flex:8"></span></div>
+          <div style="font:400 14px/1 'IBM Plex Mono',monospace;color:var(--sc-30);text-align:right">4</div>
         </div>
         <div data-cols="req" style="display:grid;grid-template-columns:230px 1fr 56px;align-items:center;gap:20px">
-          <div style="font:400 15px/1.35 'IBM Plex Sans',sans-serif;color:#dbe7ef">D — Reaching a human</div>
-          <div style="display:flex;gap:4px;height:26px"><span style="flex:3;border-radius:5px;background:#f0b45e"></span><span style="flex:1;border-radius:5px;background:#7ec8b8"></span><span style="flex:8"></span></div>
-          <div style="font:400 14px/1 'IBM Plex Mono',monospace;color:#8ba1b4;text-align:right">4</div>
+          <div style="font:400 15px/1.35 'IBM Plex Sans',sans-serif;color:var(--sc-54)">D — Reaching a human</div>
+          <div style="display:flex;gap:4px;height:26px"><span style="flex:3;border-radius:5px;background:var(--sc-11)"></span><span style="flex:1;border-radius:5px;background:var(--sc-39)"></span><span style="flex:8"></span></div>
+          <div style="font:400 14px/1 'IBM Plex Mono',monospace;color:var(--sc-30);text-align:right">4</div>
         </div>
         <div data-cols="req" style="display:grid;grid-template-columns:230px 1fr 56px;align-items:center;gap:20px">
-          <div style="font:400 15px/1.35 'IBM Plex Sans',sans-serif;color:#dbe7ef">E — Packs &amp; repeat bookings</div>
-          <div style="display:flex;gap:4px;height:26px"><span style="flex:2;border-radius:5px;background:#f0b45e"></span><span style="flex:1;border-radius:5px;background:#7ec8b8"></span><span style="flex:9"></span></div>
-          <div style="font:400 14px/1 'IBM Plex Mono',monospace;color:#8ba1b4;text-align:right">3</div>
+          <div style="font:400 15px/1.35 'IBM Plex Sans',sans-serif;color:var(--sc-54)">E — Packs &amp; repeat bookings</div>
+          <div style="display:flex;gap:4px;height:26px"><span style="flex:2;border-radius:5px;background:var(--sc-11)"></span><span style="flex:1;border-radius:5px;background:var(--sc-39)"></span><span style="flex:9"></span></div>
+          <div style="font:400 14px/1 'IBM Plex Mono',monospace;color:var(--sc-30);text-align:right">3</div>
         </div>
         <div data-cols="req" style="display:grid;grid-template-columns:230px 1fr 56px;align-items:center;gap:20px">
-          <div style="font:400 15px/1.35 'IBM Plex Sans',sans-serif;color:#dbe7ef">F — Expert safety &amp; pay</div>
-          <div style="display:flex;gap:4px;height:26px"><span style="flex:1;border-radius:5px;background:#f0b45e"></span><span style="flex:1;border-radius:5px;background:#7ec8b8"></span><span style="flex:1;border-radius:5px;background:rgba(190,215,235,.3)"></span><span style="flex:9"></span></div>
-          <div style="font:400 14px/1 'IBM Plex Mono',monospace;color:#8ba1b4;text-align:right">3</div>
+          <div style="font:400 15px/1.35 'IBM Plex Sans',sans-serif;color:var(--sc-54)">F — Expert safety &amp; pay</div>
+          <div style="display:flex;gap:4px;height:26px"><span style="flex:1;border-radius:5px;background:var(--sc-11)"></span><span style="flex:1;border-radius:5px;background:var(--sc-39)"></span><span style="flex:1;border-radius:5px;background:var(--sc-14)"></span><span style="flex:9"></span></div>
+          <div style="font:400 14px/1 'IBM Plex Mono',monospace;color:var(--sc-30);text-align:right">3</div>
         </div>
         <div data-cols="req" style="display:grid;grid-template-columns:230px 1fr 56px;align-items:center;gap:20px">
-          <div style="font:400 15px/1.35 'IBM Plex Sans',sans-serif;color:#dbe7ef">Telemetry (cross-cutting)</div>
-          <div style="display:flex;gap:4px;height:26px"><span style="flex:3;border-radius:5px;background:#f0b45e"></span><span style="flex:1;border-radius:5px;background:#7ec8b8"></span><span style="flex:8"></span></div>
-          <div style="font:400 14px/1 'IBM Plex Mono',monospace;color:#8ba1b4;text-align:right">4</div>
+          <div style="font:400 15px/1.35 'IBM Plex Sans',sans-serif;color:var(--sc-54)">Telemetry (cross-cutting)</div>
+          <div style="display:flex;gap:4px;height:26px"><span style="flex:3;border-radius:5px;background:var(--sc-11)"></span><span style="flex:1;border-radius:5px;background:var(--sc-39)"></span><span style="flex:8"></span></div>
+          <div style="font:400 14px/1 'IBM Plex Mono',monospace;color:var(--sc-30);text-align:right">4</div>
         </div>
       </div>
 
-      <div style="max-width:88ch;margin:30px 0 0;font:italic 400 14px/1.6 'Newsreader',Georgia,serif;color:#8ba1b4">Journeys A, C and D — capacity honesty and the two recovery paths — hold 9 of the 18 P0s. That weighting <em style="font-style:normal;color:#cfe0ec">is</em> the argument: what must ship is not new service, it is the guarantee behind the service already sold.</div>
+      <div style="max-width:88ch;margin:30px 0 0;font:italic 400 14px/1.6 'Newsreader',Georgia,serif;color:var(--sc-30)">Journeys A, C and D — capacity honesty and the two recovery paths — hold 9 of the 18 P0s. That weighting <em style="font-style:normal;color:var(--sc-34)">is</em> the argument: what must ship is not new service, it is the guarantee behind the service already sold.</div>
 
       
       <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:44px 0 0">
-        <div style="padding:26px 24px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-radius:14px">
-          <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#f0b45e">Journey A · selected P0</div>
-          <ul style="margin:16px 0 0;padding-left:20px;display:grid;gap:11px;font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:#a9bfd0">
+        <div style="padding:26px 24px;background:var(--sc-24);border:1px solid var(--sc-23);border-radius:14px">
+          <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--sc-11)">Journey A · selected P0</div>
+          <ul style="margin:16px 0 0;padding-left:20px;display:grid;gap:11px;font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:var(--sc-18)">
             <li>Packs and instant slots sell only up to a micro-market's forecast redeemable capacity inside the validity window.</li>
             <li>A booking past its scheduled time never auto-locks cancel, reschedule or refund.</li>
             <li>Live status inconsistent with the promised arrival flags the booking at-risk and notifies the customer first.</li>
           </ul>
         </div>
-        <div style="padding:26px 24px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-radius:14px">
-          <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#f0b45e">Journeys C &amp; D · selected P0</div>
-          <ul style="margin:16px 0 0;padding-left:20px;display:grid;gap:11px;font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:#a9bfd0">
+        <div style="padding:26px 24px;background:var(--sc-24);border:1px solid var(--sc-23);border-radius:14px">
+          <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--sc-11)">Journeys C &amp; D · selected P0</div>
+          <ul style="margin:16px 0 0;padding-left:20px;display:grid;gap:11px;font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:var(--sc-18)">
             <li>Structured issue reporting from the booking itself — no-show, incomplete task, item missing, misconduct.</li>
             <li>Issues verifiable against visit data resolve automatically; refund or credit issued with no agent review.</li>
             <li>Frontline agents can approve refunds, reassignment and cancellation inside published policy without escalating.</li>
             <li>Substantiated theft or misconduct suspends the Expert pending review, with concrete support for a police report.</li>
           </ul>
         </div>
-        <div style="padding:26px 24px;background:#0b1a28;border:1px solid rgba(126,200,184,.24);border-radius:14px">
-          <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#7ec8b8">Journeys B &amp; F · selected P0</div>
-          <ul style="margin:16px 0 0;padding-left:20px;display:grid;gap:11px;font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:#a9bfd0">
+        <div style="padding:26px 24px;background:var(--sc-24);border:1px solid var(--sc-87);border-radius:14px">
+          <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--sc-40)">Journeys B &amp; F · selected P0</div>
+          <ul style="margin:16px 0 0;padding-left:20px;display:grid;gap:11px;font:400 15px/1.55 'IBM Plex Sans',sans-serif;color:var(--sc-18)">
             <li>Each Expert's break window is fixed for the shift once assigned and never silently reassigned.</li>
             <li>Discreet periodic safety check-ins during every visit, logged for coverage verification.</li>
             <li>Kavach check-ins logged with response rate and acknowledgment time, so coverage — not just existence — is auditable.</li>
           </ul>
         </div>
-        <div style="padding:26px 24px;background:#0b1a28;border:1px dashed rgba(190,215,235,.22);border-radius:14px">
-          <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#8ba1b4">Deliberately out of scope</div>
-          <p style="margin:16px 0 0;font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">New service categories · pricing and unit economics · new-city expansion · payment methods · a formal insurance product for stolen or damaged items · rebuilding Kavach's risk model.</p>
-          <p style="margin:14px 0 0;font:400 14px/1.6 'IBM Plex Sans',sans-serif;color:#7f96aa">Where those intersect, the requirement is written as a constraint rather than a plan — and financial responsibility for verified theft is named as a business-policy decision this PRD does not get to make.</p>
+        <div style="padding:26px 24px;background:var(--sc-24);border:1px dashed var(--sc-35);border-radius:14px">
+          <div style="font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--sc-30)">Deliberately out of scope</div>
+          <p style="margin:16px 0 0;font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">New service categories · pricing and unit economics · new-city expansion · payment methods · a formal insurance product for stolen or damaged items · rebuilding Kavach's risk model.</p>
+          <p style="margin:14px 0 0;font:400 14px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-13)">Where those intersect, the requirement is written as a constraint rather than a plan — and financial responsibility for verified theft is named as a business-policy decision this PRD does not get to make.</p>
         </div>
       </div>
       
@@ -924,59 +1148,59 @@
   <!-- ══ METRICS ══ -->
   <section data-screen-label="Metrics" id="metrics" style="padding:120px 40px 140px">
     <div style="max-width:1120px;margin:0 auto">
-      <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#7f96aa">09 — How I'd know it worked</div>
-      <h2 style="max-width:26ch;margin:22px 0 0;font:300 clamp(32px,3.8vw,50px)/1.08 'Newsreader',Georgia,serif;letter-spacing:-.02em;color:#f1f6fa">Four outcomes, each hard to game</h2>
-      <p style="max-width:64ch;margin:24px 0 0;font:400 17px/1.68 'IBM Plex Sans',sans-serif;color:#a9bfd0;text-wrap:pretty">Every one maps to a value prop, and every one is measured from system data rather than sentiment — because a support team can cut handle time without a single customer coming back.</p>
+      <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sc-13)">09 — How I'd know it worked</div>
+      <h2 style="max-width:26ch;margin:22px 0 0;font:300 clamp(32px,3.8vw,50px)/1.08 'Newsreader',Georgia,serif;letter-spacing:-.02em;color:var(--sc-27)">Four outcomes, each hard to game</h2>
+      <p style="max-width:64ch;margin:24px 0 0;font:400 17px/1.68 'IBM Plex Sans',sans-serif;color:var(--sc-18);text-wrap:pretty">Every one maps to a value prop, and every one is measured from system data rather than sentiment — because a support team can cut handle time without a single customer coming back.</p>
 
       <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:44px 0 0">
-        <div style="display:grid;grid-template-columns:auto 1fr;gap:22px;padding:28px 26px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-radius:16px">
-          <div style="display:grid;place-items:center;width:52px;height:52px;border-radius:999px;background:rgba(240,180,94,.14);font:400 22px/1 'IBM Plex Sans',sans-serif;color:#f0b45e">↓</div>
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:22px;padding:28px 26px;background:var(--sc-24);border:1px solid var(--sc-23);border-radius:16px">
+          <div style="display:grid;place-items:center;width:52px;height:52px;border-radius:999px;background:var(--sc-75);font:400 22px/1 'IBM Plex Sans',sans-serif;color:var(--sc-11)">↓</div>
           <div>
-            <div style="font:400 20px/1.3 'Newsreader',Georgia,serif;color:#eef5fa">Unredeemed pack value</div>
-            <p style="margin:10px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">Share of purchased pack value that expires unused, per micro-market — and whatever remains must refund automatically, not on contact.</p>
-            <div style="margin:14px 0 0;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:#6c8299">TESTS VALUE PROP 01 · CAPACITY HONESTY</div>
+            <div style="font:400 20px/1.3 'Newsreader',Georgia,serif;color:var(--sc-29)">Unredeemed pack value</div>
+            <p style="margin:10px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">Share of purchased pack value that expires unused, per micro-market — and whatever remains must refund automatically, not on contact.</p>
+            <div style="margin:14px 0 0;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:var(--sc-33)">TESTS VALUE PROP 01 · CAPACITY HONESTY</div>
           </div>
         </div>
-        <div style="display:grid;grid-template-columns:auto 1fr;gap:22px;padding:28px 26px;background:#0b1a28;border:1px solid rgba(190,215,235,.14);border-radius:16px">
-          <div style="display:grid;place-items:center;width:52px;height:52px;border-radius:999px;background:rgba(240,180,94,.14);font:400 22px/1 'IBM Plex Sans',sans-serif;color:#f0b45e">↓</div>
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:22px;padding:28px 26px;background:var(--sc-24);border:1px solid var(--sc-23);border-radius:16px">
+          <div style="display:grid;place-items:center;width:52px;height:52px;border-radius:999px;background:var(--sc-75);font:400 22px/1 'IBM Plex Sans',sans-serif;color:var(--sc-11)">↓</div>
           <div>
-            <div style="font:400 20px/1.3 'Newsreader',Georgia,serif;color:#eef5fa">Failures needing a human</div>
-            <p style="margin:10px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">Share of no-show and lockout failures resolved by a person rather than by self-serve or automatic detection. Target: toward zero.</p>
-            <div style="margin:14px 0 0;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:#6c8299">TESTS VALUE PROP 02 · SELF-HEALING RECOVERY</div>
+            <div style="font:400 20px/1.3 'Newsreader',Georgia,serif;color:var(--sc-29)">Failures needing a human</div>
+            <p style="margin:10px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">Share of no-show and lockout failures resolved by a person rather than by self-serve or automatic detection. Target: toward zero.</p>
+            <div style="margin:14px 0 0;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:var(--sc-33)">TESTS VALUE PROP 02 · SELF-HEALING RECOVERY</div>
           </div>
         </div>
-        <div style="display:grid;grid-template-columns:auto 1fr;gap:22px;padding:28px 26px;background:#0b1a28;border:1px solid rgba(126,200,184,.26);border-radius:16px">
-          <div style="display:grid;place-items:center;width:52px;height:52px;border-radius:999px;background:rgba(126,200,184,.16);font:400 22px/1 'IBM Plex Sans',sans-serif;color:#7ec8b8">↑</div>
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:22px;padding:28px 26px;background:var(--sc-24);border:1px solid var(--sc-70);border-radius:16px">
+          <div style="display:grid;place-items:center;width:52px;height:52px;border-radius:999px;background:var(--sc-88);font:400 22px/1 'IBM Plex Sans',sans-serif;color:var(--sc-40)">↑</div>
           <div>
-            <div style="font:400 20px/1.3 'Newsreader',Georgia,serif;color:#eef5fa">Enforced consequence rate</div>
-            <p style="margin:10px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">Every substantiated misconduct or theft report ends in a tracked, enforced consequence — measured with time-to-suspension, not just count.</p>
-            <div style="margin:14px 0 0;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:#6c8299">TESTS VALUE PROP 03 · ACCOUNTABILITY</div>
+            <div style="font:400 20px/1.3 'Newsreader',Georgia,serif;color:var(--sc-29)">Enforced consequence rate</div>
+            <p style="margin:10px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">Every substantiated misconduct or theft report ends in a tracked, enforced consequence — measured with time-to-suspension, not just count.</p>
+            <div style="margin:14px 0 0;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:var(--sc-33)">TESTS VALUE PROP 03 · ACCOUNTABILITY</div>
           </div>
         </div>
-        <div style="display:grid;grid-template-columns:auto 1fr;gap:22px;padding:28px 26px;background:#0b1a28;border:1px solid rgba(126,200,184,.26);border-radius:16px">
-          <div style="display:grid;place-items:center;width:52px;height:52px;border-radius:999px;background:rgba(126,200,184,.16);font:400 22px/1 'IBM Plex Sans',sans-serif;color:#7ec8b8">↑</div>
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:22px;padding:28px 26px;background:var(--sc-24);border:1px solid var(--sc-70);border-radius:16px">
+          <div style="display:grid;place-items:center;width:52px;height:52px;border-radius:999px;background:var(--sc-88);font:400 22px/1 'IBM Plex Sans',sans-serif;color:var(--sc-40)">↑</div>
           <div>
-            <div style="font:400 20px/1.3 'Newsreader',Georgia,serif;color:#eef5fa">Logged break-window adherence</div>
-            <p style="margin:10px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:#93a9bb">Measured from shift logs and correlated against Expert attrition and complaint rate. The one I'd defend the work on.</p>
-            <div style="margin:14px 0 0;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:#6c8299">TESTS VALUE PROP 03 · SUPPLY-SIDE RELIABILITY</div>
+            <div style="font:400 20px/1.3 'Newsreader',Georgia,serif;color:var(--sc-29)">Logged break-window adherence</div>
+            <p style="margin:10px 0 0;font:400 14.5px/1.6 'IBM Plex Sans',sans-serif;color:var(--sc-26)">Measured from shift logs and correlated against Expert attrition and complaint rate. The one I'd defend the work on.</p>
+            <div style="margin:14px 0 0;font:400 12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.04em;color:var(--sc-33)">TESTS VALUE PROP 03 · SUPPLY-SIDE RELIABILITY</div>
           </div>
         </div>
       </div>
 
-      <div style="margin:56px 0 0;padding:36px 36px 34px;background:linear-gradient(180deg,#102437,#0b1a28);border:1px solid rgba(190,215,235,.16);border-radius:18px">
-        <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#f0b45e">The number I'd ask for first</div>
-        <div style="max-width:44ch;margin:16px 0 0;font:300 clamp(24px,2.6vw,34px)/1.2 'Newsreader',Georgia,serif;color:#f4f8fb">What share of support contacts are pack failures, no-shows, and misconduct reports?</div>
-        <p style="max-width:70ch;margin:18px 0 0;font:400 16px/1.65 'IBM Plex Sans',sans-serif;color:#a9bfd0">That single split decides how each journey is sized and sequenced. Without it, this reads as one initiative — and twenty-seven requirements is a programme, not a sprint. It sits at the top of the PRD's open questions, next to who owns the decision to suspend an Expert today, and whether capping pack sales conflicts with the growth targets the last round was raised against.</p>
+      <div style="margin:56px 0 0;padding:36px 36px 34px;background:linear-gradient(180deg,var(--sc-44),var(--sc-45));border:1px solid var(--sc-72);border-radius:18px">
+        <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sc-11)">The number I'd ask for first</div>
+        <div style="max-width:44ch;margin:16px 0 0;font:300 clamp(24px,2.6vw,34px)/1.2 'Newsreader',Georgia,serif;color:var(--sc-17)">What share of support contacts are pack failures, no-shows, and misconduct reports?</div>
+        <p style="max-width:70ch;margin:18px 0 0;font:400 16px/1.65 'IBM Plex Sans',sans-serif;color:var(--sc-18)">That single split decides how each journey is sized and sequenced. Without it, this reads as one initiative — and twenty-seven requirements is a programme, not a sprint. It sits at the top of the PRD's open questions, next to who owns the decision to suspend an Expert today, and whether capping pack sales conflicts with the growth targets the last round was raised against.</p>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;margin:56px 0 0;padding:34px 0 0;border-top:1px solid rgba(190,215,235,.14)">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;margin:56px 0 0;padding:34px 0 0;border-top:1px solid var(--sc-23)">
         <div>
-          <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#7f96aa">Hiring?</div>
-          <div style="margin:12px 0 0;max-width:44ch;font:400 20px/1.4 'Newsreader',Georgia,serif;color:#eef5fa">Happy to walk through the prioritisation — or argue about which P0 I got wrong.</div>
+          <div style="font:500 12px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--sc-13)">Hiring?</div>
+          <div style="margin:12px 0 0;max-width:44ch;font:400 20px/1.4 'Newsreader',Georgia,serif;color:var(--sc-29)">Happy to walk through the prioritisation — or argue about which P0 I got wrong.</div>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:12px">
-          <a href="mailto:mondalantarya2@gmail.com?subject=Chat%20about%20the%20Snabbit%20PRD" style="display:inline-flex;align-items:center;padding:13px 22px;border-radius:999px;background:#f0b45e;color:#08131f;font:500 14px/1 'IBM Plex Sans',sans-serif" style-hover="background:#ffd39a">Get in touch</a>
-          <a href="../index.html#work" style="display:inline-flex;align-items:center;padding:13px 22px;border-radius:999px;border:1px solid rgba(190,215,235,.28);color:#dce8f1;font:500 14px/1 'IBM Plex Sans',sans-serif" style-hover="border-color:#f0b45e;color:#f0b45e">All case studies</a>
+          <a href="mailto:mondalantarya2@gmail.com?subject=Chat%20about%20the%20Snabbit%20PRD" style="display:inline-flex;align-items:center;padding:13px 22px;border-radius:999px;background:var(--sc-11);color:var(--sc-20);font:500 14px/1 'IBM Plex Sans',sans-serif" style-hover="background:var(--sc-21)">Get in touch</a>
+          <a href="../index.html#work" style="display:inline-flex;align-items:center;padding:13px 22px;border-radius:999px;border:1px solid var(--sc-10);color:var(--sc-22);font:500 14px/1 'IBM Plex Sans',sans-serif" style-hover="border-color:var(--sc-11);color:var(--sc-11)">All case studies</a>
         </div>
       </div>
     </div>
@@ -984,27 +1208,27 @@
 
   
   <nav aria-label="More case studies" style="padding:0 40px 8px">
-    <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;padding-top:36px;border-top:1px solid rgba(190,215,235,.12)">
-      <a href="finlatics-market-research.html" style="display:block;padding:22px 24px;background:#0b1a28;border:1px solid rgba(190,215,235,.12);border-radius:12px">
-        <span style="display:block;font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#8ba1b4;margin-bottom:10px">Previous</span>
-        <span style="display:block;font:500 15px/1.45 'IBM Plex Sans',sans-serif;color:#e4eef5">Sizing the bet: finding product-market fit for a digital-first FMCG launch</span>
+    <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;padding-top:36px;border-top:1px solid var(--pager-border)">
+      <a href="finlatics-market-research.html" style="display:block;padding:22px 24px;background:var(--pager-surface);border:1px solid var(--pager-border);border-radius:12px">
+        <span style="display:block;font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--pager-label);margin-bottom:10px">Previous</span>
+        <span style="display:block;font:500 15px/1.45 'IBM Plex Sans',sans-serif;color:var(--pager-title)">Sizing the bet: finding product-market fit for a digital-first FMCG launch</span>
       </a>
-      <a href="pronto-trust-reliability.html" style="display:block;padding:22px 24px;background:#0b1a28;border:1px solid rgba(190,215,235,.12);border-radius:12px;text-align:right">
-        <span style="display:block;font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#8ba1b4;margin-bottom:10px">Next</span>
-        <span style="display:block;font:500 15px/1.45 'IBM Plex Sans',sans-serif;color:#e4eef5">Pronto: making &ldquo;house help in minutes&rdquo; true every time</span>
+      <a href="pronto-trust-reliability.html" style="display:block;padding:22px 24px;background:var(--pager-surface);border:1px solid var(--pager-border);border-radius:12px;text-align:right">
+        <span style="display:block;font:500 11.5px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--pager-label);margin-bottom:10px">Next</span>
+        <span style="display:block;font:500 15px/1.45 'IBM Plex Sans',sans-serif;color:var(--pager-title)">Pronto: making &ldquo;house help in minutes&rdquo; true every time</span>
       </a>
     </div>
   </nav>
 
-  <footer style="padding:36px 40px 44px;border-top:1px solid rgba(190,215,235,.12)">
+  <footer style="padding:36px 40px 44px;border-top:1px solid var(--sc-08)">
     <div style="max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px">
-      <div style="font:400 13px/1 'IBM Plex Mono',monospace;color:#6c8299">© 2026 Antarya Mondal</div>
+      <div style="font:400 13px/1 'IBM Plex Mono',monospace;color:var(--sc-33)">© 2026 Antarya Mondal</div>
       <div style="display:flex;flex-wrap:wrap;gap:22px;font:400 13.5px/1 'IBM Plex Sans',sans-serif">
-        <a href="mailto:mondalantarya2@gmail.com" style="color:#8ba1b4">Email</a>
-        <a href="https://www.linkedin.com/in/antarya-mondal-53a14a301/" style="color:#8ba1b4">LinkedIn</a>
-        <a href="https://github.com/antaryam2003" style="color:#8ba1b4">GitHub</a>
-        <a href="../assets/Antarya-Mondal-Resume.pdf" style="color:#8ba1b4">Résumé</a>
-        <a href="../index.html" style="color:#8ba1b4">Home</a>
+        <a href="mailto:mondalantarya2@gmail.com" style="color:var(--sc-30)">Email</a>
+        <a href="https://www.linkedin.com/in/antarya-mondal-53a14a301/" style="color:var(--sc-30)">LinkedIn</a>
+        <a href="https://github.com/antaryam2003" style="color:var(--sc-30)">GitHub</a>
+        <a href="../assets/Antarya-Mondal-Resume.pdf" style="color:var(--sc-30)">Résumé</a>
+        <a href="../index.html" style="color:var(--sc-30)">Home</a>
       </div>
     </div>
   </footer>
