@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Snabbit: what happens when ten minutes isn&rsquo;t enough &mdash; Antarya Mondal</title>
 <meta name="description" content="A trust, capacity and safety PRD for Snabbit, India's 10-minute house-help platform: six moments where the promise breaks, the missing policy engine behind them, and 27 requirements across six journeys.">
-<meta name="theme-color" content="#08131f">
+<meta name="theme-color" content="#e9f3ff">
 
 <meta property="og:type" content="article">
 <meta property="og:title" content="Snabbit: what happens when ten minutes isn&#39;t enough">
@@ -45,9 +45,13 @@
 </style>
 
 <style>
-  /* Canvas beyond the 1440px content column, so the page reads as one surface
-     with the portfolio's dark theme (--bg-top: #08131f in style.css). */
-  html { background: #08131f; }
+  /* Page canvas uses the homepage gradient (--bg-top/--bg-mid/--bg-bottom in
+     style.css). The case study keeps its own dark reading column on top, since
+     its type and panels are authored light-on-dark. */
+  html {
+    background: linear-gradient(to bottom, #e9f3ff 0%, #eaf6f7 48%, #e7f6ec 100%) fixed;
+  }
+  body { background: transparent; }
   img, svg { max-width: 100%; }
   .skip-link { position: absolute; left: -9999px; }
   .skip-link:focus { left: 12px; top: 12px; z-index: 100; padding: 10px 16px; background: #f0b45e; color: #08131f;
@@ -174,13 +178,13 @@
         <div style="font:400 14px/1.5 'IBM Plex Sans',sans-serif;color:#8ba1b4">Daily jobs, Apr 2025 – Jul 2026, against publicly documented trust incidents</div>
 
         <div style="margin-top:26px;overflow-x:auto">
-          <svg sc-camel-view-box="0 0 1040 330" style="display:block;width:100%;min-width:760px;height:auto" role="img" aria-label="Line chart of Snabbit daily jobs growing from 400 to over 40,000 between April 2025 and July 2026, with public trust incidents marked from March 2026 onward">
+          <svg viewBox="0 0 1040 330" style="display:block;width:100%;min-width:760px;height:auto" role="img" aria-label="Line chart of Snabbit daily jobs growing from 400 to over 40,000 between April 2025 and July 2026, with public trust incidents marked from March 2026 onward">
             <defs>
               <linearGradient id="snGrow" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stop-color="#f0b45e" stop-opacity=".28"></stop>
                 <stop offset="100%" stop-color="#f0b45e" stop-opacity="0"></stop>
               </linearGradient>
-              <pattern id="snHatch" width="7" height="7" sc-camel-pattern-transform="rotate(45)" sc-camel-pattern-units="userSpaceOnUse">
+              <pattern id="snHatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
                 <line x1="0" y1="0" x2="0" y2="7" stroke="#e0705f" stroke-opacity=".5" stroke-width="1.6"></line>
               </pattern>
             </defs>
@@ -312,9 +316,9 @@
         <div style="font:400 14px/1.5 'IBM Plex Sans',sans-serif;color:#8ba1b4">A single micro-market across one pack validity window — the mechanic, drawn without invented data</div>
 
         <div style="margin-top:26px;overflow-x:auto">
-          <svg sc-camel-view-box="0 0 1040 320" style="display:block;width:100%;min-width:760px;height:auto" role="img" aria-label="Diagram showing prepaid pack slots sold rising in a straight line while redeemable slots flatten, opening a widening shortfall wedge that expires unused">
+          <svg viewBox="0 0 1090 320" style="display:block;width:100%;min-width:760px;height:auto" role="img" aria-label="Diagram showing prepaid pack slots sold rising in a straight line while redeemable slots flatten, opening a widening shortfall wedge that expires unused">
             <defs>
-              <pattern id="snGapHatch" width="8" height="8" sc-camel-pattern-transform="rotate(45)" sc-camel-pattern-units="userSpaceOnUse">
+              <pattern id="snGapHatch" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
                 <line x1="0" y1="0" x2="0" y2="8" stroke="#e0705f" stroke-opacity=".45" stroke-width="1.6"></line>
               </pattern>
             </defs>
@@ -755,9 +759,9 @@
         <div style="font:400 14px/1.5 'IBM Plex Sans',sans-serif;color:#8ba1b4">Where the platform knows how the Expert is doing — and where it doesn't</div>
 
         <div style="margin-top:30px;overflow-x:auto">
-          <svg sc-camel-view-box="0 0 1040 300" style="display:block;width:100%;min-width:760px;height:auto" role="img" aria-label="Diagram comparing today's SOS-only coverage, which is blind for the whole visit until an SOS is pressed, with proposed periodic logged check-ins every 25 minutes">
+          <svg viewBox="0 0 1060 300" style="display:block;width:100%;min-width:760px;height:auto" role="img" aria-label="Diagram comparing today's SOS-only coverage, which is blind for the whole visit until an SOS is pressed, with proposed periodic logged check-ins every 25 minutes">
             <defs>
-              <pattern id="snBlind" width="8" height="8" sc-camel-pattern-transform="rotate(45)" sc-camel-pattern-units="userSpaceOnUse">
+              <pattern id="snBlind" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
                 <line x1="0" y1="0" x2="0" y2="8" stroke="#8ba1b4" stroke-opacity=".28" stroke-width="1.4"></line>
               </pattern>
             </defs>
