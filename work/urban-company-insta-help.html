@@ -6,7 +6,7 @@
 <title>Insta Help PRD — Antarya Mondal</title>
 <meta name="description" content="A pricing-integrity and availability-truth PRD for Urban Company InstaHelp: three defects that read as broken trust, one source of truth, and a supply side that can verify the promise made to it.">
 <meta name="theme-color" content="#dceaf3" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0c2a3d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#08131f" media="(prefers-color-scheme: dark)">
 
 <meta property="og:type" content="article">
 <meta property="og:title" content="Insta Help PRD — Antarya Mondal">
@@ -310,8 +310,25 @@
 </style>
 
 <style>
+  /* Dark canvas rebuilt to match the homepage: its --bg-top/--bg-mid/--bg-bottom
+     ramp, plus the three aurora blobs .bg::before/::after/span paint there. The
+     blobs are expressed as radial-gradient layers on the same token rather than
+     as extra elements, so the markup is untouched. Geometry follows the
+     homepage rules: 46vw at top:-12vw/left:-8vw, 40vw at top:34vh/right:-12vw,
+     44vw at bottom:-14vw/left:22vw, converted to centre points. */
+  html[data-theme="dark"] {
+    --body-bg: #08181f;
+    --page-bg:
+      radial-gradient(circle 32vw at 15vw 11vw, rgba(56,130,246,.26) 0%, rgba(56,130,246,.26) 38%, rgba(56,130,246,0) 100%),
+      radial-gradient(circle 29vw at 92vw calc(34vh + 20vw), rgba(45,212,191,.22) 0%, rgba(45,212,191,.22) 38%, rgba(45,212,191,0) 100%),
+      radial-gradient(circle 31vw at 44vw calc(100vh - 8vw), rgba(34,197,94,.16) 0%, rgba(34,197,94,.16) 38%, rgba(34,197,94,0) 100%),
+      linear-gradient(to bottom, #08131f 0%, #08181f 48%, #071a17 100%);
+  }
+
   /* The nav sits outside the gradient wrapper, so the page canvas carries the
-     same gradient and the strip behind the header matches the article. */
+     same gradient and the strip behind the header matches the article. Both
+     are background-attachment:fixed and the wrapper's bottom layer is opaque,
+     so the two stacks line up exactly and the blobs are not painted twice. */
   body { background: var(--page-bg); background-attachment: fixed; }
   img, svg { max-width: 100%; }
   .skip-link { position: absolute; left: -9999px; }
