@@ -817,11 +817,24 @@ section { position: relative; }
 }
 .work-card:hover .work-cover svg { transform: scale(1.06); opacity: 1; }
 
+/* A real brand mark sits in the cover as a rounded tile rather than filling
+   it — the logo keeps its own square, the cover keeps its own palette. */
+.work-cover .cover-logo {
+  width: 34%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.14);
+  transition: transform 0.6s var(--ease);
+}
+.work-card:hover .work-cover .cover-logo { transform: scale(1.06); }
+
 /* Cover palettes — one hue per case study, low chroma so the set still
    reads as a single system rather than four unrelated cards. */
 .cover-1 { --cover-bg: linear-gradient(150deg, #dbeafe 0%, #d2f2f6 100%); --cover-ink: #0e6f92; }
 .cover-2 { --cover-bg: linear-gradient(150deg, #fdf0d5 0%, #fbe3d3 100%); --cover-ink: #a45f1d; }
-.cover-3 { --cover-bg: linear-gradient(150deg, #e4e6fb 0%, #dcecfb 100%); --cover-ink: #4b4fbe; }
+.cover-3 { --cover-bg: linear-gradient(150deg, #fbdcea 0%, #f6e0ee 100%); --cover-ink: #b01a63; }
 .cover-4 { --cover-bg: linear-gradient(150deg, #d6f2ec 0%, #dcf0dc 100%); --cover-ink: #0d7267; }
 
 :root[data-theme="dark"] .cover-1 {
@@ -833,8 +846,8 @@ section { position: relative; }
   --cover-ink: #f0c07a;
 }
 :root[data-theme="dark"] .cover-3 {
-  --cover-bg-dark: linear-gradient(150deg, rgba(99, 102, 241, 0.18), rgba(59, 130, 246, 0.09));
-  --cover-ink: #a8abf5;
+  --cover-bg-dark: linear-gradient(150deg, rgba(235, 28, 121, 0.18), rgba(236, 72, 153, 0.09));
+  --cover-ink: #f2a0c6;
 }
 :root[data-theme="dark"] .cover-4 {
   --cover-bg-dark: linear-gradient(150deg, rgba(20, 184, 166, 0.16), rgba(34, 197, 94, 0.09));
