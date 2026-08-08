@@ -428,6 +428,29 @@
     [data-blueprint] {
       min-width: 620px;
     }
+
+    /* Same for the impact/cost quadrant. The rightmost bubble sits at
+       73% and carries a ~185px label that cannot wrap, so the plot
+       needs 185 / (1 - 0.73) ≈ 690px before the labels stop colliding.
+       720px leaves a margin. */
+    [data-quadrant] {
+      min-width: 720px;
+    }
+
+    /* That plot is viewed through a narrow window, so give it the 44px
+       the sideways y-axis caption was holding: the caption turns the
+       right way up and sits above the plot instead of beside it. */
+    [style*="grid-template-columns:30px 1fr"] {
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 4px !important;
+    }
+    [style*="grid-template-columns:30px 1fr"] > div:first-child {
+      place-items: start !important;
+    }
+    [style*="grid-template-columns:30px 1fr"] [style*="writing-mode:vertical-rl"] {
+      writing-mode: horizontal-tb !important;
+      transform: none !important;
+    }
   }
 </style>
 
@@ -1138,7 +1161,13 @@
 
       <div style="display:grid;grid-template-columns:30px 1fr;gap:14px">
         <div style="display:grid;place-items:center"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-7);writing-mode:vertical-rl;transform:rotate(180deg)">Impact on trust →</div></div>
-        <div>
+        <!-- The bubbles are placed by percentage and their labels do not wrap,
+             so below roughly 700px they land on top of one another. Position is
+             the whole argument here — impact against cost — so the plot keeps a
+             minimum width and scrolls rather than collapsing. The y-axis label
+             sits outside the scroller and stays put. -->
+        <div class="scroll-x">
+        <div data-quadrant>
           <div style="position:relative;height:400px;border-left:1px solid rgba(var(--line-rgb),.18);border-bottom:1px solid rgba(var(--line-rgb),.18);background:rgba(var(--line-rgb),.02)">
             <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(var(--line-rgb),.09)"></div>
             <div style="position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(var(--line-rgb),.09)"></div>
@@ -1173,6 +1202,7 @@
             </div>
           </div>
           <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-7);text-align:center;margin-top:14px">Cost to build and operate →</div>
+        </div>
         </div>
       </div>
 
