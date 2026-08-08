@@ -32,14 +32,22 @@ work/
   buknu-masala-odop.html                design-led expansion strategy
   finlatics-market-research.html        market research & GTM
 assets/
-  css/style.css                         entire design system, one file
-  js/main.js                            theme toggle, scroll reveal, nav, TOC
+  css/style.css                         the design system, one file
+  css/responsive.css                    responsive tables and wide figures
+  js/main.js                            theme toggle, scroll reveal, nav, TOC,
+                                        responsive tables, scroll hints
   img/profile.jpg                       the headshot in the contact card
   Antarya-Mondal-Resume.pdf             linked from nav, contact card, footer
 ```
 
 The five case studies are listed in this order on the homepage, and every file in
 `work/` is linked from it — there are no unreachable pages.
+
+**Two of the case studies do not load `style.css`.** `snabbit-trust-capacity.html` and
+`urban-company-insta-help.html` were built as self-contained bundles: each defines its own
+palette, typography and layout in `<style>` blocks in its own `<head>`, and lifts in only the
+site header. Editing `style.css` will not affect them. Every page loads `responsive.css` and
+`main.js`.
 
 ---
 
@@ -97,8 +105,69 @@ worth more than a polished one you can't.
 
 - **Location.** The contact card says just "India". Make it specific if you'd rather.
 - **Colours.** All of them are CSS custom properties at the top of `assets/css/style.css`, under
-  `:root` (light) and `:root[data-theme="dark"]`. Change `--accent` and the whole site follows.
+  `:root` (light) and `:root[data-theme="dark"]`. Change `--accent` and the homepage, Pronto,
+  Buknu and Finlatics all follow. The Snabbit and Insta Help pages define their own tokens in
+  their own `<head>` and have to be changed there too.
 - **The gradient.** `--bg-top`, `--bg-mid`, `--bg-bottom` — currently light blue to light green.
+
+---
+
+## How the case studies behave on a phone
+
+The case studies were written for a desktop column — wide tables, a service blueprint, a
+Gantt chart. Three mechanisms adapt them, and it's worth knowing which one you're touching
+before you edit a case study.
+
+### Tables stack into cards below 640px
+
+`main.js` reads each table's `<thead>`, copies every column heading onto the matching cells
+as a `data-label`, and tags the table `data-stack`. `responsive.css` then turns each row into
+a small card where every value sits under its own heading. Nothing is cut off and nothing
+scrolls sideways.
+
+This is automatic. **Add a normal `<table>` with a `<thead>` to any page and it just works** —
+there is nothing to wire up. Two-column tables are left as tables and only lose their authored
+minimum width.
+
+The one requirement is a real `<thead>` row. A table without one is skipped, and a table using
+`colspan` or `rowspan` would mislabel its cells — none currently do.
+
+### Wide diagrams scroll, and say so
+
+A blueprint or a Gantt chart is two-dimensional; stacking it destroys the comparison it exists
+to make. Those keep their shape and scroll sideways. `main.js` measures anything scrollable and,
+where more than 28px is actually hidden, shows a scrollbar and a line of text beneath it. It
+re-measures on resize, so the hint appears and disappears with the figure rather than being
+tied to a breakpoint — on a desktop, where everything currently fits, none are shown.
+
+To make a new wide block behave this way, wrap it in `<div class="scroll-x">`.
+
+### Insta Help collapses its own grids — carefully
+
+`urban-company-insta-help.html` has no shared stylesheet to hang responsive rules on, and its
+grids are inline with pixel column widths (`290px 1fr` and friends). Its `<head>` carries a
+`@media (max-width: 700px)` block that collapses them by **matching the authored inline values
+literally**:
+
+```css
+[style*="grid-template-columns:290px 1fr"] { grid-template-columns: minmax(0, 1fr) !important; }
+```
+
+⚠️ **This is the fragile part of the site.** Change one of those inline declarations — even
+adding a space — and the mobile rule silently stops matching and that block breaks on phones
+again, with nothing to warn you. If you edit a grid on that page, check the corresponding
+selector in its `<head>`, or give the element a `data-` attribute and target that instead
+(`data-prose-grid` and `data-blueprint` are already used this way).
+
+Snabbit does the same job more robustly through `data-cols` attributes on its grids. Prefer
+that pattern for anything new.
+
+### Checking your work
+
+Resize a desktop browser down to about 390px — that reproduces it faithfully. Worth a look at
+320px too, which is the narrowest width the site supports. What to confirm: the page never
+scrolls horizontally, no text is cut off at the right edge, and no column of prose ends up
+under about 130px wide.
 
 ---
 
@@ -132,16 +201,28 @@ résumé than a `github.io` subpath. To point one here:
 ## Notes on how it's built
 
 - **No dependencies.** Nothing to install, nothing to update, nothing that breaks in six months.
-- **Progressive enhancement.** With JavaScript disabled the site is fully readable and navigable;
-  JS only adds the theme toggle, scroll animations, the mobile menu and the sidebar highlighting.
+- **Progressive enhancement.** With JavaScript disabled the site stays readable and navigable.
+  JS adds the theme toggle, scroll animations, the mobile menu, the sidebar highlighting, and
+  the table stacking described above. Without it the tables keep their full width and scroll
+  sideways instead — a `:has()` rule makes sure the wrappers scroll rather than clip, so no
+  content becomes unreachable.
 - **Accessible.** Semantic landmarks, skip link, visible focus rings, `alt` text, ARIA on the
-  interactive controls, and `prefers-reduced-motion` honoured throughout.
-- **Responsive** from 320px up, with a two-column layout above 820px.
+  interactive controls, and `prefers-reduced-motion` honoured throughout. Stacked tables hide
+  their heading row visually but keep it for screen readers.
+- **Responsive** from 320px up: a two-column layout above 820px, tables stacking below 640px.
+  Verified at 320, 390 and 1280px on every page in both themes.
 - **Light by default.** Dark mode is opt-in via the toggle in the nav, and the choice is
   remembered in `localStorage`.
 - **Prints cleanly** — the nav, background and CTAs drop out, so `Ctrl+P` produces a usable
   leave-behind.
 
-Two fonts load from Google Fonts (Inter and Instrument Serif). If you'd rather have zero external
-requests, delete the two `<link>` tags for fonts in each HTML file — the CSS falls back to a
-sensible system stack.
+Fonts load from Google Fonts, and the two self-contained case studies use a different set:
+
+| Pages | Families |
+|---|---|
+| Homepage, Pronto, Buknu, Finlatics | Inter, Instrument Serif |
+| Insta Help | Inter, Instrument Serif, IBM Plex Sans, IBM Plex Mono |
+| Snabbit | Inter, Newsreader, IBM Plex Sans, IBM Plex Mono |
+
+If you'd rather have zero external requests, delete the font `<link>` tags in each HTML file —
+the CSS falls back to a sensible system stack.
