@@ -817,10 +817,13 @@ section { position: relative; }
 }
 .work-card:hover .work-cover svg { transform: scale(1.06); opacity: 1; }
 
-/* A real brand mark fills the cover edge to edge. The asset is pre-cropped to
-   16:9 around the wordmark, so `cover` only ever trims a hair off one axis and
-   the wordmark stays centred at every card width. */
+/* A real brand mark fills the cover edge to edge. Absolute positioning is what
+   makes the height definite — a plain `height: 100%` does not resolve against
+   the cover's aspect-ratio box, so the image would keep its own ratio and spill
+   past the edge instead of being cropped by `object-fit`. */
 .work-cover .cover-logo {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -834,15 +837,21 @@ section { position: relative; }
    reads as a single system rather than four unrelated cards. */
 .cover-1 { --cover-bg: linear-gradient(150deg, #dbeafe 0%, #d2f2f6 100%); --cover-ink: #0e6f92; }
 .cover-2 { --cover-bg: linear-gradient(150deg, #fdf0d5 0%, #fbe3d3 100%); --cover-ink: #a45f1d; }
-/* cover-3 and cover-4 are filled by brand artwork; the ground is each brand's
+/* cover-3, -4 and -5 are filled by brand artwork; the ground is each brand's
    own colour so the load state and the hairline edge match rather than flash
-   a pastel. */
+   a pastel. cover-1 stays a palette cover — the Finlatics card still draws its
+   line art on it. */
 .cover-3 { --cover-bg: #eb1c79; --cover-ink: #ffffff; }
 .cover-4 { --cover-bg: #07ad61; --cover-ink: #ffffff; }
+.cover-5 { --cover-bg: #1a1a1a; --cover-ink: #ffffff; }
 
 :root[data-theme="dark"] .cover-1 {
   --cover-bg-dark: linear-gradient(150deg, rgba(59, 130, 246, 0.16), rgba(34, 211, 238, 0.09));
   --cover-ink: #86ccf0;
+}
+:root[data-theme="dark"] .cover-5 {
+  --cover-bg-dark: #1a1a1a;
+  --cover-ink: #ffffff;
 }
 :root[data-theme="dark"] .cover-2 {
   --cover-bg-dark: linear-gradient(150deg, rgba(245, 158, 11, 0.16), rgba(234, 88, 12, 0.09));
