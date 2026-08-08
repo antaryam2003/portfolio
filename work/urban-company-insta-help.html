@@ -385,6 +385,15 @@
       grid-row: 2 !important;
     }
 
+    /* A child that asked to span two columns has to stop asking once
+       the grid is down to one. Grid answers "span 2" by inventing an
+       implicit second column, which puts the row back to double width
+       and pushes it out of the card — this is what broke the "five
+       things" grid, whose item 05 spans both columns on desktop. */
+    [style*="grid-column:1 / span 2"] {
+      grid-column: 1 / -1 !important;
+    }
+
     /* Side-by-side comparisons read as one column. */
     [style*="grid-template-columns:1fr 1fr"],
     [style*="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)"],
