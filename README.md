@@ -26,27 +26,30 @@ Then open http://localhost:8000
 ```
 index.html                              homepage
 work/
-  finlatics-market-research.html        01 — market research & GTM
-  buknu-masala-odop.html                02 — design-led expansion strategy
-  blockbloom-dapp.html                  03 — 0→1 technical build
-  yolo-digit-detection.html             04 — applied ML
+  urban-company-insta-help.html         Insta Help PRD
+  snabbit-trust-capacity.html           trust & capacity PRD
+  pronto-trust-reliability.html         trust & reliability PRD
+  buknu-masala-odop.html                design-led expansion strategy
+  finlatics-market-research.html        market research & GTM
 assets/
   css/style.css                         entire design system, one file
   js/main.js                            theme toggle, scroll reveal, nav, TOC
-  img/                                  put profile.jpg here
+  img/profile.jpg                       the headshot in the contact card
   Antarya-Mondal-Resume.pdf             linked from nav, contact card, footer
 ```
 
+The five case studies are listed in this order on the homepage, and every file in
+`work/` is linked from it — there are no unreachable pages.
+
 ---
 
-## Do these three things before you send the link out
+## Before you send the link out
 
-### 1. Add your photo
+### 1. Your photo — done
 
-Drop a square headshot at `assets/img/profile.jpg`. Until you do, the site shows a styled
-"AM" monogram instead — it looks intentional, but a real face converts far better.
-
-Aim for ~800×800px, under 300 KB, shot against a plain background.
+`assets/img/profile.jpg` is in place. If you ever swap it, keep it square (~800×800px, under
+300 KB, plain background); with the file missing the site falls back to a styled "AM"
+monogram, which looks intentional but converts worse than a real face.
 
 ### 2. Put real numbers into the case studies
 
@@ -54,21 +57,18 @@ This is the single highest-leverage edit on the whole site. Every claim currentl
 site is drawn from your résumé, and nothing is invented — which also means the **Outcome**
 sections are qualitative where your résumé was qualitative.
 
-Recruiters anchor on numbers. Each case study has an HTML comment marking exactly where to
-add yours:
+Recruiters anchor on numbers. Two case studies carry an HTML comment marking exactly where
+to add yours — search for `▸` in the `work/` files to jump straight to them:
 
 | Page | What to add |
 |---|---|
-| `work/pronto-trust-reliability.html` | Nothing required — this one carries its own charts and tables. If you ever get real Pronto data, the sizing question in "Open questions" is where it goes |
 | `work/buknu-masala-odop.html` | Who you presented to and how it landed; embed packaging mockups or brand boards if you have them |
 | `work/finlatics-market-research.html` | Sample size of the market tests, TAM/SAM figures you're free to share, how many recommendations were adopted, any lift you measured |
 
-Two further case studies exist as files but are **not linked from anywhere on the site** —
-`work/blockbloom-dapp.html` and `work/yolo-digit-detection.html`. They were removed from the
-homepage grid. Delete them, or re-add cards to `index.html` to bring them back.
-
-`assets/Pronto-Trust-Reliability-PRD.pdf` is likewise unlinked — the download button was
-removed from the case study. Delete it if you don't want it reachable by direct URL.
+These are the only two pages carrying a `▸` marker. The three PRD case studies — Urban
+Company, Snabbit and Pronto — are self-contained: they argue from their own tables and
+charts rather than from résumé claims, so there is nothing to fill in. If you ever get real
+data for one, its "Open questions" section is where it goes.
 
 ### Chart colours
 
@@ -77,8 +77,6 @@ single-hue ordinal teal ramp for P0/P1/P2 (monotone lightness, light end clears 
 at ≥2:1) plus reserved status colours. The tokens live at the top of the "Figures, charts and
 tables" section in `style.css`, with separate light and dark steps. If you change them,
 re-check contrast rather than eyeballing.
-
-Search for `▸` in the `work/` files to jump straight to them.
 
 If a number is confidential, a ratio or a range still beats a paragraph of description.
 
@@ -97,7 +95,7 @@ worth more than a polished one you can't.
 
 ## Other things you may want to change
 
-- **Location.** The contact card says "India · open to relocating". Make it specific if you'd rather.
+- **Location.** The contact card says just "India". Make it specific if you'd rather.
 - **Colours.** All of them are CSS custom properties at the top of `assets/css/style.css`, under
   `:root` (light) and `:root[data-theme="dark"]`. Change `--accent` and the whole site follows.
 - **The gradient.** `--bg-top`, `--bg-mid`, `--bg-bottom` — currently light blue to light green.
