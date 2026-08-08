@@ -337,6 +337,105 @@
     font: 500 14px/1 'IBM Plex Sans', sans-serif; border-radius: 8px; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
+
+<style>
+  /* -----------------------------------------------------------------
+     Small screens.
+
+     This case study was laid out for a desktop column and its grids
+     are inline, with column widths in pixels. On a phone the content
+     column is roughly 310px, so "290px 1fr" left the second column
+     about two pixels wide — the roadmap bars, the requirement detail
+     and half the comparison rows were crushed rather than wrapped.
+
+     The rules below match the authored inline values and collapse
+     them. Matching on [style*=...] is unusual, but these grids have
+     no classes to hang a rule on, and restating each one inline
+     would mean editing several hundred attributes by hand.
+     ----------------------------------------------------------------- */
+  @media (max-width: 700px) {
+    /* Roadmap rows and label/value pairs: label above, content below. */
+    [style*="grid-template-columns:290px 1fr"] {
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 9px !important;
+    }
+    /* The roadmap header's spacer cell only existed to hold a column. */
+    [style*="grid-template-columns:290px 1fr"] > div:empty {
+      display: none !important;
+    }
+
+    /* Journey rows are a label, a stacked bar of the requirement mix,
+       and a count. Keep the label and its count on one line and give
+       the bar the full width underneath — squeezed into a third of a
+       phone it was too short to read a proportion off. */
+    [style*="grid-template-columns:230px 1fr 44px"] {
+      grid-template-columns: minmax(0, 1fr) auto !important;
+      gap: 8px 12px !important;
+    }
+    [style*="grid-template-columns:230px 1fr 44px"] > div:nth-child(1) {
+      grid-column: 1 !important;
+      grid-row: 1 !important;
+    }
+    [style*="grid-template-columns:230px 1fr 44px"] > div:nth-child(3) {
+      grid-column: 2 !important;
+      grid-row: 1 !important;
+    }
+    [style*="grid-template-columns:230px 1fr 44px"] > div:nth-child(2) {
+      grid-column: 1 / -1 !important;
+      grid-row: 2 !important;
+    }
+
+    /* Side-by-side comparisons read as one column. */
+    [style*="grid-template-columns:1fr 1fr"],
+    [style*="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)"],
+    [style*="grid-template-columns:minmax(0,1fr) minmax(0,1.5fr)"],
+    [style*="grid-template-columns:minmax(0,1fr) minmax(0,1.6fr)"],
+    [style*="grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)"],
+    [style*="grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)"] {
+      grid-template-columns: minmax(0, 1fr) !important;
+    }
+
+    /* The threes carry prose — a principle and a paragraph each.
+       Two-up leaves them 145px, which breaks every line after two
+       words, so they go full width. */
+    [style*="grid-template-columns:repeat(3,1fr)"] {
+      grid-template-columns: minmax(0, 1fr) !important;
+    }
+
+    /* Stat tiles are a number and a short label — they still read
+       two-up. The date rail and the scope cards carry sentences, so
+       they take the full width. */
+    [style*="grid-template-columns:repeat(4,1fr)"] {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+    [style*="grid-template-columns:repeat(5,1fr)"],
+    [data-prose-grid] {
+      grid-template-columns: minmax(0, 1fr) !important;
+    }
+
+    /* Counts followed by a note. The note has flex:1 and was ending
+       up around 100px wide beside them; let it take its own line. */
+    [style*="display:flex;gap:34px"] {
+      flex-wrap: wrap !important;
+      gap: 20px !important;
+    }
+    [style*="display:flex;gap:34px"] > [style*="flex:1"] {
+      flex: 1 1 100% !important;
+    }
+
+    /* The blueprint keeps its shape inside .scroll-x — a matrix that
+       stacks stops being a matrix. */
+    [data-blueprint] {
+      min-width: 620px;
+    }
+  }
+</style>
+
+<!-- Responsive table and wide-figure behaviour. Loaded last so it settles
+     the cascade against this page's own inline styles. Scoped to the
+     attributes main.js sets, so it restyles nothing else here. -->
+<link rel="stylesheet" href="../assets/css/responsive.css">
+
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -853,7 +952,11 @@
       <div style="font-family:'Instrument Serif',Georgia,serif;font-size:25px;line-height:1.2;color:var(--ink)">Service blueprint, not a feature list</div>
       <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-7);margin:9px 0 28px">Four phases of one booking, seen from four sides at once</div>
 
-      <div style="display:grid;grid-template-columns:130px repeat(4,1fr);gap:1px;background:rgba(var(--line-rgb),.09);border:1px solid rgba(var(--line-rgb),.09);border-radius:11px;overflow:hidden;font-size:13.5px">
+      <!-- Reading down a column and across a lane is the whole point of this
+           matrix, so it keeps its shape on a phone and scrolls sideways
+           instead of collapsing. main.js adds the swipe hint beneath it. -->
+      <div class="scroll-x">
+      <div data-blueprint style="display:grid;grid-template-columns:130px repeat(4,1fr);gap:1px;background:rgba(var(--line-rgb),.09);border:1px solid rgba(var(--line-rgb),.09);border-radius:11px;overflow:hidden;font-size:13.5px">
         <div style="background:var(--panel-2);padding:14px 14px"></div>
         <div style="background:var(--panel-2);padding:14px 14px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)">Choosing &amp; pricing</div>
         <div style="background:var(--panel-2);padding:14px 14px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)">Dispatch &amp; arrival</div>
@@ -883,6 +986,7 @@
         <div style="background:var(--panel);padding:16px 14px;color:var(--ink-4);line-height:1.5">Demand against <em style="font-style:italic">available</em> supply per micro-market</div>
         <div style="background:var(--panel);padding:16px 14px;color:var(--ink-4);line-height:1.5">Logged-in hours vs jobs received, as a distribution</div>
         <div style="background:var(--panel);padding:16px 14px;color:var(--ink-4);line-height:1.5">Zones where the 15-minute promise is structurally unmet</div>
+      </div>
       </div>
       <div style="font-size:13px;line-height:1.62;color:var(--ink-7);font-style:italic;margin-top:22px;border-top:1px solid rgba(var(--line-rgb),.09);padding-top:16px">Reading down a column shows what one booking feels like from four sides. Reading across a lane shows who has been abandoned at which phase — which is how the “paid for a failed trip” requirement appeared at all. It isn't in any review; it's in the empty cell.</div>
     </div>
@@ -1193,7 +1297,10 @@
       <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,3.7vw,46px);line-height:1.08;letter-spacing:-.015em;color:var(--ink);margin:0">What this document refuses to touch</h2>
       <p style="font-size:16.5px;line-height:1.68;color:var(--ink-4);margin:0;text-wrap:pretty">The temptation with a loss-making vertical is to write the pricing memo. I didn't, deliberately: the rate card is a finance call, and a PRD that reaches for it loses the right to be judged on anything. Each exclusion below is stated as a <em style="font-style:italic">constraint</em> the requirements have to live inside.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(var(--line-rgb),.09);border:1px solid rgba(var(--line-rgb),.09);border-radius:14px;overflow:hidden">
+    <!-- data-prose-grid: these four cells hold a heading and a paragraph
+         each, not a number and a label, so they stack on a phone rather
+         than going two-up like the stat strip above. -->
+    <div data-prose-grid style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(var(--line-rgb),.09);border:1px solid rgba(var(--line-rgb),.09);border-radius:14px;overflow:hidden">
       <div style="background:var(--panel);padding:26px 22px">
         <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--red);margin-bottom:12px">Out of scope</div>
         <div style="font-size:16px;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:10px">The rate card and unit economics</div>

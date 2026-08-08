@@ -1,0 +1,158 @@
+/* =============================================================
+   Responsive tables and wide figures — case study pages
+   -------------------------------------------------------------
+   Loaded by every page in work/, including the two self-contained
+   case studies that deliberately do not load style.css.
+
+   Everything here is scoped to attributes and classes this sheet
+   owns ([data-stack], [data-fit], .is-scrollable, .scroll-hint),
+   so it restyles nothing a page has not opted into. main.js sets
+   those attributes; with JavaScript off the pages keep their
+   previous behaviour and tables stay horizontally scrollable.
+   ============================================================= */
+
+/* -------------------------------------------------------------
+   Wide visuals that cannot linearise — service blueprints,
+   Gantt charts, wide SVGs. These stay scrollable, but a phone
+   gives no hint that a box scrolls, so we say so underneath.
+   ------------------------------------------------------------- */
+
+/* Opt-in scroll container for a wide block that has none of its own.
+   main.js gives anything that actually overflows the hint below. */
+.scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-hint {
+  display: none;
+  margin: 9px 0 0;
+  font-size: 0.74rem;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: currentColor;
+  opacity: 0.55;
+}
+
+.is-scrollable + .scroll-hint {
+  display: block;
+}
+
+/* A visible track makes the affordance obvious on desktop too,
+   and costs nothing on touch devices that overlay their own. */
+.is-scrollable {
+  scrollbar-width: thin;
+}
+.is-scrollable::-webkit-scrollbar {
+  height: 7px;
+}
+.is-scrollable::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: currentColor;
+  opacity: 0.25;
+}
+
+/* -------------------------------------------------------------
+   Tables
+   ------------------------------------------------------------- */
+
+/* Two-column tables read fine at any width once the authored
+   minimum stops forcing them wider than the screen. */
+@media (max-width: 640px) {
+  table[data-fit] {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+}
+
+/* Three columns or more cannot fit a phone without either
+   truncating text or scrolling sideways past the headings. Each
+   row becomes a small labelled card instead: every value keeps
+   the column heading it belongs to, and nothing is cut off. */
+@media (max-width: 640px) {
+  table[data-stack] {
+    display: block;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  table[data-stack] > thead {
+    /* Headings move into the cells, so the row is now redundant.
+       clip-path keeps it reachable for screen readers. */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  table[data-stack] > tbody {
+    display: block;
+  }
+
+  table[data-stack] > tbody > tr {
+    display: block;
+    padding: 16px 0;
+    border: 0;
+    border-bottom: 1px solid;
+    border-color: rgba(128, 138, 148, 0.28);
+  }
+  table[data-stack] > tbody > tr:first-child {
+    padding-top: 4px;
+  }
+  table[data-stack] > tbody > tr:last-child {
+    border-bottom: 0;
+    padding-bottom: 4px;
+  }
+
+  table[data-stack] > tbody > tr > td {
+    display: block;
+    width: auto !important;
+    max-width: none !important;
+    padding: 0 0 11px !important;
+    border: 0 !important;
+    text-align: left !important;
+    white-space: normal !important;
+  }
+  table[data-stack] > tbody > tr > td:last-child {
+    padding-bottom: 0 !important;
+  }
+
+  /* The column heading, restated above the value it labels. */
+  table[data-stack] > tbody > tr > td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.63rem;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    line-height: 1.3;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+
+  /* The first cell is the row's subject — give it a little more
+     weight so the card has an obvious title. */
+  table[data-stack] > tbody > tr > td:first-child {
+    font-size: 1.02em;
+  }
+
+  /* A stacked table never needs its scroll container. */
+  table[data-stack] {
+    overflow: visible;
+  }
+
+  /* Fallback for when JavaScript has not run: the table keeps its
+     authored width, and a wrapper that clips rather than scrolls
+     would hide the last column outright. Let it scroll instead.
+     Once main.js has tagged the table this stops matching, because
+     the stacked table no longer overflows anything.
+
+     The wrappers carry overflow:hidden inline (they round a corner),
+     so this has to be !important to reach them. */
+  div:has(> table:not([data-stack]):not([data-fit])) {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+}

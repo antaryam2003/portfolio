@@ -157,6 +157,108 @@
   }
 
   /* ---------------------------------------------------------
+     Responsive tables
+
+     The case study tables are authored for a desktop column and
+     are wider than a phone. Sideways-scrolling them means reading
+     values with their headings scrolled off screen — and where a
+     wrapper clips instead of scrolling, the last column cannot be
+     reached at all. So each cell is given its column heading and
+     the rows stack into cards on small screens (see responsive.css).
+
+     Two-column tables are left alone beyond dropping the authored
+     minimum width; they already fit.
+     --------------------------------------------------------- */
+  var tables = document.querySelectorAll("table");
+
+  Array.prototype.forEach.call(tables, function (table) {
+    var headRow = table.querySelector("thead tr");
+    if (!headRow) return;
+
+    var labels = Array.prototype.map.call(headRow.children, function (cell) {
+      return (cell.textContent || "").replace(/\s+/g, " ").trim();
+    });
+
+    if (labels.length < 3) {
+      table.setAttribute("data-fit", "");
+      return;
+    }
+
+    var bodyRows = table.querySelectorAll("tbody tr");
+    Array.prototype.forEach.call(bodyRows, function (row) {
+      Array.prototype.forEach.call(row.children, function (cell, i) {
+        // Skip blank headings — a label of "" would render an empty line.
+        if (labels[i]) cell.setAttribute("data-label", labels[i]);
+      });
+    });
+
+    table.setAttribute("data-stack", "");
+  });
+
+  /* ---------------------------------------------------------
+     Scroll affordance for wide figures
+
+     Blueprints, Gantt charts and wide SVGs are two-dimensional —
+     stacking them would destroy the comparison they exist to make,
+     so they keep scrolling sideways. Nothing on a touch device
+     signals that a box scrolls, so anything actually overflowing
+     gets a line of text saying so.
+     --------------------------------------------------------- */
+  var scrollers = [];
+
+  Array.prototype.forEach.call(
+    document.querySelectorAll(
+      "figure div, figure, .table-scroll, .blueprint, .gantt, .scroll-x"
+    ),
+    function (el) {
+      var overflowX = window.getComputedStyle(el).overflowX;
+      if (overflowX !== "auto" && overflowX !== "scroll") return;
+      if (scrollers.indexOf(el) !== -1) return;
+
+      var hint = document.createElement("p");
+      hint.className = "scroll-hint";
+      hint.setAttribute("aria-hidden", "true");
+      hint.textContent = "Swipe sideways to see all of it →";
+      el.parentNode.insertBefore(hint, el.nextSibling);
+
+      scrollers.push(el);
+    }
+  );
+
+  // Enough hidden width to be worth telling someone about. A dozen
+  // stray pixels from rounding is not a hidden column, and prompting
+  // for it on a desktop the figure very nearly fits reads as noise.
+  var SCROLL_HINT_THRESHOLD = 28;
+
+  function refreshScrollHints() {
+    scrollers.forEach(function (el) {
+      var hidden = el.scrollWidth - el.clientWidth;
+      el.classList.toggle("is-scrollable", hidden > SCROLL_HINT_THRESHOLD);
+    });
+  }
+
+  if (scrollers.length) {
+    refreshScrollHints();
+
+    // Stacking a table changes what overflows, and so does rotating
+    // the phone. Re-check on resize, throttled to one frame.
+    var pending = false;
+    window.addEventListener("resize", function () {
+      if (pending) return;
+      pending = true;
+      window.requestAnimationFrame(function () {
+        pending = false;
+        refreshScrollHints();
+      });
+    });
+
+    // Fonts land after first paint and change measured widths.
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(refreshScrollHints);
+    }
+  }
+
+  /* ---------------------------------------------------------
      Footer year
      --------------------------------------------------------- */
   var year = document.querySelector("[data-year]");
