@@ -834,10 +834,11 @@ section { position: relative; }
    reads as a single system rather than four unrelated cards. */
 .cover-1 { --cover-bg: linear-gradient(150deg, #dbeafe 0%, #d2f2f6 100%); --cover-ink: #0e6f92; }
 .cover-2 { --cover-bg: linear-gradient(150deg, #fdf0d5 0%, #fbe3d3 100%); --cover-ink: #a45f1d; }
-/* cover-3 is filled by the Snabbit artwork; the ground is its brand pink so
-   the load state and the hairline edge match rather than flash a pastel. */
+/* cover-3 and cover-4 are filled by brand artwork; the ground is each brand's
+   own colour so the load state and the hairline edge match rather than flash
+   a pastel. */
 .cover-3 { --cover-bg: #eb1c79; --cover-ink: #ffffff; }
-.cover-4 { --cover-bg: linear-gradient(150deg, #d6f2ec 0%, #dcf0dc 100%); --cover-ink: #0d7267; }
+.cover-4 { --cover-bg: #07ad61; --cover-ink: #ffffff; }
 
 :root[data-theme="dark"] .cover-1 {
   --cover-bg-dark: linear-gradient(150deg, rgba(59, 130, 246, 0.16), rgba(34, 211, 238, 0.09));
@@ -852,8 +853,8 @@ section { position: relative; }
   --cover-ink: #ffffff;
 }
 :root[data-theme="dark"] .cover-4 {
-  --cover-bg-dark: linear-gradient(150deg, rgba(20, 184, 166, 0.16), rgba(34, 197, 94, 0.09));
-  --cover-ink: #7fded0;
+  --cover-bg-dark: #07ad61;
+  --cover-ink: #ffffff;
 }
 
 .work-index {
