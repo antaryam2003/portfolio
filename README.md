@@ -38,6 +38,7 @@ assets/
   js/main.js                            theme toggle, scroll reveal, nav, TOC,
                                         responsive tables, scroll hints
   img/profile.jpg                       the headshot in the contact card
+  img/salvage-logo.png                  the Salvage wordmark, on its card
   img/salvage-*.jpg                     four prototype screenshots
   Antarya-Mondal-Resume.pdf             linked from nav, contact card, footer
 ```
