@@ -26,6 +26,7 @@ Then open http://localhost:8000
 ```
 index.html                              homepage
 work/
+  salvage-two-problems.html             0→1 prototype teardown
   urban-company-insta-help.html         Insta Help PRD
   snabbit-trust-capacity.html           trust & capacity PRD
   pronto-trust-reliability.html         trust & reliability PRD
@@ -37,17 +38,20 @@ assets/
   js/main.js                            theme toggle, scroll reveal, nav, TOC,
                                         responsive tables, scroll hints
   img/profile.jpg                       the headshot in the contact card
+  img/salvage-*.jpg                     four prototype screenshots
   Antarya-Mondal-Resume.pdf             linked from nav, contact card, footer
 ```
 
-The five case studies are listed in this order on the homepage, and every file in
-`work/` is linked from it — there are no unreachable pages.
+The six case studies are listed in this order on the homepage, and every file in
+`work/` is linked from it — there are no unreachable pages. Each page also carries a
+Previous/Next pager, and the six form a closed ring in the same order, so **adding or
+reordering a case study means editing two neighbours' pagers as well as the homepage.**
 
-**Two of the case studies do not load `style.css`.** `snabbit-trust-capacity.html` and
-`urban-company-insta-help.html` were built as self-contained bundles: each defines its own
-palette, typography and layout in `<style>` blocks in its own `<head>`, and lifts in only the
-site header. Editing `style.css` will not affect them. Every page loads `responsive.css` and
-`main.js`.
+**Three of the case studies do not load `style.css`.** `salvage-two-problems.html`,
+`snabbit-trust-capacity.html` and `urban-company-insta-help.html` were built as
+self-contained bundles: each defines its own palette, typography and layout in `<style>`
+blocks in its own `<head>`, and lifts in only the site header. Editing `style.css` will not
+affect them. Every page loads `responsive.css` and `main.js`.
 
 ---
 
@@ -76,7 +80,9 @@ to add yours — search for `▸` in the `work/` files to jump straight to them:
 These are the only two pages carrying a `▸` marker. The three PRD case studies — Urban
 Company, Snabbit and Pronto — are self-contained: they argue from their own tables and
 charts rather than from résumé claims, so there is nothing to fill in. If you ever get real
-data for one, its "Open questions" section is where it goes.
+data for one, its "Open questions" section is where it goes. Salvage argues from a thing
+that exists, so it needs nothing either; its "Honest scope" section is what makes it
+credible, and shortening that section is the one edit that would cost it.
 
 ### Chart colours
 
@@ -106,8 +112,9 @@ worth more than a polished one you can't.
 - **Location.** The contact card says just "India". Make it specific if you'd rather.
 - **Colours.** All of them are CSS custom properties at the top of `assets/css/style.css`, under
   `:root` (light) and `:root[data-theme="dark"]`. Change `--accent` and the homepage, Pronto,
-  Buknu and Finlatics all follow. The Snabbit and Insta Help pages define their own tokens in
-  their own `<head>` and have to be changed there too.
+  Buknu and Finlatics all follow. The Snabbit, Insta Help and Salvage pages define their own
+  tokens in their own `<head>` and have to be changed there too — Snabbit's are `--sc-NN`,
+  Salvage's are `--sv-NN`, each with a light and a dark value.
 - **The gradient.** `--bg-top`, `--bg-mid`, `--bg-bottom` — currently light blue to light green.
 
 ---
@@ -159,8 +166,18 @@ again, with nothing to warn you. If you edit a grid on that page, check the corr
 selector in its `<head>`, or give the element a `data-` attribute and target that instead
 (`data-prose-grid` and `data-blueprint` are already used this way).
 
-Snabbit does the same job more robustly through `data-cols` attributes on its grids. Prefer
-that pattern for anything new.
+Snabbit does the same job more robustly through `data-cols` attributes on its grids, and
+Salvage through `data-sv-paths` and `data-sv-mat-row`. Prefer that pattern for anything new.
+
+### Salvage carries one interactive figure
+
+"Drag the score across the fork" is about 90 lines of plain JavaScript at the bottom of
+`salvage-two-problems.html`, holding the same constants the prototype's own engine uses —
+category weights, material rates, the 45-point threshold and the pricing formula. **If you
+ever change a rate or the threshold in the real app, change it here too**, or the figure
+starts quoting numbers the product no longer produces. With JavaScript off the figure still
+renders its authored state (a sofa at 74, above the threshold, priced) and simply stops
+responding.
 
 ### Checking your work
 
@@ -216,11 +233,11 @@ résumé than a `github.io` subpath. To point one here:
 - **Prints cleanly** — the nav, background and CTAs drop out, so `Ctrl+P` produces a usable
   leave-behind.
 
-Fonts load from Google Fonts, and the two self-contained case studies use a different set:
+Fonts load from Google Fonts, and two of the self-contained case studies use a different set:
 
 | Pages | Families |
 |---|---|
-| Homepage, Pronto, Buknu, Finlatics | Inter, Instrument Serif |
+| Homepage, Pronto, Buknu, Finlatics, Salvage | Inter, Instrument Serif |
 | Insta Help | Inter, Instrument Serif, IBM Plex Sans, IBM Plex Mono |
 | Snabbit | Inter, Newsreader, IBM Plex Sans, IBM Plex Mono |
 
